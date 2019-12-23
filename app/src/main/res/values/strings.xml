@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MovieStack</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="category">Category</string>
+    <string name="fetured_list">Fetured List</string>
+    <string name="papular_people">Papular People</string>
 </resources>

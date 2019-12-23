@@ -1,6 +1,6 @@
 package com.example.moviestack.di.component
 
-import com.example.moviestack.ui.activity.MainActivity
+import com.example.moviestack.ui.dashboard.activity.MainActivity
 import com.example.moviestack.di.modules.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
