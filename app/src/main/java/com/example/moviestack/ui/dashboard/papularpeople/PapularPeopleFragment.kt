@@ -1,4 +1,5 @@
-package com.example.moviestack.ui.dashboard.fragment
+package com.example.moviestack.ui.dashboard.papularpeople
+
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,14 +9,17 @@ import android.view.ViewGroup
 
 import com.example.moviestack.R
 
-class HomeFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class PapularPeopleFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_papular_people, container, false)
     }
 
 

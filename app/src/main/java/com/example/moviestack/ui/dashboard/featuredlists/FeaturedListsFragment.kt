@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.dashboard.fragment
+package com.example.moviestack.ui.dashboard.featuredlists
 
 
 import android.os.Bundle
@@ -12,14 +12,14 @@ import com.example.moviestack.R
 /**
  * A simple [Fragment] subclass.
  */
-class PapularPeopleFragment : Fragment() {
+class FeaturedListsFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_papular_people, container, false)
+        return inflater.inflate(R.layout.fragment_featured_lists, container, false)
     }
 
 

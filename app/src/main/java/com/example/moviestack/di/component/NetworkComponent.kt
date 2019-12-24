@@ -1,6 +1,7 @@
 package com.example.moviestack.di.component
 
-import com.example.moviestack.ui.dashboard.activity.MainActivity
+import com.example.moviestack.api.NetworkHelper
+import com.example.moviestack.ui.dashboard.MainActivity
 import com.example.moviestack.di.modules.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
@@ -14,7 +15,7 @@ interface NetworkComponent {
 
     fun getRetrofit() : Retrofit
 
-    fun inject(mainActivity: MainActivity) : Unit
+    fun inject(networkHelper: NetworkHelper) : Unit
 
 
     @Component.Factory
