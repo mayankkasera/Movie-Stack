@@ -5,12 +5,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.Trending
+import com.example.moviestack.api.pojo.SmallItemList
 import com.example.moviestack.databinding.TrendingDataBinding
 
-class TrendingMovieAdapter(private val listOfFlags: List<Trending.Result>) :
+class SmallItemAdapter(private val listOfFlags: List<SmallItemList.Result>) :
 
-    RecyclerView.Adapter<TrendingMovieAdapter.TrendingMovieViewHolder>() {
+    RecyclerView.Adapter<SmallItemAdapter.TrendingMovieViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingMovieViewHolder {
 
@@ -34,7 +34,7 @@ class TrendingMovieAdapter(private val listOfFlags: List<Trending.Result>) :
 
     inner class TrendingMovieViewHolder(val trending: TrendingDataBinding) : RecyclerView.ViewHolder(trending.root) {
 
-        fun bind(result: Trending.Result) {
+        fun bind(result: SmallItemList.Result) {
             this.trending.trendingModel = result
             this.trending.executePendingBindings()
         }

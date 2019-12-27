@@ -4,7 +4,8 @@ package com.example.moviestack.api.pojo
 import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
-data class Trending(
+data class SmallItemList(
+
     @SerializedName("page")
     var page: Int = 0,
     @SerializedName("results")
@@ -12,8 +13,13 @@ data class Trending(
     @SerializedName("total_pages")
     var totalPages: Int = 0,
     @SerializedName("total_results")
-    var totalResults: Int = 0
+    var totalResults: Int = 0,
+    @SerializedName("type")
+    var type: Type? = null
+
+
 ) {
+
     data class Result(
         @SerializedName("adult")
         var adult: Boolean = false,
@@ -65,4 +71,9 @@ data class Trending(
             return NetworkConstants.baseImageUrl+posterPath
         }
     }
+
+    enum class Type{
+        TRENDING_MOVIES,TRENDING_TV_SHOW,UPCOMING,NOW_PLAYING
+    }
+
 }
