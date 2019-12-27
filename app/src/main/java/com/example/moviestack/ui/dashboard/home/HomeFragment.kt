@@ -28,14 +28,13 @@ class HomeFragment : Fragment() {
 
     private lateinit var mView: View
     private val trendingMoviesRepositoryI: TrendingMoviesRepositoryI = TrendingMoviesRepository(NetworkHelper().gerRetrofit())
-    lateinit var viewModel: HomeViewModel
-    lateinit var binding: HomeFragmentBinding
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var binding: HomeFragmentBinding
 
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        mView = binding.getRoot()
         init()
         loadData()
         setObserver()
@@ -47,49 +46,16 @@ class HomeFragment : Fragment() {
     }
 
     private fun init() {
+        mView = binding.getRoot()
         val factory = HomeViewModel(trendingMoviesRepositoryI).createFactory()
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
     }
 
     private fun setObserver() {
         viewModel.mutableLiveData.observe(this, Observer {
-            Log.i("sdjdcgv","askdjcna : "+it.toString() )
             binding.homeState = it
-                //updateView(it)
         })
     }
-
-    private fun updateView(state: HomeState?) {
-        when {
-//            state!!.loading -> showEvebtLoading()
-//            state.success -> showDataByEvents(state)
-//            state.failure -> showError(state.message!!)
-        }
-    }
-
-    private fun showError(message: String) {
-        tvErrorMessage.text = message
-        loader.hide()
-        trendingMovies.gone()
-    }
-
-    private fun showEvebtLoading() {
-        trendingMovies.gone()
-        loader.visible()
-    }
-
-    private fun showDataByEvents(state: HomeState) {
-          binding.homeState = state
-    }
-
-    private fun showListOfData(listOfFlags: Trending) {
-        trendingMovies.visible()
-        trendingMovies.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL, false)
-        trendingMovies.adapter = TrendingMovieAdapter(listOfFlags.results)
-        Log.i("sdjdcgv","sdv  :  "+listOfFlags.toString())
-        loader.hide()
-    }
-
 
 
 
