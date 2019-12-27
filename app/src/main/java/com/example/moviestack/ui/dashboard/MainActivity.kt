@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initBottomNavigation()
+        replace(HomeFragment())
 
         Log.i("jhdvs", NetworkHelper().gerRetrofit().toString())
 

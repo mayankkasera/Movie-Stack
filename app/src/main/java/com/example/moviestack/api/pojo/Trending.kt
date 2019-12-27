@@ -1,6 +1,7 @@
 package com.example.moviestack.api.pojo
 
 
+import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
 data class Trending(
@@ -52,5 +53,16 @@ data class Trending(
         var voteAverage: Double = 0.0,
         @SerializedName("vote_count")
         var voteCount: Int = 0
-    )
+    ){
+        fun hasTitle():Boolean{
+            if(title.equals(""))
+                return false
+            else
+                return true
+        }
+
+        fun getPoster():String{
+            return NetworkConstants.baseImageUrl+posterPath
+        }
+    }
 }
