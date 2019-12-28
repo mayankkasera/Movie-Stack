@@ -17,9 +17,9 @@ interface GetRequests {
     @GET("movie/upcoming?api_key=26095c9316646dba756dcbe2a7e602f6")
     fun getUpcoming() : Call<SmallItemList>
 
-    @GET("/movie/popular?api_key=26095c9316646dba756dcbe2a7e602f6")
+    @GET("movie/popular?api_key=26095c9316646dba756dcbe2a7e602f6")
     fun getPopular() : Call<SmallItemList>
 
-    @GET("/movie/top_rated?api_key=26095c9316646dba756dcbe2a7e602f6")
+    @GET("movie/top_rated?api_key=26095c9316646dba756dcbe2a7e602f6")
     fun getTopRated() : Call<SmallItemList>
 }

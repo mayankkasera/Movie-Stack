@@ -10,93 +10,399 @@
             type="com.example.moviestack.ui.dashboard.home.HomeState"/>
     </data>
 
-   <ScrollView
-       android:fillViewport="true"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:background="@color/background"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-           tools:context=".ui.dashboard.home.HomeFragment">
+      <ScrollView
+          android:visibility="@{homeState.loading?View.GONE:View.VISIBLE}"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:fillViewport="true"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/trendingMovies"
-               android:layout_width="match_parent"
-               android:layout_height="206dp"
-               android:orientation="horizontal"
-               android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-               android:adapter="@{homeState.trendingMovieAdapter}"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+          <androidx.constraintlayout.widget.ConstraintLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context=".ui.dashboard.home.HomeFragment">
 
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/trendingTvShow"
-               android:layout_width="match_parent"
-               android:layout_height="206dp"
-               android:adapter="@{homeState.trendingTvShowAdapter}"
-               android:orientation="horizontal"
-               android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/trendingMovies" />
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:id="@+id/tv_trending_movie_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="16dp"
+                  android:layout_marginTop="16dp"
+                  android:text="@string/trending"
+                  android:textColor="@android:color/background_light"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toTopOf="parent" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:id="@+id/tv_trending_movie_subtitle"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="@string/movies"
+                  android:textColor="#74F7F4F4"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/tv_trending_movie_title"
+                  app:layout_constraintStart_toEndOf="@+id/tv_trending_movie_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:id="@+id/tv_trending_movie_more"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="23dp"
+                  android:text="@string/more"
+                  android:textColor="@color/pink"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/tv_trending_movie_title"
+                  app:layout_constraintEnd_toEndOf="parent" />
 
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/nowPlaying"
-               android:layout_width="match_parent"
-               android:layout_height="206dp"
-               android:adapter="@{homeState.nowPlayingAdapter}"
-               android:orientation="horizontal"
-               android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/trendingTvShow" />
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/trendingMovies"
+                  android:layout_width="match_parent"
+                  android:layout_height="206dp"
+                  android:layout_marginTop="16dp"
+                  android:adapter="@{homeState.trendingMovieAdapter}"
+                  android:orientation="horizontal"
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/tv_trending_movie_title" />
 
 
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/upcomming"
-               android:layout_width="match_parent"
-               android:layout_height="206dp"
-               android:adapter="@{homeState.upComingAdapter}"
-               android:orientation="horizontal"
-               android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-               app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/nowPlaying" />
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
 
-           <com.wang.avi.AVLoadingIndicatorView
-               android:id="@+id/loader"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:visibility="@{homeState.loading?View.VISIBLE:View.GONE}"
-               app:indicatorName="BallPulseIndicator"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toTopOf="parent" />
+                  android:layout_marginTop="16dp"
+                  android:layout_marginLeft="16dp"
+                  android:id="@+id/tv_trending_tvShows_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Trending"
+                  android:textColor="@android:color/background_light"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/trendingMovies" />
 
-           <androidx.appcompat.widget.AppCompatTextView
-               android:visibility="@{homeState.failure?View.VISIBLE:View.GONE}"
-               android:id="@+id/tvErrorMessage"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:layout_marginTop="24dp"
-               android:gravity="center"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/loader"
-               tools:text="@{homeState.message}" />
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="@string/tv_show"
+                  android:textColor="#74F7F4F4"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/tv_trending_tvShows_title"
+                  app:layout_constraintStart_toEndOf="@+id/tv_trending_tvShows_title" />
 
-   </ScrollView>
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="23dp"
+                   android:text="@string/more"
+                  android:textColor="@color/pink"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/tv_trending_tvShows_title"
+                  app:layout_constraintEnd_toEndOf="parent" />
+
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/trendingTvShow"
+                  android:layout_width="match_parent"
+                  android:layout_height="206dp"
+                  android:layout_marginTop="16dp"
+                  android:adapter="@{homeState.trendingTvShowAdapter}"
+                  android:orientation="horizontal"
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/tv_trending_tvShows_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_marginLeft="16dp"
+                  android:layout_marginTop="16dp"
+                  android:id="@+id/nowPlaying_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/now_playing"
+                  android:textColor="@android:color/background_light"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/trendingTvShow" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="@string/movies"
+                  android:textColor="#74F7F4F4"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/nowPlaying_title"
+                  app:layout_constraintStart_toEndOf="@+id/nowPlaying_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="23dp"
+                   android:text="@string/more"
+                  android:textColor="@color/pink"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/nowPlaying_title"
+                  app:layout_constraintEnd_toEndOf="parent" />
+
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:layout_marginTop="16dp"
+                  android:id="@+id/nowPlaying"
+                  android:layout_width="match_parent"
+                  android:layout_height="206dp"
+                  android:adapter="@{homeState.nowPlayingAdapter}"
+                  android:orientation="horizontal"
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/nowPlaying_title" />
+
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_marginLeft="16dp"
+                  android:layout_marginTop="16dp"
+                  android:id="@+id/upComming_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/upcoming"
+                  android:textColor="@android:color/background_light"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/nowPlaying" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="@string/movies"
+                  android:textColor="#74F7F4F4"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/upComming_title"
+                  app:layout_constraintStart_toEndOf="@+id/upComming_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="23dp"
+                   android:text="@string/more"
+                  android:textColor="@color/pink"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/upComming_title"
+                  app:layout_constraintEnd_toEndOf="parent" />
+
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/upcomming"
+                  android:layout_marginTop="16dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="206dp"
+                  android:adapter="@{homeState.upComingAdapter}"
+                  android:orientation="horizontal"
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/upComming_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_marginLeft="16dp"
+                  android:layout_marginTop="16dp"
+                  android:id="@+id/popular_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/popular"
+                  android:textColor="@android:color/background_light"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/upcomming" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="@string/movies"
+                  android:textColor="#74F7F4F4"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/popular_title"
+                  app:layout_constraintStart_toEndOf="@+id/popular_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="23dp"
+                   android:text="@string/more"
+                  android:textColor="@color/pink"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/popular_title"
+                  app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/popular"
+                  android:layout_marginTop="16dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="206dp"
+                  android:adapter="@{homeState.popularAdapter}"
+                  android:orientation="horizontal"
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/popular_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_marginLeft="16dp"
+                  android:layout_marginTop="16dp"
+                  android:id="@+id/topRated_title"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="@string/toprated"
+                  android:textColor="@android:color/background_light"
+                  android:textSize="20sp"
+                  android:textStyle="bold"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/popular" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginLeft="10dp"
+                  android:text="@string/movies"
+                  android:textColor="#74F7F4F4"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/topRated_title"
+                  app:layout_constraintStart_toEndOf="@+id/topRated_title" />
+
+              <androidx.appcompat.widget.AppCompatTextView
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_marginEnd="23dp"
+                  android:text="@string/more"
+                  android:textColor="@color/pink"
+                  android:textSize="14sp"
+                  android:textStyle="bold"
+                  app:layout_constraintBottom_toBottomOf="@+id/topRated_title"
+                  app:layout_constraintEnd_toEndOf="parent" />
+
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/topRated"
+                  android:layout_marginTop="16dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="206dp"
+                  android:adapter="@{homeState.topRatedAdapter}"
+                  android:orientation="horizontal"
+                  android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
+                  app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                  app:layout_constraintEnd_toEndOf="parent"
+                  app:layout_constraintStart_toStartOf="parent"
+                  app:layout_constraintTop_toBottomOf="@+id/topRated_title" />
+
+
+          </androidx.constraintlayout.widget.ConstraintLayout>
+
+      </ScrollView>
+
+
+      <com.wang.avi.AVLoadingIndicatorView
+          android:id="@+id/loader"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:visibility="@{homeState.loading?View.VISIBLE:View.GONE}"
+          app:indicatorName="BallPulseIndicator"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <androidx.appcompat.widget.AppCompatTextView
+
+          android:visibility="@{homeState.failure?View.VISIBLE:View.GONE}"
+          android:id="@+id/tvErrorMessage"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="24dp"
+          android:gravity="center"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/loader"
+          tools:text="@{homeState.message}" />
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

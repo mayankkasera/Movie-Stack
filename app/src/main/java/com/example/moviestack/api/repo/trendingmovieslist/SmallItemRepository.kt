@@ -23,6 +23,8 @@ class SmallItemRepository(private val getRequests : GetRequests?,private val typ
                 SmallItemList.Type.TRENDING_TV_SHOW -> call = getRequests?.getTrendingTvShow()
                 SmallItemList.Type.NOW_PLAYING -> call = getRequests?.getNowPlaying()
                 SmallItemList.Type.UPCOMING -> call = getRequests?.getUpcoming()
+                SmallItemList.Type.POPULAR -> call = getRequests?.getPopular()
+                SmallItemList.Type.TOP_RATED -> call = getRequests?.getTopRated()
             }
 
 
@@ -30,12 +32,17 @@ class SmallItemRepository(private val getRequests : GetRequests?,private val typ
             call?.enqueue(object : Callback<SmallItemList> {
                 override fun onResponse(call: Call<SmallItemList>, response: Response<SmallItemList>) {
 
+                    Log.i("szvchsd","ghfhf ${response.toString()}")
+
+
                     response.body()?.let {
                         when(type){
                             SmallItemList.Type.TRENDING_MOVIES ->  it.type = SmallItemList.Type.TRENDING_MOVIES
                             SmallItemList.Type.TRENDING_TV_SHOW ->  it.type = SmallItemList.Type.TRENDING_TV_SHOW
                             SmallItemList.Type.NOW_PLAYING ->  it.type = SmallItemList.Type.NOW_PLAYING
                             SmallItemList.Type.UPCOMING ->  it.type = SmallItemList.Type.UPCOMING
+                            SmallItemList.Type.POPULAR ->  it.type = SmallItemList.Type.POPULAR
+                            SmallItemList.Type.TOP_RATED ->  it.type = SmallItemList.Type.TOP_RATED
                         }
                         emitter.onNext(it)
                         emitter.onComplete()

@@ -23,6 +23,8 @@ class HomeFragment : Fragment() {
     private val trendingTvRepositoryI: SmallItemRepositoryI = SmallItemRepository(NetworkHelper().gerRetrofit(),SmallItemList.Type.TRENDING_TV_SHOW)
     private val nowPlayingRepositoryI: SmallItemRepositoryI = SmallItemRepository(NetworkHelper().gerRetrofit(),SmallItemList.Type.NOW_PLAYING)
     private val upcomingRepositoryI: SmallItemRepositoryI = SmallItemRepository(NetworkHelper().gerRetrofit(),SmallItemList.Type.UPCOMING)
+    private val popularRepositoryI: SmallItemRepositoryI = SmallItemRepository(NetworkHelper().gerRetrofit(),SmallItemList.Type.POPULAR)
+    private val topRatedRepositoryI: SmallItemRepositoryI = SmallItemRepository(NetworkHelper().gerRetrofit(),SmallItemList.Type.TOP_RATED)
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
 
@@ -40,7 +42,7 @@ class HomeFragment : Fragment() {
 
     private fun init() {
         mView = binding.getRoot()
-        val factory = HomeViewModel(trendingMoviesRepositoryI,trendingTvRepositoryI,nowPlayingRepositoryI,upcomingRepositoryI).createFactory()
+        val factory = HomeViewModel(trendingMoviesRepositoryI,trendingTvRepositoryI,nowPlayingRepositoryI,upcomingRepositoryI,popularRepositoryI,topRatedRepositoryI).createFactory()
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
     }
 

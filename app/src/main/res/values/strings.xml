@@ -6,4 +6,12 @@
     <string name="category">Category</string>
     <string name="fetured_list">Fetured List</string>
     <string name="papular_people">Papular People</string>
+    <string name="trending">Trending</string>
+    <string name="movies">Movies</string>
+    <string name="more">More</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="popular">Popular</string>
+    <string name="toprated">TopRated</string>
 </resources>

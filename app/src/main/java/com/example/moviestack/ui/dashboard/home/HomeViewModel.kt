@@ -10,12 +10,15 @@ import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.util.*
 
 class HomeViewModel(
     var trendingMoviesRepositoryI: SmallItemRepositoryI,
     var trendingTvShowRepositoryI: SmallItemRepositoryI,
     var nowPlayingRepositoryI: SmallItemRepositoryI,
-    var upcomingRepositoryI: SmallItemRepositoryI
+    var upcomingRepositoryI: SmallItemRepositoryI,
+    var popularRepositoryI: SmallItemRepositoryI,
+    var topRatedRepositoryI: SmallItemRepositoryI
 ) : ViewModel() {
 
     var mutableLiveData: MutableLiveData<HomeState> = MutableLiveData()
@@ -31,15 +34,21 @@ class HomeViewModel(
     fun getTrendingMovies() {
         state = state.copy(loading = true)
 
+        compositeDisposable.add(
+            Observable.merge(
+                Arrays.asList( trendingMoviesRepositoryI.getTrendingMovies(),
+                    trendingTvShowRepositoryI.getTrendingMovies(),
+                    nowPlayingRepositoryI.getTrendingMovies(),
+                    upcomingRepositoryI.getTrendingMovies(),
+                    popularRepositoryI.getTrendingMovies(),
+                    topRatedRepositoryI.getTrendingMovies()
+                )
+            ).subscribe({
 
-        compositeDisposable.add(Observable.merge(
-            trendingMoviesRepositoryI.getTrendingMovies(),
-            trendingTvShowRepositoryI.getTrendingMovies(),
-            nowPlayingRepositoryI.getTrendingMovies(),
-            upcomingRepositoryI.getTrendingMovies()
-        )
-            .subscribe({
+
                 when (it.type) {
+
+
                     SmallItemList.Type.TRENDING_MOVIES -> state =
                         state.copy(trendingMovieAdapter = SmallItemAdapter(it.results))
                     SmallItemList.Type.TRENDING_TV_SHOW -> state =
@@ -48,6 +57,10 @@ class HomeViewModel(
                         state.copy(nowPlayingAdapter = SmallItemAdapter(it.results))
                     SmallItemList.Type.UPCOMING -> state =
                         state.copy(upComingAdapter = SmallItemAdapter(it.results))
+                    SmallItemList.Type.POPULAR -> state =
+                        state.copy(popularAdapter = SmallItemAdapter(it.results))
+                    SmallItemList.Type.TOP_RATED -> state =
+                        state.copy(topRatedAdapter = SmallItemAdapter(it.results))
 
                 }
             }, {
@@ -60,35 +73,12 @@ class HomeViewModel(
                 state = state.copy(
                     loading = false,
                     success = true
-                    )
+                )
             }, {
 
             })
+
         )
-
-
-
-
-
-//        compositeDisposable.add(trendingMoviesRepositoryI.getTrendingMovies().subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//                Log.i("sdjdcgv", "askdjcna : " + it.toString())
-//                state = state.copy(
-//                    loading = false,
-//                    success = true,
-//                    smallItemAdapter = SmallItemAdapter(it.results)
-//                )
-//            }
-//                , {
-//                    state = state.copy(
-//                        loading = false,
-//                        failure = true,
-//                        message = it.localizedMessage
-//                    )
-//
-//                })
-//        )
 
     }
 

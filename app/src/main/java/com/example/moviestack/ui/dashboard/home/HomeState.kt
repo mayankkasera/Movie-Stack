@@ -10,6 +10,8 @@ data class HomeState (
     var trendingMovieAdapter : SmallItemAdapter? = null,
     var trendingTvShowAdapter : SmallItemAdapter? = null,
     var nowPlayingAdapter : SmallItemAdapter? = null,
-    var upComingAdapter : SmallItemAdapter? = null
+    var upComingAdapter : SmallItemAdapter? = null,
+    var popularAdapter : SmallItemAdapter? = null,
+    var topRatedAdapter : SmallItemAdapter? = null
 )
 
