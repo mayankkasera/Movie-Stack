@@ -14,7 +14,7 @@ class SmallItemAdapter(private val listOfFlags: List<SmallItemList.Result>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingMovieViewHolder {
 
-       var s :String;
+        var s :String;
 
         val layoutInflater = LayoutInflater.from(parent.context)
 

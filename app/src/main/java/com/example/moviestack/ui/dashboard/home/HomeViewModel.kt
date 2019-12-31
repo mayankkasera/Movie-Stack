@@ -1,30 +1,18 @@
 package com.example.moviestack.ui.dashboard.home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.trendingmovieslist.SmallItemRepositoryI
+import com.example.moviestack.api.repo.smallitemlist.SmallItemRepositoryI
 import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-class HomeViewModel(
-    var trendingMoviesRepositoryI: SmallItemRepositoryI,
-    var trendingTvShowRepositoryI: SmallItemRepositoryI,
-    var nowPlayingRepositoryI: SmallItemRepositoryI,
-    var upcomingRepositoryI: SmallItemRepositoryI,
-    var popularRepositoryI: SmallItemRepositoryI,
-    var topRatedRepositoryI: SmallItemRepositoryI
-) : ViewModel() {
+class HomeViewModel(var smallItemRepositoryI: SmallItemRepositoryI) : ViewModel() {
 
     var mutableLiveData: MutableLiveData<HomeState> = MutableLiveData()
-
     private var compositeDisposable = CompositeDisposable()
-
     private var state = HomeState()
         set(value) {
             field = value
@@ -36,18 +24,17 @@ class HomeViewModel(
 
         compositeDisposable.add(
             Observable.merge(
-                Arrays.asList( trendingMoviesRepositoryI.getTrendingMovies(),
-                    trendingTvShowRepositoryI.getTrendingMovies(),
-                    nowPlayingRepositoryI.getTrendingMovies(),
-                    upcomingRepositoryI.getTrendingMovies(),
-                    popularRepositoryI.getTrendingMovies(),
-                    topRatedRepositoryI.getTrendingMovies()
+                Arrays.asList(
+                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_MOVIES),
+                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_TV_SHOW),
+                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.NOW_PLAYING),
+                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.UPCOMING),
+                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.POPULAR),
+                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.TOP_RATED)
                 )
             ).subscribe({
 
-
                 when (it.type) {
-
 
                     SmallItemList.Type.TRENDING_MOVIES -> state =
                         state.copy(trendingMovieAdapter = SmallItemAdapter(it.results))

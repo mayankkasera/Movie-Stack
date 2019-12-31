@@ -19,4 +19,10 @@ class NetworkHelper {
         return  retrofit.create(GetRequests::class.java)
     }
 
+    fun gerMovieRequests() : MovieRequests?{
+        return  retrofit.create(MovieRequests::class.java)
+    }
+
+
+
 }

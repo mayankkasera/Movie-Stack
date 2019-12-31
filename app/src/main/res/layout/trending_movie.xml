@@ -37,11 +37,11 @@
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/joker"
-                    app:setImageResource="@{trendingModel.getPoster()}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:setImageResource="@{trendingModel.getPoster()}" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
