@@ -8,7 +8,7 @@ import com.example.moviestack.R
 import com.example.moviestack.api.pojo.SmallItemList
 import com.example.moviestack.databinding.TrendingDataBinding
 
-class SmallItemAdapter(private val listOfFlags: List<SmallItemList.Result>) :
+class SmallItemAdapter(private val list: List<SmallItemList.Result>) :
 
     RecyclerView.Adapter<SmallItemAdapter.TrendingMovieViewHolder>() {
 
@@ -25,11 +25,11 @@ class SmallItemAdapter(private val listOfFlags: List<SmallItemList.Result>) :
     }
 
     override fun getItemCount(): Int {
-        return listOfFlags.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: TrendingMovieViewHolder, position: Int) {
-        holder.bind(listOfFlags[position])
+        holder.bind(list[position])
     }
 
     inner class TrendingMovieViewHolder(val trending: TrendingDataBinding) : RecyclerView.ViewHolder(trending.root) {

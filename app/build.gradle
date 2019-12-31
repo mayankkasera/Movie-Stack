@@ -87,7 +87,7 @@ dependencies {
     implementation 'com.wang.avi:library:2.1.3'
     implementation 'com.facebook.stetho:stetho:1.5.1'
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
-
+    implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
 
 }

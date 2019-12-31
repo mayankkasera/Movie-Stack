@@ -11,7 +11,7 @@ import com.example.moviestack.databinding.GenresDataBinding
 import com.example.moviestack.databinding.TrendingDataBinding
 import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter
 
-class GenreAdapter(private val listOfFlags: List<MovieInfo.Genre>)  : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
+class GenreAdapter(private val list: List<MovieInfo.Genre>)  : RecyclerView.Adapter<GenreAdapter.GenreViewHolder>() {
 
     inner class GenreViewHolder(val trending: GenresDataBinding) : RecyclerView.ViewHolder(trending.root) {
 
@@ -29,10 +29,10 @@ class GenreAdapter(private val listOfFlags: List<MovieInfo.Genre>)  : RecyclerVi
     }
 
     override fun getItemCount(): Int {
-        return listOfFlags.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: GenreViewHolder, position: Int) {
-        holder.bind(listOfFlags[position])
+        holder.bind(list[position])
     }
 }

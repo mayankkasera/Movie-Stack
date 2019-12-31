@@ -1,6 +1,7 @@
 package com.example.moviestack.api.pojo
 
 
+import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
 data class Credits(
@@ -28,7 +29,11 @@ data class Credits(
         var order: Int = 0,
         @SerializedName("profile_path")
         var profilePath: String = ""
-    )
+    ){
+        fun getImage():String{
+            return NetworkConstants.baseImageUrl+profilePath
+        }
+    }
 
     data class Crew(
         @SerializedName("credit_id")

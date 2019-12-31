@@ -10,7 +10,7 @@ import com.example.moviestack.api.pojo.MovieInfo
 import com.example.moviestack.databinding.CrewDataBinding
 import com.example.moviestack.databinding.GenresDataBinding
 
-class CrewAdapter(private val listOfFlags: List<Credits.Crew>) : RecyclerView.Adapter<CrewAdapter.CrewViewHolder>() {
+class CrewAdapter(private val list: List<Credits.Crew>) : RecyclerView.Adapter<CrewAdapter.CrewViewHolder>() {
 
     inner class CrewViewHolder(val crewDataBinding: CrewDataBinding) : RecyclerView.ViewHolder(crewDataBinding.root) {
 
@@ -28,16 +28,16 @@ class CrewAdapter(private val listOfFlags: List<Credits.Crew>) : RecyclerView.Ad
     }
 
     override fun getItemCount(): Int {
-        if(listOfFlags.size>8)
+        if(list.size>8)
             return 8
         else
-            return listOfFlags.size
+            return list.size
     }
 
 
 
     override fun onBindViewHolder(holder: CrewViewHolder, position: Int) {
-        holder.bind(listOfFlags[position])
+        holder.bind(list[position])
     }
 
 
