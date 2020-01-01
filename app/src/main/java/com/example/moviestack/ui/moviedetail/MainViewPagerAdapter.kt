@@ -3,8 +3,10 @@ package com.example.qrcode.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.moviestack.api.pojo.Review
 import com.example.moviestack.ui.moviedetail.cast.CastFragment
 import com.example.moviestack.ui.moviedetail.info.InfoFragment
+import com.example.moviestack.ui.moviedetail.review.ReviewFragment
 
 class MainViewPagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm){
 
@@ -20,7 +22,7 @@ class MainViewPagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm)
             }
 
             2 -> {
-                InfoFragment()
+                ReviewFragment()
 
             }
 

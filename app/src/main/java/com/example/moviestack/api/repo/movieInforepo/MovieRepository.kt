@@ -126,5 +126,39 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
     }
 
 
+    override fun getReviews(): Observable<MovieResponce> {
+        return Observable.create<MovieResponce>{emitter ->
+
+            movieRequests?.getReviews()?.enqueue(object : Callback<Review>{
+
+
+                //http://api.themoviedb.org/3/movie/475557/reviews?api_key=26095c9316646dba756dcbe2a7e602f6
+                //https://api.themoviedb.org/3/movie/475557/review?api_key=26095c9316646dba756dcbe2a7e602f6
+
+                override fun onResponse(call: Call<Review>, response: Response<Review>) {
+                    Log.i("dshgczvc",""+response.toString())
+                    response.body()?.let {
+                        Log.i("dshgczvc",""+it.toString())
+                        var movieResponce : MovieResponce = MovieResponce()
+                        movieResponce.type = MovieResponce.Type.REVIEW
+                        movieResponce.data = it
+                        emitter.onNext(movieResponce)
+                        emitter.onComplete()
+                    } ?: run {
+                        emitter.onNext(MovieResponce())
+                        emitter.onComplete()
+                    }
+                }
+
+                override fun onFailure(call: Call<Review>, t: Throwable) {
+                    emitter.onError(t)
+                    Log.i("dshgczvc",""+t.message)
+                }
+            })
+
+        }
+    }
+
+
 
 }

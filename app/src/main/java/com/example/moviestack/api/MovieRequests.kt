@@ -16,4 +16,7 @@ interface MovieRequests {
 
     @GET("movie/475557/images")
     fun getImages(): Call<Images>
+
+    @GET("movie/475557/reviews")
+    fun getReviews(): Call<Review>
 }

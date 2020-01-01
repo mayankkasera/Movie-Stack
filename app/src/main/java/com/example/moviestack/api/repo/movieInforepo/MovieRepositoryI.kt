@@ -14,4 +14,6 @@ interface MovieRepositoryI {
     fun getVideos(): Observable<MovieResponce>
 
     fun getImages(): Observable<MovieResponce>
+
+    fun getReviews(): Observable<MovieResponce>
 }
