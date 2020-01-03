@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.moviedetail.review
+package com.example.moviestack.ui.common.movielist
 
 
 import android.os.Bundle
@@ -13,30 +13,29 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.pojo.Review
 import com.example.moviestack.api.repo.movieInforepo.MovieRepository
 import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
-import com.example.moviestack.databinding.ReviewtFragmentBinding
-import com.example.moviestack.ui.moviedetail.cast.CastViewModel
+import com.example.moviestack.databinding.SimilarFragmentBinding
 import com.example.moviestack.utils.createFactory
 
 /**
  * A simple [Fragment] subclass.
  */
-class ReviewFragment : Fragment() {
+class MovieListFragment : Fragment() {
 
     private lateinit var id: String
     private lateinit var mView: View
-    private lateinit var reviewViewModel: ReviewViewModel
-    private lateinit var binding: ReviewtFragmentBinding
+    private lateinit var movieListViewModel: MovieListViewModel
+    private lateinit var binding: SimilarFragmentBinding
     private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id : String): ReviewFragment {
+        fun newInstance(id : String): MovieListFragment {
             val bundle = Bundle()
             bundle.putSerializable(ID, id)
-            val fragment = ReviewFragment()
+            val fragment =
+                MovieListFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -46,32 +45,31 @@ class ReviewFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_review, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_similar, container, false)
         init()
         loadData()
         setObserver()
         return mView
     }
 
+
     private fun loadData() {
-        reviewViewModel.getReview()
+        movieListViewModel.getSimilar()
     }
 
 
     private fun init() {
-        id = arguments?.getSerializable(ReviewFragment.ID) as String
+        id = arguments?.getSerializable(ID) as String
         movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
         mView = binding.getRoot()
-        val factory = ReviewViewModel(movieRepositoryI).createFactory()
-        reviewViewModel = ViewModelProvider(this, factory).get(ReviewViewModel::class.java)
+        val factory = MovieListViewModel(
+            movieRepositoryI
+        ).createFactory()
+        movieListViewModel = ViewModelProvider(this, factory).get(MovieListViewModel::class.java)
     }
 
     private fun setObserver() {
-        reviewViewModel.mutableLiveData.observe(this, Observer { binding.reviewState = it
-            Log.i("dkjhfckjds","hdfsgd "+it)
-        })
+        movieListViewModel.mutableLiveData.observe(this, Observer { binding.movieListState = it })
     }
-
-
 
 }

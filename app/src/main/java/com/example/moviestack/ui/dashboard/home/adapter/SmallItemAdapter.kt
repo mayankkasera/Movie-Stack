@@ -18,7 +18,7 @@ class SmallItemAdapter(private val list: List<SmallItemList.Result>) :
 
         val layoutInflater = LayoutInflater.from(parent.context)
 
-        val trending: TrendingDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.trending_movie,parent,false)
+        val trending: TrendingDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.small_item,parent,false)
 
         return TrendingMovieViewHolder(trending)
 

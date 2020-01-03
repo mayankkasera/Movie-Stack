@@ -1,14 +1,11 @@
 package com.example.moviestack.api.pojo
 
 
-import android.os.Parcelable
+
 import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-data class SmallItemList(
-
+data class MovieList(
     @SerializedName("page")
     var page: Int = 0,
     @SerializedName("results")
@@ -16,35 +13,19 @@ data class SmallItemList(
     @SerializedName("total_pages")
     var totalPages: Int = 0,
     @SerializedName("total_results")
-    var totalResults: Int = 0,
-    @SerializedName("type")
-    var type: Type? = null
-
-
-) : Parcelable {
-
-    @Parcelize
-    data class Result(
+    var totalResults: Int = 0
+) {
+        data class Result(
         @SerializedName("adult")
         var adult: Boolean = false,
         @SerializedName("backdrop_path")
         var backdropPath: String = "",
-        @SerializedName("first_air_date")
-        var firstAirDate: String = "",
         @SerializedName("genre_ids")
         var genreIds: List<Int> = listOf(),
         @SerializedName("id")
         var id: Int = 0,
-        @SerializedName("media_type")
-        var mediaType: String = "",
-        @SerializedName("name")
-        var name: String = "",
-        @SerializedName("origin_country")
-        var originCountry: List<String> = listOf(),
         @SerializedName("original_language")
         var originalLanguage: String = "",
-        @SerializedName("original_name")
-        var originalName: String = "",
         @SerializedName("original_title")
         var originalTitle: String = "",
         @SerializedName("overview")
@@ -63,7 +44,16 @@ data class SmallItemList(
         var voteAverage: Double = 0.0,
         @SerializedName("vote_count")
         var voteCount: Int = 0
-    ) : Parcelable {
+    ){
+       fun getImage() : String{
+           return NetworkConstants.baseImageUrl+posterPath
+        }
+
+        fun getYear():String{
+            val parts = releaseDate.split("-")
+            return parts[0]
+        }
+
         fun hasTitle():Boolean{
             if(title.equals(""))
                 return false
@@ -71,14 +61,5 @@ data class SmallItemList(
                 return true
         }
 
-        fun getPoster():String{
-            return NetworkConstants.baseImageUrl+posterPath
-        }
     }
-
-    @Parcelize
-    enum class Type : Parcelable {
-        TRENDING_MOVIES,TRENDING_TV_SHOW,UPCOMING,NOW_PLAYING,POPULAR,TOP_RATED
-    }
-
 }

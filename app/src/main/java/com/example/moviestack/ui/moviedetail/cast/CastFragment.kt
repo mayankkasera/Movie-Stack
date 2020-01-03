@@ -16,6 +16,7 @@ import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.api.repo.movieInforepo.MovieRepository
 import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
+import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.info.InfoViewModel
 import com.example.moviestack.utils.createFactory
 
@@ -24,10 +25,22 @@ import com.example.moviestack.utils.createFactory
  */
 class CastFragment : Fragment() {
 
+    private lateinit var id: String
     private lateinit var mView: View
     private lateinit var castViewModel: CastViewModel
     private lateinit var binding: CastFragmentBinding
-    private val movieRepositoryI: MovieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests())
+    private lateinit var movieRepositoryI: MovieRepositoryI
+
+    companion object {
+        private const val ID = "Id"
+        fun newInstance(id : String): CastFragment {
+            val bundle = Bundle()
+            bundle.putSerializable(ID, id)
+            val fragment = CastFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,6 +59,8 @@ class CastFragment : Fragment() {
 
 
     private fun init() {
+        id = arguments?.getSerializable(CastFragment.ID) as String
+        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
         mView = binding.getRoot()
         val factory = CastViewModel(movieRepositoryI).createFactory()
         castViewModel = ViewModelProvider(this, factory).get(CastViewModel::class.java)

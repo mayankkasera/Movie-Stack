@@ -25,9 +25,21 @@ import com.example.moviestack.utils.createFactory
 class InfoFragment : Fragment() {
 
     private lateinit var mView: View
+    private lateinit var id: String
     private lateinit var infoViewModel: InfoViewModel
     private lateinit var binding: InfoFragmentBinding
-    private val movieRepositoryI: MovieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests())
+    private lateinit var movieRepositoryI: MovieRepository
+
+    companion object {
+        private const val ID = "Id"
+        fun newInstance(id : String): InfoFragment {
+            val bundle = Bundle()
+            bundle.putSerializable(ID, id)
+            val fragment = InfoFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,6 +57,8 @@ class InfoFragment : Fragment() {
     }
 
     private fun init() {
+        id = arguments?.getSerializable(ID) as String
+        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
         mView = binding.getRoot()
         val factory = InfoViewModel(movieRepositoryI).createFactory()
         infoViewModel = ViewModelProvider(this, factory).get(InfoViewModel::class.java)

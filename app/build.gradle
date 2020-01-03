@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: 'org.jetbrains.kotlin.android.extensions'
+
 def getProperty(String filename, String propName) {
     def propsFile = rootProject.file(filename)
     if (propsFile.exists()) {
@@ -48,6 +50,10 @@ android {
 
     dataBinding {
         enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
     }
 }
 

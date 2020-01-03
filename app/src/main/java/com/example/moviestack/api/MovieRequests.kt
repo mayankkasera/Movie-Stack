@@ -3,20 +3,24 @@ package com.example.moviestack.api
 import com.example.moviestack.api.pojo.*
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface MovieRequests {
-    @GET("movie/475557")
-    fun getMovieInfo() : Call<MovieInfo>
+    @GET("movie/{id}")
+    fun getMovieInfo(@Path("id")id : String) : Call<MovieInfo>
 
-    @GET("movie/475557/credits")
-    fun getCredits(): Call<Credits>
+    @GET("movie/{id}/credits")
+    fun getCredits(@Path("id")id : String): Call<Credits>
 
-    @GET("movie/475557/videos")
-    fun getVideos(): Call<Videos>
+    @GET("movie/{id}/videos")
+    fun getVideos(@Path("id")id : String): Call<Videos>
 
-    @GET("movie/475557/images")
-    fun getImages(): Call<Images>
+    @GET("movie/{id}/images")
+    fun getImages(@Path("id")id : String): Call<Images>
 
-    @GET("movie/475557/reviews")
-    fun getReviews(): Call<Review>
+    @GET("movie/{id}/reviews")
+    fun getReviews(@Path("id")id : String): Call<Review>
+
+    @GET("movie/{id}/similar")
+    fun getSimilar(@Path("id")id : String): Call<MovieList>
 }

@@ -1,108 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    android:id="@+id/main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        app:elevation="0dp"
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <data class="MovieDetailActivityBinding">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <import type="android.view.View"/>
+
+        <variable
+            name="smallItem"
+            type="com.example.moviestack.api.pojo.SmallItemList.Result"/>
+
+        <variable
+            name="videos"
+            type="com.example.moviestack.api.pojo.Videos"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
             app:elevation="0dp"
-            app:title="@string/app_name"
-            android:id="@+id/collapsing_toolbar"
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                app:elevation="0dp"
+                app:collapsingToolbarTitle="@{smallItem.hasTitle()?smallItem.title:smallItem.originalName}"
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:expandedTitleMarginStart="20dp"
+                app:expandedTitleTextAppearance="@style/ExpandedCollapsedAppBar"
+                app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:contentScrim="?attr/colorPrimary">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <ss.com.bannerslider.Slider
+                        app:slider="@{videos}"
+                        app:slider_loopSlides="true"
+                        app:slider_interval="10000"
+                        app:slider_indicatorSize="0dp"
+                        android:id="@+id/slider"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@drawable/slider_background"/>
+
+
+
+                </RelativeLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:theme="@style/ToolBarStyle"
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:elevation="0dp">
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scroll"
+            android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:expandedTitleMarginStart="20dp"
-            app:expandedTitleTextAppearance="@style/ExpandedCollapsedAppBar"
-            app:collapsedTitleTextAppearance="@style/CollapsedAppBar"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="?attr/colorPrimary">
+            android:background="@color/background"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <RelativeLayout
+
+            <LinearLayout
+                android:id="@+id/mainContent"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
-                <ss.com.bannerslider.Slider
-                    app:slider_loopSlides="true"
-                    app:slider_interval="10000"
-                    app:slider_indicatorSize="0dp"
-                    android:id="@+id/slider"
+                <com.google.android.material.tabs.TabLayout
+                    app:tabTextColor="@color/light_gray"
+                    app:tabTextAppearance="@style/TabText"
+                    app:tabSelectedTextColor="@color/white"
+                    android:background="@color/colorPrimary"
+                    android:id="@+id/tabLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    />
+                    android:layout_height="wrap_content" />
 
-
-                <FrameLayout
+                <androidx.viewpager.widget.ViewPager
+                    android:nestedScrollingEnabled="true"
+                    android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/slider_background"/>
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
 
-            </RelativeLayout>
-
-            <androidx.appcompat.widget.Toolbar
-                android:theme="@style/ToolBarStyle"
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:elevation="0dp">
-
-            </androidx.appcompat.widget.Toolbar>
-
-
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll"
-        android:fillViewport="true"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-
-        <LinearLayout
-            android:id="@+id/mainContent"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.tabs.TabLayout
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                app:tabTextColor="@color/light_gray"
-                app:tabTextAppearance="@style/TabText"
-                app:tabSelectedTextColor="@color/white"
-                app:tabMode="scrollable"
-                android:background="@color/colorPrimary"
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <androidx.viewpager.widget.ViewPager
-                android:nestedScrollingEnabled="true"
-                android:id="@+id/viewPager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

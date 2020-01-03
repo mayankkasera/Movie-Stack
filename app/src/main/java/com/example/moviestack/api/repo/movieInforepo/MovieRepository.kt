@@ -8,13 +8,13 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
+class MovieRepository(var movieRequests: MovieRequests?,var id : String) : MovieRepositoryI{
 
     override fun getMovieInfo(): Observable<MovieResponce> {
         return Observable.create<MovieResponce> { emitter ->
 
 
-            movieRequests?.getMovieInfo()?.enqueue(object : Callback<MovieInfo> {
+            movieRequests?.getMovieInfo(id)?.enqueue(object : Callback<MovieInfo> {
 
                 override fun onResponse(call: Call<MovieInfo>, response: Response<MovieInfo>) {
                     response.body()?.let {
@@ -43,7 +43,7 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
   override  fun getCredits(): Observable<MovieResponce> {
         return Observable.create<MovieResponce>{emitter ->
 
-            movieRequests?.getCredits()?.enqueue(object : Callback<Credits>{
+            movieRequests?.getCredits(id)?.enqueue(object : Callback<Credits>{
 
                 override fun onResponse(call: Call<Credits>, response: Response<Credits>) {
                     response.body()?.let {
@@ -73,7 +73,7 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
     override fun getImages(): Observable<MovieResponce> {
         return Observable.create<MovieResponce>{emitter ->
 
-            movieRequests?.getImages()?.enqueue(object : Callback<Images>{
+            movieRequests?.getImages(id)?.enqueue(object : Callback<Images>{
 
                 override fun onResponse(call: Call<Images>, response: Response<Images>) {
                     response.body()?.let {
@@ -101,7 +101,7 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
     override fun getVideos(): Observable<MovieResponce> {
         return Observable.create<MovieResponce>{emitter ->
 
-            movieRequests?.getVideos()?.enqueue(object : Callback<Videos>{
+            movieRequests?.getVideos(id)?.enqueue(object : Callback<Videos>{
 
                 override fun onResponse(call: Call<Videos>, response: Response<Videos>) {
                     response.body()?.let {
@@ -128,12 +128,7 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
 
     override fun getReviews(): Observable<MovieResponce> {
         return Observable.create<MovieResponce>{emitter ->
-
-            movieRequests?.getReviews()?.enqueue(object : Callback<Review>{
-
-
-                //http://api.themoviedb.org/3/movie/475557/reviews?api_key=26095c9316646dba756dcbe2a7e602f6
-                //https://api.themoviedb.org/3/movie/475557/review?api_key=26095c9316646dba756dcbe2a7e602f6
+            movieRequests?.getReviews(id)?.enqueue(object : Callback<Review>{
 
                 override fun onResponse(call: Call<Review>, response: Response<Review>) {
                     Log.i("dshgczvc",""+response.toString())
@@ -159,6 +154,28 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI{
         }
     }
 
+    override fun getSimilars(): Observable<MovieResponce> {
+        return Observable.create<MovieResponce>{emitter ->
+            movieRequests?.getSimilar(id)?.enqueue(object : Callback<MovieList>{
+                override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                    response.body()?.let {
+                        var movieResponce : MovieResponce = MovieResponce()
+                        movieResponce.type = MovieResponce.Type.SIMILAR
+                        movieResponce.data = it
+                        emitter.onNext(movieResponce)
+                        emitter.onComplete()
+                    } ?: run {
+                        emitter.onNext(MovieResponce())
+                        emitter.onComplete()
+                    }
+                }
+                override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                    emitter.onError(t)
+                    Log.i("dshgczvc",""+t.message)
+                }
+            })
+        }
+    }
 
 
 }

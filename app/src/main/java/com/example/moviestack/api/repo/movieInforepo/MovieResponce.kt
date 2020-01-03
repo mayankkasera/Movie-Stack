@@ -5,6 +5,6 @@ data class MovieResponce (
     var data: Any? = null
 ){
     enum class Type{
-        CREDIT,MOVIE_INFO,VIDEOS,IMAGES,REVIEW
+        CREDIT,MOVIE_INFO,VIDEOS,IMAGES,REVIEW,SIMILAR
     }
 }

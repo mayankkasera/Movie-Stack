@@ -1,4 +1,4 @@
-package com.example.moviestack.utils.BindingAdapter
+package com.example.moviestack.utils.bindingadapter
 
 
 import androidx.appcompat.widget.AppCompatImageView

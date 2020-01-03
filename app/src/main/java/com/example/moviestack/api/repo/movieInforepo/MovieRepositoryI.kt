@@ -16,4 +16,7 @@ interface MovieRepositoryI {
     fun getImages(): Observable<MovieResponce>
 
     fun getReviews(): Observable<MovieResponce>
+
+    fun getSimilars(): Observable<MovieResponce>
+
 }

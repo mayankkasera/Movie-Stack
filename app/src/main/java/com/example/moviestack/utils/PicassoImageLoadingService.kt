@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.moviedetail
+package com.example.moviestack.utils
 
 import android.content.Context
 import android.widget.ImageView

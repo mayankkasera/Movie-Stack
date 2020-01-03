@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface GetRequests {
-    @GET("trending/all/week")
+    @GET("trending/movie/week")
     fun getTrendingMoviess() : Call<SmallItemList>
 
     @GET("trending/tv/week")
