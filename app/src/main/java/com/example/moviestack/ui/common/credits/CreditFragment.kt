@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.moviedetail.cast
+package com.example.moviestack.ui.common.credits
 
 
 import android.os.Bundle
@@ -13,30 +13,28 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.repo.movieInforepo.MovieRepository
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
+import com.example.moviestack.api.repo.movieInfo.MovieRepository
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
-import com.example.moviestack.ui.moviedetail.info.InfoFragment
-import com.example.moviestack.ui.moviedetail.info.InfoViewModel
 import com.example.moviestack.utils.createFactory
 
 /**
  * A simple [Fragment] subclass.
  */
-class CastFragment : Fragment() {
+class CreditFragment : Fragment() {
 
     private lateinit var id: String
     private lateinit var mView: View
-    private lateinit var castViewModel: CastViewModel
+    private lateinit var creditViewModel: CreditViewModel
     private lateinit var binding: CastFragmentBinding
     private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id : String): CastFragment {
+        fun newInstance(id : String): CreditFragment {
             val bundle = Bundle()
             bundle.putSerializable(ID, id)
-            val fragment = CastFragment()
+            val fragment = CreditFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -54,20 +52,20 @@ class CastFragment : Fragment() {
     }
 
     private fun loadData() {
-        castViewModel.getCast()
+        creditViewModel.getCast()
     }
 
 
     private fun init() {
-        id = arguments?.getSerializable(CastFragment.ID) as String
+        id = arguments?.getSerializable(ID) as String
         movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
         mView = binding.getRoot()
-        val factory = CastViewModel(movieRepositoryI).createFactory()
-        castViewModel = ViewModelProvider(this, factory).get(CastViewModel::class.java)
+        val factory = CreditViewModel(movieRepositoryI).createFactory()
+        creditViewModel = ViewModelProvider(this, factory).get(CreditViewModel::class.java)
     }
 
     private fun setObserver() {
-        castViewModel.mutableLiveData.observe(this, Observer { binding.castState = it
+        creditViewModel.mutableLiveData.observe(this, Observer { binding.castState = it
             Log.i("dkjhfckjds","hdfsgd "+it)
         })
     }

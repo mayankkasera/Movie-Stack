@@ -7,10 +7,8 @@ import com.example.moviestack.api.pojo.Credits
 import com.example.moviestack.api.pojo.Images
 import com.example.moviestack.api.pojo.MovieInfo
 import com.example.moviestack.api.pojo.Videos
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
-import com.example.moviestack.api.repo.movieInforepo.MovieResponce
-import com.example.moviestack.ui.dashboard.home.HomeState
-import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.api.repo.movieInfo.MovieResponce
 import com.example.moviestack.ui.moviedetail.info.adapter.CrewAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.GenreAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.VideosAdapter

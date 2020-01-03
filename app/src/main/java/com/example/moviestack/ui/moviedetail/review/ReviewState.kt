@@ -1,6 +1,5 @@
 package com.example.moviestack.ui.moviedetail.review
 
-import com.example.moviestack.ui.moviedetail.cast.adapter.CastAdapter
 import com.example.moviestack.ui.moviedetail.review.adapter.ReviewAdapter
 
 data class ReviewState (

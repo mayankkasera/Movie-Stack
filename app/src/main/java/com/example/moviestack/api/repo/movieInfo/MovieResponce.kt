@@ -1,4 +1,4 @@
-package com.example.moviestack.api.repo.movieInforepo
+package com.example.moviestack.api.repo.movieInfo
 
 data class MovieResponce (
     var type: Type? = null,

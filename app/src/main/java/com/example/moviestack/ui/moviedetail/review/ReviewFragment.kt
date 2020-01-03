@@ -13,11 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.pojo.Review
-import com.example.moviestack.api.repo.movieInforepo.MovieRepository
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
+import com.example.moviestack.api.repo.movieInfo.MovieRepository
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.ReviewtFragmentBinding
-import com.example.moviestack.ui.moviedetail.cast.CastViewModel
 import com.example.moviestack.utils.createFactory
 
 /**

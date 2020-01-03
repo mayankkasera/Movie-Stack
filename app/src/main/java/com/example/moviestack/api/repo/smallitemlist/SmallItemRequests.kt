@@ -1,10 +1,10 @@
-package com.example.moviestack.api
+package com.example.moviestack.api.repo.smallitemlist
 
 import com.example.moviestack.api.pojo.SmallItemList
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface GetRequests {
+interface SmallItemRequests {
     @GET("trending/movie/week")
     fun getTrendingMoviess() : Call<SmallItemList>
 

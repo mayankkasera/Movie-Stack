@@ -10,15 +10,14 @@ import com.squareup.picasso.Picasso
 
 object SmallItemOnclick {
     @JvmStatic
-    @BindingAdapter("setOnclick")
-    fun setOnclick (layout : ConstraintLayout, result : SmallItemList.Result?){
+    @BindingAdapter("setSmallItemOnclick")
+    fun setSmallItemOnclick (layout : ConstraintLayout, result : SmallItemList.Result?){
 
         layout.setOnClickListener{
             val intent = Intent(layout.context, MovieDetailActivity::class.java)
             intent.putExtra("SmallItem", result)
             layout.context.startActivity(intent)
         }
-
 
     }
 }

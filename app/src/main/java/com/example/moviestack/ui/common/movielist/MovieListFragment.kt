@@ -2,7 +2,6 @@ package com.example.moviestack.ui.common.movielist
 
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.repo.movieInforepo.MovieRepository
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
+import com.example.moviestack.api.repo.discover.DiscoverRepository
+import com.example.moviestack.api.repo.discover.DiscoverRepositoryI
+import com.example.moviestack.api.repo.movieInfo.MovieRepository
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.SimilarFragmentBinding
 import com.example.moviestack.utils.createFactory
 
@@ -23,19 +24,17 @@ import com.example.moviestack.utils.createFactory
  */
 class MovieListFragment : Fragment() {
 
-    private lateinit var id: String
+    private lateinit var movieListType : MovieListType
     private lateinit var mView: View
     private lateinit var movieListViewModel: MovieListViewModel
     private lateinit var binding: SimilarFragmentBinding
-    private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id : String): MovieListFragment {
+        fun newInstance(movieListType : MovieListType): MovieListFragment {
             val bundle = Bundle()
-            bundle.putSerializable(ID, id)
-            val fragment =
-                MovieListFragment()
+            bundle.putParcelable(ID, movieListType)
+            val fragment = MovieListFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -54,17 +53,17 @@ class MovieListFragment : Fragment() {
 
 
     private fun loadData() {
-        movieListViewModel.getSimilar()
+        when(movieListType.type){
+            MovieListType.Type.SMILER -> movieListViewModel.getMovieList(MovieRepository(NetworkHelper().gerMovieRequests(),movieListType.data))
+            MovieListType.Type.GENRE -> movieListViewModel.getMovieList(DiscoverRepository(NetworkHelper().gerDiscoverRequests(),movieListType.data))
+        }
     }
 
 
     private fun init() {
-        id = arguments?.getSerializable(ID) as String
-        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
+        movieListType = arguments?.getParcelable<MovieListType>(ID) as MovieListType
         mView = binding.getRoot()
-        val factory = MovieListViewModel(
-            movieRepositoryI
-        ).createFactory()
+        val factory = MovieListViewModel().createFactory()
         movieListViewModel = ViewModelProvider(this, factory).get(MovieListViewModel::class.java)
     }
 

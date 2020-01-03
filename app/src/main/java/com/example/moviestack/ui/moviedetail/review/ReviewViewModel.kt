@@ -2,11 +2,8 @@ package com.example.moviestack.ui.moviedetail.review
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.Credits
 import com.example.moviestack.api.pojo.Review
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
-import com.example.moviestack.ui.moviedetail.cast.CastSatate
-import com.example.moviestack.ui.moviedetail.cast.adapter.CastAdapter
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.ui.moviedetail.review.adapter.ReviewAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

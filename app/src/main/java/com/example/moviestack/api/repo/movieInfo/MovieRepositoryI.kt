@@ -1,9 +1,5 @@
-package com.example.moviestack.api.repo.movieInforepo
+package com.example.moviestack.api.repo.movieInfo
 
-import com.example.moviestack.api.MovieRequests
-import com.example.moviestack.api.pojo.Credits
-import com.example.moviestack.api.pojo.MovieInfo
-import com.example.moviestack.api.pojo.SmallItemList
 import io.reactivex.Observable
 
 interface MovieRepositoryI {
@@ -18,5 +14,4 @@ interface MovieRepositoryI {
     fun getReviews(): Observable<MovieResponce>
 
     fun getSimilars(): Observable<MovieResponce>
-
 }

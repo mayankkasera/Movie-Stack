@@ -7,14 +7,14 @@
         <import type="android.view.View"/>
         <variable
             name="castState"
-            type="com.example.moviestack.ui.moviedetail.cast.CastSatate"/>
+            type="com.example.moviestack.ui.common.credits.CreditSatate"/>
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.moviedetail.cast.CastFragment">
+        tools:context=".ui.common.credits.CreditFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cast"

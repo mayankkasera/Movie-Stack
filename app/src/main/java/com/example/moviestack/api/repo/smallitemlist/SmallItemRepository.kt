@@ -1,14 +1,13 @@
 package com.example.moviestack.api.repo.smallitemlist
 
 import android.util.Log
-import com.example.moviestack.api.GetRequests
 import com.example.moviestack.api.pojo.SmallItemList
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SmallItemRepository(private val getRequests : GetRequests?) :SmallItemRepositoryI{
+class SmallItemRepository(private val smallItemRequests : SmallItemRequests?) :SmallItemRepositoryI{
 
 
      override fun getSmallItemsList(type : SmallItemList.Type): Observable<SmallItemList> {
@@ -17,12 +16,12 @@ class SmallItemRepository(private val getRequests : GetRequests?) :SmallItemRepo
             var call : Call<SmallItemList>?
 
             when(type){
-                SmallItemList.Type.TRENDING_MOVIES -> call = getRequests?.getTrendingMoviess()
-                SmallItemList.Type.TRENDING_TV_SHOW -> call = getRequests?.getTrendingTvShow()
-                SmallItemList.Type.NOW_PLAYING -> call = getRequests?.getNowPlaying()
-                SmallItemList.Type.UPCOMING -> call = getRequests?.getUpcoming()
-                SmallItemList.Type.POPULAR -> call = getRequests?.getPopular()
-                SmallItemList.Type.TOP_RATED -> call = getRequests?.getTopRated()
+                SmallItemList.Type.TRENDING_MOVIES -> call = smallItemRequests?.getTrendingMoviess()
+                SmallItemList.Type.TRENDING_TV_SHOW -> call = smallItemRequests?.getTrendingTvShow()
+                SmallItemList.Type.NOW_PLAYING -> call = smallItemRequests?.getNowPlaying()
+                SmallItemList.Type.UPCOMING -> call = smallItemRequests?.getUpcoming()
+                SmallItemList.Type.POPULAR -> call = smallItemRequests?.getPopular()
+                SmallItemList.Type.TOP_RATED -> call = smallItemRequests?.getTopRated()
             }
 
             call?.enqueue(object : Callback<SmallItemList> {

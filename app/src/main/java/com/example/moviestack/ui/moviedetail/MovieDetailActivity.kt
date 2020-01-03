@@ -1,26 +1,18 @@
 package com.example.moviestack.ui.moviedetail
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
 import com.example.moviestack.R
 import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.movieInforepo.MovieRepository
-import com.example.moviestack.databinding.InfoFragmentBinding
+import com.example.moviestack.api.repo.movieInfo.MovieRepository
 import com.example.moviestack.databinding.MovieDetailActivityBinding
-import com.example.moviestack.ui.moviedetail.info.InfoState
-import com.example.moviestack.ui.moviedetail.info.InfoViewModel
 import com.example.moviestack.utils.createFactory
 import com.example.qrcode.ui.adapter.MainViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.activity_movie_detail.view.*
-import ss.com.bannerslider.Slider
 
 
 class MovieDetailActivity : AppCompatActivity() {

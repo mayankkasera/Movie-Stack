@@ -1,22 +1,20 @@
-package com.example.moviestack.api.repo.movieInforepo
+package com.example.moviestack.api.repo.movieInfo
 
 import android.util.Log
-import com.example.moviestack.api.MovieRequests
 import com.example.moviestack.api.pojo.*
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MovieRepository(var movieRequests: MovieRequests?,var id : String) : MovieRepositoryI{
+class MovieRepository(var movieRequests: MovieRequests?, var id : String) : MovieRepositoryI{
 
     override fun getMovieInfo(): Observable<MovieResponce> {
         return Observable.create<MovieResponce> { emitter ->
-
-
             movieRequests?.getMovieInfo(id)?.enqueue(object : Callback<MovieInfo> {
 
                 override fun onResponse(call: Call<MovieInfo>, response: Response<MovieInfo>) {
+
                     response.body()?.let {
                         var movieResponce : MovieResponce = MovieResponce()
                         movieResponce.type = MovieResponce.Type.MOVIE_INFO
@@ -27,6 +25,7 @@ class MovieRepository(var movieRequests: MovieRequests?,var id : String) : Movie
                         emitter.onNext(MovieResponce())
                         emitter.onComplete()
                     }
+
                 }
 
                 override fun onFailure(call: Call<MovieInfo>, t: Throwable) {

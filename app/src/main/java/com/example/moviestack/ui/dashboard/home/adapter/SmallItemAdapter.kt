@@ -14,8 +14,6 @@ class SmallItemAdapter(private val list: List<SmallItemList.Result>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrendingMovieViewHolder {
 
-        var s :String;
-
         val layoutInflater = LayoutInflater.from(parent.context)
 
         val trending: TrendingDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.small_item,parent,false)

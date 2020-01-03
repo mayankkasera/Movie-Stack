@@ -8,7 +8,7 @@ import com.example.moviestack.R
 import com.example.moviestack.api.pojo.MovieList
 import com.example.moviestack.databinding.SimilarDataBinding
 
-class SimilarAdapter (private val list: List<MovieList.Result>): RecyclerView.Adapter<SimilarAdapter.SimilarViewHolder>() {
+class MovieListAdapter (private val list: List<MovieList.Result>): RecyclerView.Adapter<MovieListAdapter.SimilarViewHolder>() {
     inner class SimilarViewHolder(val similarDataBinding : SimilarDataBinding) : RecyclerView.ViewHolder(similarDataBinding.root) {
         fun bind(result: MovieList.Result) {
             this.similarDataBinding.similar = result

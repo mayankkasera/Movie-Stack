@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.moviedetail.cast.adapter
+package com.example.moviestack.ui.common.credits.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.api.pojo.Credits
-import com.example.moviestack.api.pojo.MovieInfo
 import com.example.moviestack.databinding.CastDataBinding
 
 class CastAdapter(private val list: List<Credits.Cast>) : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {

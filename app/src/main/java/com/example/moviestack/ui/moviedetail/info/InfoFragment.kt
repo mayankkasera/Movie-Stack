@@ -1,7 +1,5 @@
 package com.example.moviestack.ui.moviedetail.info
 
-import android.content.Context
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,11 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.repo.movieInforepo.MovieRepository
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
-import com.example.moviestack.databinding.HomeFragmentBinding
+import com.example.moviestack.api.repo.movieInfo.MovieRepository
 import com.example.moviestack.databinding.InfoFragmentBinding
-import com.example.moviestack.ui.dashboard.home.HomeViewModel
 import com.example.moviestack.utils.createFactory
 
 

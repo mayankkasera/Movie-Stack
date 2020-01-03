@@ -11,7 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        app:setOnclick="@{trendingModel}"
+        app:setSmallItemOnclick="@{trendingModel}"
         android:background="@color/background"
         android:orientation="vertical"
         android:layout_width="120dp"

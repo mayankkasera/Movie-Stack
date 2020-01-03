@@ -5,11 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.Credits
 import com.example.moviestack.api.pojo.Review
-import com.example.moviestack.databinding.CastDataBinding
 import com.example.moviestack.databinding.ReviewDataBinding
-import com.example.moviestack.ui.moviedetail.cast.adapter.CastAdapter
 
 class ReviewAdapter(private val list: List<Review.Result>) : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
     inner class ReviewViewHolder(val reviewDataBinding: ReviewDataBinding) : RecyclerView.ViewHolder(reviewDataBinding.root) {

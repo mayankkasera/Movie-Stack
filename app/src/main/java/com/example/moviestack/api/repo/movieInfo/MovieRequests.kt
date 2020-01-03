@@ -1,4 +1,4 @@
-package com.example.moviestack.api
+package com.example.moviestack.api.repo.movieInfo
 
 import com.example.moviestack.api.pojo.*
 import retrofit2.Call

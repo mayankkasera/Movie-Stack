@@ -3,16 +3,8 @@ package com.example.moviestack.ui.moviedetail
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.Credits
-import com.example.moviestack.api.pojo.Images
-import com.example.moviestack.api.pojo.MovieInfo
 import com.example.moviestack.api.pojo.Videos
-import com.example.moviestack.api.repo.movieInforepo.MovieRepositoryI
-import com.example.moviestack.api.repo.movieInforepo.MovieResponce
-import com.example.moviestack.ui.moviedetail.info.InfoState
-import com.example.moviestack.ui.moviedetail.info.adapter.CrewAdapter
-import com.example.moviestack.ui.moviedetail.info.adapter.GenreAdapter
-import com.example.moviestack.ui.moviedetail.info.adapter.VideosAdapter
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers

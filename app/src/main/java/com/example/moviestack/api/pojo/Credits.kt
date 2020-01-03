@@ -5,7 +5,7 @@ import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
 data class Credits(
-    @SerializedName("cast")
+    @SerializedName("credits")
     var cast: List<Cast> = listOf(),
     @SerializedName("crew")
     var crew: List<Crew> = listOf(),
