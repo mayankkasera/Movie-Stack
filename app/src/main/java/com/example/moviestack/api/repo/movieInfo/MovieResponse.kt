@@ -1,6 +1,6 @@
 package com.example.moviestack.api.repo.movieInfo
 
-data class MovieResponce (
+data class MovieResponse (
     var type: Type? = null,
     var data: Any? = null
 ){

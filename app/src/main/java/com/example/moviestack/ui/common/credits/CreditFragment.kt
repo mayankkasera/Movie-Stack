@@ -3,17 +3,15 @@ package com.example.moviestack.ui.common.credits
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import com.example.moviestack.R
-import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.repo.movieInfo.MovieRepository
+import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
 import com.example.moviestack.utils.createFactory
@@ -31,7 +29,7 @@ class CreditFragment : Fragment() {
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id : String): CreditFragment {
+        fun newInstance(id: String): CreditFragment {
             val bundle = Bundle()
             bundle.putSerializable(ID, id)
             val fragment = CreditFragment()
@@ -52,21 +50,22 @@ class CreditFragment : Fragment() {
     }
 
     private fun loadData() {
-        creditViewModel.getCast()
+        creditViewModel.getCast(id)
     }
 
 
     private fun init() {
         id = arguments?.getSerializable(ID) as String
-        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
-        mView = binding.getRoot()
+        movieRepositoryI = DataHelper().movieRepositoryI
+        mView = binding.root
         val factory = CreditViewModel(movieRepositoryI).createFactory()
         creditViewModel = ViewModelProvider(this, factory).get(CreditViewModel::class.java)
     }
 
     private fun setObserver() {
-        creditViewModel.mutableLiveData.observe(this, Observer { binding.castState = it
-            Log.i("dkjhfckjds","hdfsgd "+it)
+        creditViewModel.mutableLiveData.observe(this, Observer {
+            binding.castState = it
+            Log.i("dkjhfckjds", "hdfsgd " + it)
         })
     }
 

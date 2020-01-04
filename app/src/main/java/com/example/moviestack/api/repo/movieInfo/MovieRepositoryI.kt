@@ -3,15 +3,15 @@ package com.example.moviestack.api.repo.movieInfo
 import io.reactivex.Observable
 
 interface MovieRepositoryI {
-    fun getMovieInfo() : Observable<MovieResponce>
+    fun getMovieInfo(id: String): Observable<MovieResponse>
 
-    fun getCredits(): Observable<MovieResponce>
+    fun getCredits(id: String): Observable<MovieResponse>
 
-    fun getVideos(): Observable<MovieResponce>
+    fun getVideos(id: String): Observable<MovieResponse>
 
-    fun getImages(): Observable<MovieResponce>
+    fun getImages(id: String): Observable<MovieResponse>
 
-    fun getReviews(): Observable<MovieResponce>
+    fun getReviews(id: String): Observable<MovieResponse>
 
-    fun getSimilars(): Observable<MovieResponce>
+    fun getSimilars(id: String): Observable<MovieResponse>
 }

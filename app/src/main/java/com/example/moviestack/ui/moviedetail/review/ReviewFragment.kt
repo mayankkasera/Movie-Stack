@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
+import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepository
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
@@ -52,13 +53,13 @@ class ReviewFragment : Fragment() {
     }
 
     private fun loadData() {
-        reviewViewModel.getReview()
+        reviewViewModel.getReview(id)
     }
 
 
     private fun init() {
         id = arguments?.getSerializable(ReviewFragment.ID) as String
-        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
+        movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.getRoot()
         val factory = ReviewViewModel(movieRepositoryI).createFactory()
         reviewViewModel = ViewModelProvider(this, factory).get(ReviewViewModel::class.java)

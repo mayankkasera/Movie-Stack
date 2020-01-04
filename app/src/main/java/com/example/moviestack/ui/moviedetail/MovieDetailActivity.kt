@@ -6,9 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
-import com.example.moviestack.api.NetworkHelper
+import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.movieInfo.MovieRepository
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.MovieDetailActivityBinding
 import com.example.moviestack.utils.createFactory
 import com.example.qrcode.ui.adapter.MainViewPagerAdapter
@@ -17,10 +17,10 @@ import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 class MovieDetailActivity : AppCompatActivity() {
 
-    private lateinit var result : SmallItemList.Result
-    lateinit var mainBinding : MovieDetailActivityBinding
+    private lateinit var result: SmallItemList.Result
+    lateinit var mainBinding: MovieDetailActivityBinding
     private lateinit var movieDetailViewModel: MovieDetailViewModel
-    private lateinit var movieRepositoryI: MovieRepository
+    private lateinit var movieRepositoryI: MovieRepositoryI
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,22 +29,24 @@ class MovieDetailActivity : AppCompatActivity() {
         init()
         loadData()
         setObserver()
-        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager,"${result?.id}")
+        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager, "${result?.id}")
         viewPager.offscreenPageLimit = 2
         tabLayout.setupWithViewPager(viewPager)
 
 
     }
+
     private fun loadData() {
-        movieDetailViewModel.getMedia()
+        movieDetailViewModel.getMedia(result.id.toString())
     }
 
-    fun init(){
+    fun init() {
         result = intent.getParcelableExtra("SmallItem")
 
-        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),"${result?.id}")
+        movieRepositoryI = DataHelper().movieRepositoryI
         val factory = MovieDetailViewModel(movieRepositoryI).createFactory()
-        movieDetailViewModel = ViewModelProvider(this, factory).get(MovieDetailViewModel::class.java)
+        movieDetailViewModel =
+            ViewModelProvider(this, factory).get(MovieDetailViewModel::class.java)
     }
 
     private fun setObserver() {

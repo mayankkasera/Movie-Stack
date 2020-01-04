@@ -1,6 +1,8 @@
 package com.example.moviestack.di.component
 
+import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
+import com.example.moviestack.di.modules.DataModule
 import com.example.moviestack.ui.dashboard.MainActivity
 import com.example.moviestack.di.modules.NetworkModule
 import dagger.BindsInstance
@@ -10,12 +12,13 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [NetworkModule::class])
+@Component(modules = [DataModule::class])
 interface NetworkComponent {
 
     fun getRetrofit() : Retrofit
 
     fun inject(networkHelper: NetworkHelper) : Unit
+    fun inject(networkHelper: DataHelper)
 
 
     @Component.Factory

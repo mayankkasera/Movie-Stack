@@ -9,36 +9,41 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ReviewViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel()  {
+class ReviewViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
+
     private var compositeDisposable = CompositeDisposable()
+
     var mutableLiveData: MutableLiveData<ReviewState> = MutableLiveData()
+
     private var state = ReviewState()
         set(value) {
             field = value
             publishState(value)
         }
 
-    fun getReview(){
-        movieRepositoryI.getReviews()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                var review : Review = it.data as Review
-                state = state.copy(reviewAdapter = ReviewAdapter(review.results))
-            },{
-                state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
-                )
-            },{
-                state = state.copy(
-                    loading = false,
-                    success = true
-                )
-            },{
+    fun getReview(id: String) {
+        compositeDisposable.add(
+            movieRepositoryI.getReviews(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    val review: Review = it.data as Review
+                    state = state.copy(reviewAdapter = ReviewAdapter(review.results))
+                }, {
+                    state = state.copy(
+                        loading = false,
+                        failure = true,
+                        message = it.localizedMessage
+                    )
+                }, {
+                    state = state.copy(
+                        loading = false,
+                        success = true
+                    )
+                }, {
 
-            })
+                })
+        )
     }
 
     override fun onCleared() {
