@@ -10,24 +10,29 @@ import javax.inject.Inject
 class NetworkHelper {
 
     @Inject
-    lateinit var retrofit : Retrofit
+    lateinit var retrofit: Retrofit
+
+    @Inject
+    lateinit var movieRequests: MovieRequests
+
+    @Inject
+    lateinit var discoverRequests: DiscoverRequests
 
     init {
         App.networkComponent()?.inject(this)
     }
 
-    fun gerRetrofit() : SmallItemRequests?{
-        return  retrofit.create(SmallItemRequests::class.java)
+    fun gerRetrofit(): SmallItemRequests? {
+        return retrofit.create(SmallItemRequests::class.java)
     }
 
-    fun gerMovieRequests() : MovieRequests?{
-        return  retrofit.create(MovieRequests::class.java)
+    fun gerMovieRequests(): MovieRequests? {
+        return movieRequests
     }
 
-    fun gerDiscoverRequests() : DiscoverRequests?{
-        return  retrofit.create(DiscoverRequests::class.java)
+    fun gerDiscoverRequests(): DiscoverRequests? {
+        return discoverRequests
     }
-
 
 
 }

@@ -10,10 +10,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MovieListViewModel() : ViewModel() {
+class MovieListViewModel(
+    private val discoverRepositoryI: DiscoverRepositoryI,
+    private val movieRepositoryI: MovieRepositoryI
+    ) : ViewModel() {
 
     private var compositeDisposable = CompositeDisposable()
+
     var mutableLiveData: MutableLiveData<MovieListState> = MutableLiveData()
+
     private var state = MovieListState()
         set(value) {
             field = value
@@ -21,58 +26,62 @@ class MovieListViewModel() : ViewModel() {
         }
 
 
-
-
-    fun getMovieList(discoverRepositoryI : DiscoverRepositoryI){
+    fun getGenreMovieList(genre: String) {
         compositeDisposable.add(
-            discoverRepositoryI.getGenreMovieList()
+            discoverRepositoryI.getGenreMovieList(genre)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    var movieList : MovieList = it.data as MovieList
-                    state = state.copy(movieListAdapter = MovieListAdapter(
-                        movieList.results
-                    ))
-                },{
+                    val movieList: MovieList = it.data as MovieList
+                    state = state.copy(
+                        movieListAdapter = MovieListAdapter(
+                            movieList.results
+                        )
+                    )
+                }, {
                     state = state.copy(
                         loading = false,
                         failure = true,
                         message = it.localizedMessage
                     )
-                },{
+                }, {
                     state = state.copy(
                         loading = false,
                         success = true
                     )
-                },{
+                }, {
 
                 })
         )
     }
 
-    fun getMovieList(movieRepositoryI : MovieRepositoryI){
-       compositeDisposable.add( movieRepositoryI.getSimilars()
-           .subscribeOn(Schedulers.io())
-           .observeOn(AndroidSchedulers.mainThread())
-           .subscribe({
-               var movieList : MovieList = it.data as MovieList
-               state = state.copy(movieListAdapter = MovieListAdapter(
-                   movieList.results
-               ))
-           },{
-               state = state.copy(
-                   loading = false,
-                   failure = true,
-                   message = it.localizedMessage
-               )
-           },{
-               state = state.copy(
-                   loading = false,
-                   success = true
-               )
-           },{
+    fun getMovieList(id : String) {
+        compositeDisposable.add(
+            movieRepositoryI.getSimilars(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    val movieList: MovieList = it.data as MovieList
+                    state = state.copy(
+                        movieListAdapter = MovieListAdapter(
+                            movieList.results
+                        )
+                    )
+                }, {
+                    state = state.copy(
+                        loading = false,
+                        failure = true,
+                        message = it.localizedMessage
+                    )
+                }, {
+                    state = state.copy(
+                        loading = false,
+                        success = true
+                    )
+                }, {
 
-           }))
+                })
+        )
     }
 
     override fun onCleared() {

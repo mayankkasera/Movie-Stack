@@ -18,13 +18,13 @@ class MovieDetailViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel()
             publishState(value)
         }
 
-    fun getMedia(){
+    fun getMedia(id : String){
         compositeDisposable.add(
-            movieRepositoryI.getVideos()
+            movieRepositoryI.getVideos(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    var videos : Videos = it.data as Videos
+                    val videos : Videos = it.data as Videos
                     state = state.copy(videos = videos)
 
                 },{

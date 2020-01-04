@@ -2,17 +2,16 @@ package com.example.moviestack.ui.moviedetail.info
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import com.example.moviestack.R
-import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.repo.movieInfo.MovieRepository
+import com.example.moviestack.api.DataHelper
+import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.InfoFragmentBinding
 import com.example.moviestack.utils.createFactory
 
@@ -23,11 +22,11 @@ class InfoFragment : Fragment() {
     private lateinit var id: String
     private lateinit var infoViewModel: InfoViewModel
     private lateinit var binding: InfoFragmentBinding
-    private lateinit var movieRepositoryI: MovieRepository
+    private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id : String): InfoFragment {
+        fun newInstance(id: String): InfoFragment {
             val bundle = Bundle()
             bundle.putSerializable(ID, id)
             val fragment = InfoFragment()
@@ -44,24 +43,25 @@ class InfoFragment : Fragment() {
         init()
         loadData()
         setObserver()
-        return  mView
+        return mView
     }
 
     private fun loadData() {
-        infoViewModel.getMovieInfo()
+        infoViewModel.getMovieInfo(id)
     }
 
     private fun init() {
         id = arguments?.getSerializable(ID) as String
-        movieRepositoryI = MovieRepository(NetworkHelper().gerMovieRequests(),id)
-        mView = binding.getRoot()
+        movieRepositoryI = DataHelper().movieRepositoryI
+        mView = binding.root
         val factory = InfoViewModel(movieRepositoryI).createFactory()
         infoViewModel = ViewModelProvider(this, factory).get(InfoViewModel::class.java)
     }
 
     private fun setObserver() {
-        infoViewModel.mutableLiveData.observe(this, Observer { binding.infoState = it
-           Log.i("dkjhfckjds","hdfsgd "+it)
+        infoViewModel.mutableLiveData.observe(this, Observer {
+            binding.infoState = it
+            Log.i("dkjhfckjds", "hdfsgd " + it)
         })
     }
 

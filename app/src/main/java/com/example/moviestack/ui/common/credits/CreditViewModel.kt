@@ -18,12 +18,12 @@ class CreditViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
             publishState(value)
         }
 
-    fun getCast(){
-        compositeDisposable.add(movieRepositoryI.getCredits()
+    fun getCast(id : String){
+        compositeDisposable.add(movieRepositoryI.getCredits(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                var credits : Credits = it.data as Credits
+                val credits : Credits = it.data as Credits
                 state = state.copy(castAdapter = CastAdapter(
                     credits.cast
                 )
