@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="MovieDetailActivityBinding">
-
         <import type="android.view.View"/>
 
         <variable
-            name="smallItem"
-            type="com.example.moviestack.api.pojo.SmallItemList.Result"/>
+            name="title"
+            type="String"/>
+
 
         <variable
             name="videos"
@@ -29,7 +29,7 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 app:elevation="0dp"
-                app:collapsingToolbarTitle="@{smallItem.hasTitle()?smallItem.title:smallItem.originalName}"
+                app:collapsingToolbarTitle="@{title}"
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

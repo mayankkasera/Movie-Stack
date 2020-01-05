@@ -68,4 +68,20 @@ data class Images(
             return ""
         }
     }
+
+    fun getBackdropSize():String{
+        if(backdrops.size>0){
+            return "${backdrops.size} Backdrops"
+        }else{
+            return ""
+        }
+    }
+
+    fun getPosterSize():String{
+        if(posters.size>0){
+            return "${posters.size} Posters"
+        }else{
+            return ""
+        }
+    }
 }

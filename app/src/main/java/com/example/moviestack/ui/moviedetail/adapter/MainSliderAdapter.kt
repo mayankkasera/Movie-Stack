@@ -14,7 +14,7 @@ import ss.com.bannerslider.viewholder.ImageSlideViewHolder
 class MainSliderAdapter(private val list: List<Videos.Result>) : SliderAdapter() {
 
     override fun getItemCount(): Int {
-        return 3
+       return if(list.size>3) 3 else list.size
     }
 
     override fun onBindImageSlide(position: Int, viewHolder: ImageSlideViewHolder) {

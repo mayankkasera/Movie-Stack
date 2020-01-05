@@ -17,7 +17,8 @@ import kotlinx.android.synthetic.main.activity_movie_detail.*
 
 class MovieDetailActivity : AppCompatActivity() {
 
-    private lateinit var result: SmallItemList.Result
+    private lateinit var id : String
+    private lateinit var title : String
     lateinit var mainBinding: MovieDetailActivityBinding
     private lateinit var movieDetailViewModel: MovieDetailViewModel
     private lateinit var movieRepositoryI: MovieRepositoryI
@@ -29,7 +30,7 @@ class MovieDetailActivity : AppCompatActivity() {
         init()
         loadData()
         setObserver()
-        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager, "${result?.id}")
+        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager, "${id}")
         viewPager.offscreenPageLimit = 2
         tabLayout.setupWithViewPager(viewPager)
 
@@ -37,11 +38,12 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        movieDetailViewModel.getMedia(result.id.toString())
+        movieDetailViewModel.getMedia(id)
     }
 
     fun init() {
-        result = intent.getParcelableExtra("SmallItem")
+        title = intent.getStringExtra("title")
+        id = intent.getStringExtra("id")
 
         movieRepositoryI = DataHelper().movieRepositoryI
         val factory = MovieDetailViewModel(movieRepositoryI).createFactory()
@@ -52,7 +54,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun setObserver() {
         movieDetailViewModel.mutableLiveData.observe(this, Observer {
             mainBinding.videos = it.videos
-            mainBinding.smallItem = result
+            mainBinding.title = title
         })
     }
 
