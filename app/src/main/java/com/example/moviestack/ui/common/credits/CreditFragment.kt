@@ -14,6 +14,8 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
+import com.example.moviestack.ui.common.movielist.MovieListFragment
+import com.example.moviestack.ui.common.movielist.MovieListType
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -21,17 +23,18 @@ import com.example.moviestack.utils.createFactory
  */
 class CreditFragment : Fragment() {
 
-    private lateinit var id: String
+
     private lateinit var mView: View
+    private lateinit var creditType : CreditType
     private lateinit var creditViewModel: CreditViewModel
     private lateinit var binding: CastFragmentBinding
     private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id: String): CreditFragment {
+        fun newInstance(creditType : CreditType): CreditFragment {
             val bundle = Bundle()
-            bundle.putSerializable(ID, id)
+            bundle.putParcelable(CreditFragment.ID, creditType)
             val fragment = CreditFragment()
             fragment.arguments = bundle
             return fragment
@@ -50,12 +53,15 @@ class CreditFragment : Fragment() {
     }
 
     private fun loadData() {
-        creditViewModel.getCast(id)
+        when (creditType.type) {
+            CreditType.Type.CAST -> creditViewModel.getCast(creditType.data)
+            CreditType.Type.CREW -> creditViewModel.getCrew(creditType.data)
+        }
     }
 
 
     private fun init() {
-        id = arguments?.getSerializable(ID) as String
+        creditType = arguments?.getParcelable<CreditType>(CreditFragment.ID) as CreditType
         movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.root
         val factory = CreditViewModel(movieRepositoryI).createFactory()
@@ -65,7 +71,8 @@ class CreditFragment : Fragment() {
     private fun setObserver() {
         creditViewModel.mutableLiveData.observe(this, Observer {
             binding.castState = it
-            Log.i("dkjhfckjds", "hdfsgd " + it)
+            Log.i("dsnkjn","bcjsdb"+it.toString())
+            binding.cast.adapter = it.castAdapter
         })
     }
 

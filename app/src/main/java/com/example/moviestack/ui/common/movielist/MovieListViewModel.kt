@@ -27,6 +27,8 @@ class MovieListViewModel(
 
 
     fun getGenreMovieList(genre: String) {
+
+        state = state.copy(loading = true)
         compositeDisposable.add(
             discoverRepositoryI.getGenreMovieList(genre)
                 .subscribeOn(Schedulers.io())
@@ -56,6 +58,8 @@ class MovieListViewModel(
     }
 
     fun getMovieList(id : String) {
+
+        state = state.copy(loading = true)
         compositeDisposable.add(
             movieRepositoryI.getSimilars(id)
                 .subscribeOn(Schedulers.io())

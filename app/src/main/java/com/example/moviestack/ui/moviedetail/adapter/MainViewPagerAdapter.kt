@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.moviestack.ui.common.credits.CreditFragment
+import com.example.moviestack.ui.common.credits.CreditType
 import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.review.ReviewFragment
 import com.example.moviestack.ui.common.movielist.MovieListFragment
@@ -14,11 +15,13 @@ class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStateP
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
-               InfoFragment.newInstance(id)
+                InfoFragment.newInstance(id)
             }
 
             1 -> {
-                CreditFragment.newInstance(id)
+
+                var creditType = CreditType(data = id,type = CreditType.Type.CAST);
+                CreditFragment.newInstance(creditType)
             }
 
             2 -> {

@@ -13,10 +13,10 @@ class CreditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_credit)
 
-        var id = intent.getIntExtra("id",0)
-        var movieListType = MovieListType(data = "${id}",type = MovieListType.Type.GENRE);
-        replace(MovieListFragment.newInstance(movieListType))
 
+        var id = intent.getIntExtra("id",0)
+        var creditType = CreditType(data = "${id}",type = CreditType.Type.CREW);
+        replace(CreditFragment.newInstance(creditType))
     }
 
     fun replace(fragment: Fragment){

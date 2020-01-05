@@ -2,6 +2,7 @@ package com.example.moviestack.api.repo.movieInfo
 
 import android.util.Log
 import com.example.moviestack.api.pojo.*
+import com.example.moviestack.utils.NetworkConstants
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,12 +40,15 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI {
 
 
     override fun getCredits(id: String): Observable<MovieResponse> {
+
         return Observable.create<MovieResponse> { emitter ->
 
             movieRequests?.getCredits(id)?.enqueue(object : Callback<Credits> {
 
                 override fun onResponse(call: Call<Credits>, response: Response<Credits>) {
+                    Log.i("dchjdbjsd",""+response.body().toString())
                     response.body()?.let {
+
                         val movieResponse = MovieResponse()
                         movieResponse.type = MovieResponse.Type.CREDIT
                         movieResponse.data = it

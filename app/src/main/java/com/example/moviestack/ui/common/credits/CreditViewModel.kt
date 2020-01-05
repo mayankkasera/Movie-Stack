@@ -1,5 +1,6 @@
 package com.example.moviestack.ui.common.credits
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviestack.api.pojo.Credits
@@ -19,15 +20,41 @@ class CreditViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
         }
 
     fun getCast(id : String){
+
+        state = state.copy(loading = true)
         compositeDisposable.add(movieRepositoryI.getCredits(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 val credits : Credits = it.data as Credits
-                state = state.copy(castAdapter = CastAdapter(
-                    credits.cast
+                Log.i("dchjdbjsd",""+credits.cast.toString())
+                state = state.copy(castAdapter = CastAdapter(credits,CreditType.Type.CAST))
+            },{
+                state = state.copy(
+                    loading = false,
+                    failure = true,
+                    message = it.localizedMessage
                 )
+            },{
+                state = state.copy(
+                    loading = false,
+                    success = true
                 )
+            },{
+
+            }))
+    }
+
+    fun getCrew(id : String){
+
+        state = state.copy(loading = true)
+        compositeDisposable.add(movieRepositoryI.getCredits(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                val credits : Credits = it.data as Credits
+                Log.i("dchjdbjsd",""+credits.cast.toString())
+                state = state.copy(castAdapter = CastAdapter(credits,CreditType.Type.CREW))
             },{
                 state = state.copy(
                     loading = false,

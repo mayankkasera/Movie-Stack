@@ -4,9 +4,23 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data class="CastDataBinding">
+        <import type="com.example.moviestack.ui.common.credits.CreditType"/>
         <variable
             name="cast"
             type="com.example.moviestack.api.pojo.Credits.Cast"/>
+
+        <variable
+            name="crew"
+            type="com.example.moviestack.api.pojo.Credits.Crew"/>
+
+
+        <variable
+            name="i"
+            type="Integer"/>
+
+        <variable
+            name="type"
+            type="com.example.moviestack.ui.common.credits.CreditType.Type"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +35,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/user"
-            app:setImageResource="@{cast.getImage()}"
+            app:setImageResource="@{type==CreditType.Type.CAST?cast.getImage():crew.getImage()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{cast.name}"
+            android:text="@{type==CreditType.Type.CAST?cast.name:crew.name}"
             android:textSize="20dp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +58,7 @@
             android:layout_marginEnd="16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{cast.character}"
+            android:text="@{type==CreditType.Type.CAST?cast.character:crew.department}"
             android:textColor="@color/light_gray"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/circleImageView"
