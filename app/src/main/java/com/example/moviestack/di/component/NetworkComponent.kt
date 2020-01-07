@@ -16,8 +16,7 @@ import javax.inject.Singleton
 interface NetworkComponent {
 
     fun getRetrofit() : Retrofit
-
-    fun inject(networkHelper: NetworkHelper) : Unit
+    fun inject(networkHelper: NetworkHelper)
     fun inject(networkHelper: DataHelper)
 
 

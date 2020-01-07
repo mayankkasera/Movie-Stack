@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true" android:tint="@color/white" android:drawable="@drawable/fb"/>
+    <item
+        android:state_selected="false"
+        android:tint="@color/light_gray"
+        android:drawable="@drawable/fb"/>
+</selector>

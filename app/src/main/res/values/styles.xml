@@ -23,9 +23,11 @@
 
 
     <style name="ExpandedCollapsedAppBar" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">24sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">normal</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:layout_marginRight">20dp</item>
     </style>
 
     <style name="CollapsedAppBar" parent="@android:style/TextAppearance.Medium">

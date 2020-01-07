@@ -13,10 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.common.credits.CreditActivity">
-
-        </activity>
-        <activity android:name=".ui.common.movielist.MovieListActivity"></activity>
+        <activity android:name=".ui.persondetail.PersonDetailActivity"></activity>
+        <activity android:name=".ui.common.credits.CreditActivity"></activity>
+        <activity android:name=".ui.common.movielist.MovieListActivity" />
         <activity android:name=".ui.moviedetail.MovieDetailActivity" />
         <activity android:name=".ui.splash.SplashActivity" />
         <activity android:name=".ui.dashboard.MainActivity">

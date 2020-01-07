@@ -2,6 +2,7 @@ package com.example.moviestack.di.modules
 
 import com.example.moviestack.api.repo.discover.DiscoverRequests
 import com.example.moviestack.api.repo.movieInfo.MovieRequests
+import com.example.moviestack.api.repo.person.PersonRequests
 import com.example.moviestack.di.intercepter.AuthorizationInterceptor
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
@@ -45,6 +46,12 @@ class NetworkModule {
     @Singleton
     fun provideDiscoverRequest(retrofit: Retrofit) : DiscoverRequests {
         return retrofit.create(DiscoverRequests::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePersonRequest(retrofit: Retrofit) : PersonRequests {
+        return retrofit.create(PersonRequests::class.java)
     }
 
 }

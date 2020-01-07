@@ -11,18 +11,17 @@ import ss.com.bannerslider.viewholder.ImageSlideViewHolder
 
 
 
-class MainSliderAdapter(private val list: List<Videos.Result>) : SliderAdapter() {
+class MainSliderAdapter(private val list: List<String>) : SliderAdapter() {
 
     override fun getItemCount(): Int {
        return if(list.size>3) 3 else list.size
     }
 
     override fun onBindImageSlide(position: Int, viewHolder: ImageSlideViewHolder) {
-        Log.i("sddhvgch",""+list.get(0).getImage())
         when (position) {
-            0 -> viewHolder.bindImageSlide(list.get(0).getImage())
-            1 -> viewHolder.bindImageSlide(list.get(1).getImage())
-            2 -> viewHolder.bindImageSlide(list.get(2).getImage())
+            0 -> viewHolder.bindImageSlide(list.get(0))
+            1 -> viewHolder.bindImageSlide(list.get(1))
+            2 -> viewHolder.bindImageSlide(list.get(2))
         }
     }
 }

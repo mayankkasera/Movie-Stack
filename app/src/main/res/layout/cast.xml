@@ -13,7 +13,6 @@
             name="crew"
             type="com.example.moviestack.api.pojo.Credits.Crew"/>
 
-
         <variable
             name="i"
             type="Integer"/>
@@ -24,6 +23,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        app:setCreditTitle="@{type==CreditType.Type.CAST?cast.name:crew.name}"
+        app:setCreditImage="@{type==CreditType.Type.CAST?cast.getImage():crew.getImage()}"
+        app:setCreditItemOnlick="@{type==CreditType.Type.CAST?String.valueOf(cast.id):String.valueOf(crew.id)}"
         android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

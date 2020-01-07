@@ -19,6 +19,9 @@ class MovieDetailViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel()
         }
 
     fun getMedia(id : String){
+
+        state = state.copy(loading = true)
+
         compositeDisposable.add(
             movieRepositoryI.getVideos(id)
                 .subscribeOn(Schedulers.io())
