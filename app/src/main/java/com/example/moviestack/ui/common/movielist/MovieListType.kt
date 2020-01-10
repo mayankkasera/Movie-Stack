@@ -11,6 +11,6 @@ data class MovieListType (
 
 ) : Parcelable {
     enum class Type{
-        SMILER,GENRE
+        SMILER,GENRE,MOVIE_CREDITS,TV_CREDITS,TRENDING_MOVIE,TRENDING_TV_SHOW,NOW_PLAYING,UPCOMING,POPULAR,TOP_RATED
     }
 }

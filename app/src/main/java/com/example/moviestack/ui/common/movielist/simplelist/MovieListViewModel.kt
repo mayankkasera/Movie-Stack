@@ -1,44 +1,43 @@
-package com.example.moviestack.ui.common.movielist
+package com.example.moviestack.ui.common.movielist.simplelist
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.api.repo.discover.DiscoverRepositoryI
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.api.pojo.Result
+import com.example.moviestack.api.repo.person.PersonRepositoryI
+import com.example.moviestack.ui.common.movielist.MovieListState
 import com.example.moviestack.ui.common.movielist.adapter.MovieListAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.util.ArrayList
 
-class MovieListViewModel(
-    private val discoverRepositoryI: DiscoverRepositoryI,
-    private val movieRepositoryI: MovieRepositoryI
-    ) : ViewModel() {
+class MovieListViewModel
+    : ViewModel() {
 
     private var compositeDisposable = CompositeDisposable()
 
     var mutableLiveData: MutableLiveData<MovieListState> = MutableLiveData()
 
-    private var state = MovieListState()
+    private var state =
+        MovieListState()
         set(value) {
             field = value
             publishState(value)
         }
 
 
-    fun getGenreMovieList(genre: String) {
-
+    fun getMovieCredits(id : String,personRepositoryI: PersonRepositoryI){
         state = state.copy(loading = true)
         compositeDisposable.add(
-            discoverRepositoryI.getGenreMovieList(genre)
+            personRepositoryI.getMovieCredits(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    val movieList: MovieList = it.data as MovieList
+                    var joined = it.data as ArrayList<Result>
+                    Log.i("dsjvhc",joined.toString())
                     state = state.copy(
-                        movieListAdapter = MovieListAdapter(
-                            movieList.results
-                        )
+                        movieListAdapter = MovieListAdapter(joined)
                     )
                 }, {
                     state = state.copy(
@@ -53,23 +52,19 @@ class MovieListViewModel(
                     )
                 }, {
 
-                })
-        )
+                }))
     }
 
-    fun getMovieList(id : String) {
-
+    fun getTvCredits(id : String,personRepositoryI: PersonRepositoryI){
         state = state.copy(loading = true)
         compositeDisposable.add(
-            movieRepositoryI.getSimilars(id)
+            personRepositoryI.getTvCredits(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    val movieList: MovieList = it.data as MovieList
+                    var joined = it.data as ArrayList<Result>
                     state = state.copy(
-                        movieListAdapter = MovieListAdapter(
-                            movieList.results
-                        )
+                        movieListAdapter = MovieListAdapter(joined)
                     )
                 }, {
                     state = state.copy(
@@ -84,8 +79,7 @@ class MovieListViewModel(
                     )
                 }, {
 
-                })
-        )
+                }))
     }
 
     override fun onCleared() {

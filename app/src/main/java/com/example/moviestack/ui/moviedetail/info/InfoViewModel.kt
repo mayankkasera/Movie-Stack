@@ -29,9 +29,8 @@ class InfoViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
 
     fun getMovieInfo(id: String) {
 
-        Log.i("dkjhfckjds", "1 ")
+
         state = state.copy(loading = true)
-        Log.i("dkjhfckjds", "2 ")
 
         compositeDisposable.add(
             Observable.merge(

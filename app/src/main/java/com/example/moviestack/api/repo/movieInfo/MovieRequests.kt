@@ -4,6 +4,7 @@ import com.example.moviestack.api.pojo.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface MovieRequests {
     @GET("movie/{id}")
@@ -23,4 +24,7 @@ interface MovieRequests {
 
     @GET("movie/{id}/similar")
     fun getSimilar(@Path("id")id : String): Call<MovieList>
+
+    @GET("movie/{id}/similar")
+    fun getSimilar(@Path("id")id : String,@Query("page") page :String): Call<MovieList>
 }

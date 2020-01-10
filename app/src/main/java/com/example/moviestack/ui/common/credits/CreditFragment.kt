@@ -14,8 +14,6 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
-import com.example.moviestack.ui.common.movielist.MovieListFragment
-import com.example.moviestack.ui.common.movielist.MovieListType
 import com.example.moviestack.utils.createFactory
 
 /**

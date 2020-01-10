@@ -61,7 +61,6 @@ class InfoFragment : Fragment() {
     private fun setObserver() {
         infoViewModel.mutableLiveData.observe(this, Observer {
             binding.infoState = it
-            Log.i("dkjhfckjds", "hdfsgd " + it)
         })
     }
 

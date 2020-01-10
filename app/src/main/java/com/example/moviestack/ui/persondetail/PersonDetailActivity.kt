@@ -118,7 +118,7 @@ class PersonDetailActivity : AppCompatActivity() {
     }
 
     private fun setUpViewPager() {
-        viewPager.adapter = PersionViewPagerAdapter(supportFragmentManager)
+        viewPager.adapter = PersionViewPagerAdapter(supportFragmentManager,id)
         viewPager.offscreenPageLimit = 2
         tabLayout.setupWithViewPager(viewPager)
     }

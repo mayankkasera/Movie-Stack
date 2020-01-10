@@ -7,7 +7,7 @@ import com.example.moviestack.ui.common.credits.CreditFragment
 import com.example.moviestack.ui.common.credits.CreditType
 import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.review.ReviewFragment
-import com.example.moviestack.ui.common.movielist.MovieListFragment
+import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
 import com.example.moviestack.ui.common.movielist.MovieListType
 
 class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStatePagerAdapter(fm){
@@ -28,8 +28,8 @@ class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStateP
             }
 
             3 -> {
-                var movieListType = MovieListType(data = id,type = MovieListType.Type.SMILER);
-                MovieListFragment.newInstance(movieListType)
+                var creditType = MovieListType(data = "${id}",type = MovieListType.Type.SMILER );
+                MovieListPaggingFragment.newInstance(creditType)
             }
 
             else -> {

@@ -179,5 +179,29 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI {
         }
     }
 
+    override fun getSimilars(id: String, page: String): Observable<MovieResponse> {
+        return Observable.create<MovieResponse> { emitter ->
+            movieRequests?.getSimilar(id,page)?.enqueue(object : Callback<MovieList> {
+                override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                    response.body()?.let {
+                        val movieResponse = MovieResponse()
+                        movieResponse.type = MovieResponse.Type.SIMILAR
+                        movieResponse.data = it
+                        emitter.onNext(movieResponse)
+                        emitter.onComplete()
+                    } ?: run {
+                        emitter.onNext(MovieResponse())
+                        emitter.onComplete()
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                    emitter.onError(t)
+                    Log.i("dshgczvc", "" + t.message)
+                }
+            })
+        }
+    }
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.common.movielist
+package com.example.moviestack.ui.common.movielist.simplelist
 
 
 import android.os.Bundle
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.SimilarFragmentBinding
+import com.example.moviestack.ui.common.movielist.MovieListType
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -29,7 +30,8 @@ class MovieListFragment : Fragment() {
         fun newInstance(movieListType: MovieListType): MovieListFragment {
             val bundle = Bundle()
             bundle.putParcelable(ID, movieListType)
-            val fragment = MovieListFragment()
+            val fragment =
+                MovieListFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -49,19 +51,19 @@ class MovieListFragment : Fragment() {
 
     private fun loadData() {
         when (movieListType.type) {
-            MovieListType.Type.SMILER -> movieListViewModel.getMovieList(movieListType.data)
-            MovieListType.Type.GENRE -> movieListViewModel.getGenreMovieList(movieListType.data)
+            MovieListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(movieListType.data,DataHelper().personRepositoryI)
+            MovieListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(movieListType.data,DataHelper().personRepositoryI)
         }
     }
 
 
     private fun init() {
-        movieListType = arguments?.getParcelable<MovieListType>(ID) as MovieListType
+        movieListType = arguments?.getParcelable<MovieListType>(
+            ID
+        ) as MovieListType
         mView = binding.root
-        val factory = MovieListViewModel(
-            DataHelper().discoverRepositoryI,
-            DataHelper().movieRepositoryI
-        ).createFactory()
+        val factory = MovieListViewModel()
+            .createFactory()
         movieListViewModel = ViewModelProvider(this, factory).get(MovieListViewModel::class.java)
     }
 

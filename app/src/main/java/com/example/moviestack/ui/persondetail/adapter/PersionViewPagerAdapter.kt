@@ -3,29 +3,25 @@ package com.example.moviestack.ui.persondetail.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.moviestack.ui.common.credits.CreditFragment
-import com.example.moviestack.ui.common.credits.CreditType
-import com.example.moviestack.ui.common.movielist.MovieListFragment
+import com.example.moviestack.ui.common.movielist.simplelist.MovieListFragment
 import com.example.moviestack.ui.common.movielist.MovieListType
-import com.example.moviestack.ui.moviedetail.info.InfoFragment
-import com.example.moviestack.ui.moviedetail.review.ReviewFragment
 import com.example.moviestack.ui.persondetail.info.PersonInfoFragment
 
-class PersionViewPagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
+class PersionViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStatePagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
-                PersonInfoFragment()
+                PersonInfoFragment.newInstance(id)
             }
 
             1 -> {
-                var movieListType = MovieListType(data = "2942",type = MovieListType.Type.SMILER);
+                var movieListType = MovieListType(data = id,type = MovieListType.Type.MOVIE_CREDITS);
                 MovieListFragment.newInstance(movieListType)
             }
 
             2 -> {
-                var movieListType = MovieListType(data = "2942",type = MovieListType.Type.SMILER);
+                var movieListType = MovieListType(data = id,type = MovieListType.Type.TV_CREDITS);
                 MovieListFragment.newInstance(movieListType)
             }
 
