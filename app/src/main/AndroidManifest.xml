@@ -15,7 +15,11 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".ui.search.SearchActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity android:name=".ui.common.ShowMoreActivity">
@@ -27,11 +31,7 @@
         <activity android:name=".ui.moviedetail.MovieDetailActivity" />
         <activity android:name=".ui.splash.SplashActivity" />
         <activity android:name=".ui.dashboard.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -67,7 +67,6 @@ class MovieListPaggingFragment : Fragment() {
         }
     }
 
-
     private fun init() {
         movieListType = arguments?.getParcelable<MovieListType>(
             ID

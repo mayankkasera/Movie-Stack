@@ -30,6 +30,10 @@ data class Result(
     var first_air_date: String = "",
     @SerializedName("title")
     var title: String = "",
+    @SerializedName("known_for_department")
+    var known_for_department: String = "",
+    @SerializedName("profile_path")
+    var profile_path: String = "",
     @SerializedName("video")
     var video: Boolean = false,
     @SerializedName("vote_average")
@@ -38,7 +42,13 @@ data class Result(
     var voteCount: Int = 0
 ){
     fun getImage() : String{
-        return NetworkConstants.baseImageUrl+posterPath
+
+        if(first_air_date.equals("")){
+            return NetworkConstants.baseImageUrl+profile_path
+        }
+        else{
+            return NetworkConstants.baseImageUrl+posterPath
+        }
     }
 
     fun getYear():String{

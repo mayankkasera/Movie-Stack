@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.common.credits
+package com.example.moviestack.ui.common.credits.simple
 
 
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
+import com.example.moviestack.ui.common.credits.CreditType
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -32,8 +33,9 @@ class CreditFragment : Fragment() {
         private const val ID = "Id"
         fun newInstance(creditType : CreditType): CreditFragment {
             val bundle = Bundle()
-            bundle.putParcelable(CreditFragment.ID, creditType)
-            val fragment = CreditFragment()
+            bundle.putParcelable(ID, creditType)
+            val fragment =
+                CreditFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -59,10 +61,14 @@ class CreditFragment : Fragment() {
 
 
     private fun init() {
-        creditType = arguments?.getParcelable<CreditType>(CreditFragment.ID) as CreditType
+        creditType = arguments?.getParcelable<CreditType>(
+            ID
+        ) as CreditType
         movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.root
-        val factory = CreditViewModel(movieRepositoryI).createFactory()
+        val factory = CreditViewModel(
+            movieRepositoryI
+        ).createFactory()
         creditViewModel = ViewModelProvider(this, factory).get(CreditViewModel::class.java)
     }
 

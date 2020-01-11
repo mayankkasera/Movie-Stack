@@ -14,4 +14,7 @@ interface SearchRequests {
 
     @GET("search/tv")
     fun getTv(@Query("page")page : String,@Query("query")query : String) : Call<Search>
+
+    @GET("search/person")
+    fun getPerson(@Query("page")page : String,@Query("query")query : String) : Call<Search>
 }

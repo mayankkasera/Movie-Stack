@@ -3,7 +3,7 @@ package com.example.qrcode.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.moviestack.ui.common.credits.CreditFragment
+import com.example.moviestack.ui.common.credits.simple.CreditFragment
 import com.example.moviestack.ui.common.credits.CreditType
 import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.review.ReviewFragment

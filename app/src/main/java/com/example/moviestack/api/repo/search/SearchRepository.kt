@@ -18,6 +18,7 @@ class SearchRepository(var searchRequests :SearchRequests ) : SearchRepositoryI 
             when(type){
                 SmallItemList.Type.SEARCH_MOVIES -> call = searchRequests?.getMovie(page,query)
                 SmallItemList.Type.SEARCH_TV -> call = searchRequests?.getTv(page,query)
+                SmallItemList.Type.PERSON -> call = searchRequests?.getPerson(page,query)
                 else -> call = searchRequests?.getMovie(page,query)
             }
 

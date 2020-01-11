@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.moviestack.R
+import com.example.moviestack.ui.common.credits.simple.CreditFragment
 
 class CreditActivity : AppCompatActivity() {
 
@@ -13,8 +14,15 @@ class CreditActivity : AppCompatActivity() {
 
 
         var id = intent.getIntExtra("id",0)
-        var creditType = CreditType(data = "${id}",type = CreditType.Type.CREW);
-        replace(CreditFragment.newInstance(creditType))
+        var creditType = CreditType(
+            data = "${id}",
+            type = CreditType.Type.CREW
+        );
+        replace(
+            CreditFragment.newInstance(
+                creditType
+            )
+        )
     }
 
     fun replace(fragment: Fragment){

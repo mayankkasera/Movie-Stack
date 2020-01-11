@@ -3,24 +3,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data class="CastFragmentBinding">
+    <data class="PersonPagingFragmentBinding">
         <import type="android.view.View"/>
-        <variable
-            name="castState"
-            type="com.example.moviestack.ui.common.credits.CreditSatate"/>
-    </data>
 
+        <variable
+            name="movieListState"
+            type="com.example.moviestack.ui.common.movielist.MovieListState"/>
+
+        <variable
+            name="adapter"
+            type="com.example.moviestack.ui.common.credits.adapter.PersonPagingAdapter" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.common.credits.simple.CreditFragment">
+        tools:context=".ui.moviedetail.review.ReviewFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cast"
+            android:id="@+id/review"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:adapter="@{castState.castAdapter}"
+            android:adapter="@{adapter}"
+            android:scrollbars="vertical"
+            android:scrollbarThumbVertical="@drawable/scrollbar"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="@{castState.loading?View.VISIBLE:View.GONE}"
+            android:visibility="@{movieListState.loading?View.VISIBLE:View.GONE}"
             app:indicatorName="BallPulseIndicator"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +46,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:visibility="@{castState.failure?View.VISIBLE:View.GONE}"
+
+            android:visibility="@{movieListState.failure?View.VISIBLE:View.GONE}"
             android:id="@+id/tvErrorMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -49,7 +56,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loader"
-            tools:text="@{castState.message}" />
+            tools:text="@{movieListState.message}" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

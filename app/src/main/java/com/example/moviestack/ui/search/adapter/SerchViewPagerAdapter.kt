@@ -3,6 +3,7 @@ package com.example.moviestack.ui.search.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
+import com.example.moviestack.ui.common.credits.paging.PersonPagingFragment
 import com.example.moviestack.ui.common.movielist.MovieListType
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
 import com.example.moviestack.ui.common.movielist.simplelist.MovieListFragment
@@ -23,8 +24,8 @@ class SerchViewPagerAdapter (fm : FragmentManager, var data :String) : FragmentS
             }
 
             2 -> {
-                var movieListType = MovieListType(data = "1399",type = MovieListType.Type.TV_CREDITS);
-                MovieListFragment.newInstance(movieListType)
+                var movieListType = MovieListType(data = "rashmika mandanna",type = MovieListType.Type.PERSON);
+                PersonPagingFragment.newInstance(movieListType)
             }
 
             else -> {
