@@ -3,6 +3,7 @@ package com.example.moviestack.di.modules
 import com.example.moviestack.api.repo.discover.DiscoverRequests
 import com.example.moviestack.api.repo.movieInfo.MovieRequests
 import com.example.moviestack.api.repo.person.PersonRequests
+import com.example.moviestack.api.repo.search.SearchRequests
 import com.example.moviestack.di.intercepter.AuthorizationInterceptor
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
@@ -19,11 +20,11 @@ class NetworkModule {
     @Provides
     @Singleton
     fun getRetrofit(@Named("name") baseUrl :String,okHttpClient: OkHttpClient) : Retrofit{
-         return Retrofit.Builder()
-             .baseUrl(baseUrl)
-             .client(okHttpClient)
-             .addConverterFactory(GsonConverterFactory.create())
-             .build()
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     }
 
 
@@ -53,5 +54,13 @@ class NetworkModule {
     fun providePersonRequest(retrofit: Retrofit) : PersonRequests {
         return retrofit.create(PersonRequests::class.java)
     }
+
+
+    @Provides
+    @Singleton
+    fun provideSearchRequest(retrofit: Retrofit) : SearchRequests {
+        return retrofit.create(SearchRequests::class.java)
+    }
+
 
 }

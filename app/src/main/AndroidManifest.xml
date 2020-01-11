@@ -13,6 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
+        <activity android:name=".ui.search.SearchActivity">
+
+        </activity>
+
         <activity android:name=".ui.common.ShowMoreActivity">
 
         </activity>

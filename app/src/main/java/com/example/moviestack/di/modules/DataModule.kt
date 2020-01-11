@@ -9,6 +9,9 @@ import com.example.moviestack.api.repo.movieInfo.MovieRequests
 import com.example.moviestack.api.repo.person.PersonRepository
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.person.PersonRequests
+import com.example.moviestack.api.repo.search.SearchRepository
+import com.example.moviestack.api.repo.search.SearchRepositoryI
+import com.example.moviestack.api.repo.search.SearchRequests
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -35,4 +38,12 @@ class DataModule {
     fun providePersonRepository(personRequests: PersonRequests) : PersonRepositoryI {
         return PersonRepository(personRequests)
     }
+
+
+    @Provides
+    @Singleton
+    fun provideSearchRepository(searchRequests:SearchRequests) : SearchRepositoryI {
+        return SearchRepository(searchRequests)
+    }
+
 }

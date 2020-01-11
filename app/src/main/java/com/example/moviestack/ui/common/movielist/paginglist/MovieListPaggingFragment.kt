@@ -62,6 +62,8 @@ class MovieListPaggingFragment : Fragment() {
             MovieListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TOP_RATED)
             MovieListType.Type.SMILER -> movieListPaggingViewModel.getSimilarData(movieListType.data, DataHelper().movieRepositoryI)
             MovieListType.Type.GENRE -> movieListPaggingViewModel.getGenreData(movieListType.data, DataHelper().discoverRepositoryI)
+            MovieListType.Type.MOVIE_SEARCH -> movieListPaggingViewModel.getSearchMovieData(movieListType.data, DataHelper().searchRepositoryI,SmallItemList.Type.SEARCH_MOVIES)
+            MovieListType.Type.TV_SEARCH -> movieListPaggingViewModel.getSearchMovieData(movieListType.data, DataHelper().searchRepositoryI,SmallItemList.Type.SEARCH_TV)
         }
     }
 
