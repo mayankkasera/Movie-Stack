@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.api.pojo.Credits
 import com.example.moviestack.databinding.CastDataBinding
-import com.example.moviestack.ui.common.person.PersonType
+import com.example.moviestack.ui.common.ListType
 
-class PersonAdapter(private val credits: Credits, private val type: PersonType.Type) : RecyclerView.Adapter<PersonAdapter.CastViewHolder>() {
+class PersonAdapter(private val credits: Credits, private val type: ListType.Type) : RecyclerView.Adapter<PersonAdapter.CastViewHolder>() {
 
 
 
     inner class CastViewHolder(val castDataBinding: CastDataBinding) : RecyclerView.ViewHolder(castDataBinding.root) {
 
         fun bind(result: Credits,i: Int) {
-            if(type==PersonType.Type.CREW){
+            if(type==ListType.Type.CREW){
                 this.castDataBinding.crew = credits.crew[i]
                 this.castDataBinding.cast = Credits.Cast(1,"","",1,1,"",1,"")
             }
@@ -39,9 +39,11 @@ class PersonAdapter(private val credits: Credits, private val type: PersonType.T
 
     override fun getItemCount(): Int {
         return when(type){
-            PersonType.Type.CAST -> credits.cast.size
+            ListType.Type.CAST -> credits.cast.size
 
-            PersonType.Type.CREW -> credits.crew.size
+            ListType.Type.CREW -> credits.crew.size
+
+            else->0
         }
 
     }

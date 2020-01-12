@@ -46,7 +46,7 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI {
             movieRequests?.getCredits(id)?.enqueue(object : Callback<Credits> {
 
                 override fun onResponse(call: Call<Credits>, response: Response<Credits>) {
-                    Log.i("dchjdbjsd",""+response.body().toString())
+                    Log.i("dchjdbjsd",""+response.toString())
                     response.body()?.let {
 
                         val movieResponse = MovieResponse()
@@ -202,6 +202,7 @@ class MovieRepository(var movieRequests: MovieRequests?) : MovieRepositoryI {
             })
         }
     }
+
 
 
 }

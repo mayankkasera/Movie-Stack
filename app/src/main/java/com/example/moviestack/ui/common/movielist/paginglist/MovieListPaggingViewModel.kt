@@ -14,8 +14,8 @@ import com.example.moviestack.api.repo.movieInfo.genre.GenreDataSourceFactory
 import com.example.moviestack.api.repo.movieInfo.similarpaging.SimilarDataSource
 import com.example.moviestack.api.repo.movieInfo.similarpaging.SimilarDataSourceFactory
 import com.example.moviestack.api.repo.search.SearchRepositoryI
-import com.example.moviestack.api.repo.search.searchpaging.SearchDataSource
-import com.example.moviestack.api.repo.search.searchpaging.SearchDataSourceFactory
+import com.example.moviestack.api.repo.search.paging.SearchDataSource
+import com.example.moviestack.api.repo.search.paging.SearchDataSourceFactory
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.api.repo.movie.paging.MovieDataSource
 import com.example.moviestack.api.repo.movie.paging.MovieDataSourceFactory

@@ -3,12 +3,11 @@ package com.example.qrcode.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.moviestack.ui.common.person.simple.CreditFragment
-import com.example.moviestack.ui.common.person.PersonType
+import com.example.moviestack.ui.common.person.simple.PersonSimpleFragment
 import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.review.ReviewFragment
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
-import com.example.moviestack.ui.common.movielist.MovieListType
+import com.example.moviestack.ui.common.ListType
 
 class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStatePagerAdapter(fm){
 
@@ -19,8 +18,8 @@ class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStateP
             }
 
             1 -> {
-                var creditType = PersonType(data = id,type = PersonType.Type.CAST);
-                CreditFragment.newInstance(creditType)
+                var creditType = ListType(data = id,type = ListType.Type.CAST);
+                PersonSimpleFragment.newInstance(creditType)
             }
 
             2 -> {
@@ -28,7 +27,10 @@ class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStateP
             }
 
             3 -> {
-                var creditType = MovieListType(data = "${id}",type = MovieListType.Type.SMILER );
+                var creditType = ListType(
+                    data = "${id}",
+                    type = ListType.Type.SMILER
+                );
                 MovieListPaggingFragment.newInstance(creditType)
             }
 

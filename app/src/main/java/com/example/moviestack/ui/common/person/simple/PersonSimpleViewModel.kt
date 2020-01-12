@@ -5,14 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviestack.api.pojo.Credits
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.person.PersonSatate
-import com.example.moviestack.ui.common.person.PersonType
 import com.example.moviestack.ui.common.person.adapter.PersonAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class CreditViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
+class PersonSimpleViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
     private var compositeDisposable = CompositeDisposable()
     var mutableLiveData: MutableLiveData<PersonSatate> = MutableLiveData()
     private var state =
@@ -32,7 +32,7 @@ class CreditViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
                 val credits : Credits = it.data as Credits
                 Log.i("dchjdbjsd",""+credits.cast.toString())
                 state = state.copy(personAdapter = PersonAdapter(credits,
-                    PersonType.Type.CAST
+                    ListType.Type.CAST
                 ))
             },{
                 state = state.copy(
@@ -60,7 +60,7 @@ class CreditViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
                 val credits : Credits = it.data as Credits
                 Log.i("dchjdbjsd",""+credits.cast.toString())
                 state = state.copy(personAdapter = PersonAdapter(credits,
-                    PersonType.Type.CREW
+                    ListType.Type.CREW
                 ))
             },{
                 state = state.copy(

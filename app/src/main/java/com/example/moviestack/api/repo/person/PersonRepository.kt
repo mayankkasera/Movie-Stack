@@ -186,5 +186,26 @@ class PersonRepository(var personRequests: PersonRequests) : PersonRepositoryI {
         }
     }
 
+    override fun getPerson(
+        page: String
+    ): Observable<Person> {
+        return Observable.create<Person> { emitter ->
+            personRequests?.getPopular(page)?.enqueue(object : Callback<Person>{
+                override fun onResponse(call: Call<Person>, response: Response<Person>) {
+                    response.body()?.let {
+                        emitter.onNext(it)
+                        emitter.onComplete()
+                    } ?: run {
+                        emitter.onNext(Person())
+                        emitter.onComplete()
+                    }
+                }
+                override fun onFailure(call: Call<Person>, t: Throwable) {
+
+                }
+            })
+        }
+    }
+
 
 }

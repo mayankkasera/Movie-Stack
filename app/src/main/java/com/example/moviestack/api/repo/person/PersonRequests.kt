@@ -4,6 +4,7 @@ import com.example.moviestack.api.pojo.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface PersonRequests {
     @GET("person/{id}/tagged_images")
@@ -23,4 +24,7 @@ interface PersonRequests {
 
     @GET("person/{id}/tv_credits")
     fun getTvCredits(@Path("id")id : String) : Call<MovieCredits>
+
+    @GET("person/popular")
+    fun getPopular(@Query("page") page :String) : Call<Person>
 }

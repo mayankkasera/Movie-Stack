@@ -15,7 +15,7 @@ import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.pojo.SmallItemList
 import com.example.moviestack.databinding.PersonPagingFragmentBinding
 import com.example.moviestack.ui.common.person.adapter.PersonPagingAdapter
-import com.example.moviestack.ui.common.movielist.MovieListType
+import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -24,17 +24,16 @@ import com.example.moviestack.utils.createFactory
 class PersonPagingFragment : Fragment() {
 
     private lateinit var mView: View
-    private lateinit var movieListType: MovieListType
-    private lateinit var personViewModel: PersonViewModel
+    private lateinit var listType: ListType
+    private lateinit var personPagingViewModel: PersonPagingViewModel
     private lateinit var binding: PersonPagingFragmentBinding
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(movieListType: MovieListType): PersonPagingFragment {
+        fun newInstance(listType: ListType): PersonPagingFragment {
             val bundle = Bundle()
-            bundle.putParcelable(ID, movieListType)
-            val fragment =
-                PersonPagingFragment()
+            bundle.putParcelable(ID, listType)
+            val fragment = PersonPagingFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -53,24 +52,25 @@ class PersonPagingFragment : Fragment() {
 
 
     private fun loadData() {
-        personViewModel.getSearchMovieData(movieListType.data, DataHelper().searchRepositoryI,
-            SmallItemList.Type.PERSON)
+        when(listType.type){
+            ListType.Type.PERSON_SEARCH -> personPagingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,
+                SmallItemList.Type.PERSON)
+            ListType.Type.POPULAR_PERSON -> personPagingViewModel.getPopularPersonData(DataHelper().personRepositoryI)
+        }
+
     }
 
     private fun init() {
-        movieListType = arguments?.getParcelable<MovieListType>(
-            PersonPagingFragment.ID
-        ) as MovieListType
+        listType = arguments?.getParcelable<ListType>(PersonPagingFragment.ID) as ListType
         mView = binding.root
-        val factory = PersonViewModel()
-            .createFactory()
-        personViewModel = ViewModelProvider(this, factory).get(PersonViewModel::class.java)
+        val factory = PersonPagingViewModel().createFactory()
+        personPagingViewModel = ViewModelProvider(this, factory).get(PersonPagingViewModel::class.java)
     }
 
     private fun setObserver() {
         binding.adapter = PersonPagingAdapter()
-        personViewModel.state.observe(this, Observer { binding.movieListState = it })
-        personViewModel.moviePagedList.observe(this, Observer { binding!!.adapter!!.submitList(it!!) })
+        personPagingViewModel.state.observe(this, Observer { binding.movieListState = it })
+        personPagingViewModel.moviePagedList.observe(this, Observer { binding!!.adapter!!.submitList(it!!) })
     }
 
 }

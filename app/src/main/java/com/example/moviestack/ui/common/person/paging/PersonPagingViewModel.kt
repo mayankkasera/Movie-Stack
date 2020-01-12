@@ -7,13 +7,16 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.moviestack.api.pojo.Result
 import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.api.repo.person.PersonRepositoryI
+import com.example.moviestack.api.repo.person.paging.PersonDataSource
+import com.example.moviestack.api.repo.person.paging.PersonDataSourceFactory
 import com.example.moviestack.api.repo.search.SearchRepositoryI
-import com.example.moviestack.api.repo.search.searchpaging.SearchDataSource
-import com.example.moviestack.api.repo.search.searchpaging.SearchDataSourceFactory
+import com.example.moviestack.api.repo.search.paging.SearchDataSource
+import com.example.moviestack.api.repo.search.paging.SearchDataSourceFactory
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.disposables.CompositeDisposable
 
-class PersonViewModel : ViewModel() {
+class PersonPagingViewModel : ViewModel() {
 
     lateinit var moviePagedList: LiveData<PagedList<Result>>
     lateinit var state : LiveData<MovieListState>
@@ -29,5 +32,12 @@ class PersonViewModel : ViewModel() {
         moviePagedList = LivePagedListBuilder(searchDataSourceFactory, config).build()
         state = Transformations.switchMap<SearchDataSource, MovieListState>(
             searchDataSourceFactory.moviesLiveDataSource, SearchDataSource::mutableLiveData)
+    }
+
+    fun getPopularPersonData(personRepositoryI : PersonRepositoryI){
+        var personDataSourceFactory = PersonDataSourceFactory(compositeDisposable,personRepositoryI)
+        moviePagedList = LivePagedListBuilder(personDataSourceFactory, config).build()
+        state = Transformations.switchMap<PersonDataSource, MovieListState>(
+            personDataSourceFactory.moviesLiveDataSource, PersonDataSource::mutableLiveData)
     }
 }

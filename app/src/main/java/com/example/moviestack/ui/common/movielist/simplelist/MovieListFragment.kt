@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.SimilarFragmentBinding
-import com.example.moviestack.ui.common.movielist.MovieListType
+import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -20,16 +20,16 @@ import com.example.moviestack.utils.createFactory
  */
 class MovieListFragment : Fragment() {
 
-    private lateinit var movieListType: MovieListType
+    private lateinit var listType: ListType
     private lateinit var mView: View
     private lateinit var movieListViewModel: MovieListViewModel
     private lateinit var binding: SimilarFragmentBinding
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(movieListType: MovieListType): MovieListFragment {
+        fun newInstance(listType: ListType): MovieListFragment {
             val bundle = Bundle()
-            bundle.putParcelable(ID, movieListType)
+            bundle.putParcelable(ID, listType)
             val fragment =
                 MovieListFragment()
             fragment.arguments = bundle
@@ -50,17 +50,17 @@ class MovieListFragment : Fragment() {
 
 
     private fun loadData() {
-        when (movieListType.type) {
-            MovieListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(movieListType.data,DataHelper().personRepositoryI)
-            MovieListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(movieListType.data,DataHelper().personRepositoryI)
+        when (listType.type) {
+            ListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(listType.data,DataHelper().personRepositoryI)
+            ListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(listType.data,DataHelper().personRepositoryI)
         }
     }
 
 
     private fun init() {
-        movieListType = arguments?.getParcelable<MovieListType>(
+        listType = arguments?.getParcelable<ListType>(
             ID
-        ) as MovieListType
+        ) as ListType
         mView = binding.root
         val factory = MovieListViewModel()
             .createFactory()

@@ -1,4 +1,4 @@
-package com.example.moviestack.api.repo.search.searchpaging
+package com.example.moviestack.api.repo.search.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource

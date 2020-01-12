@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.moviestack.ui.common.movielist.simplelist.MovieListFragment
-import com.example.moviestack.ui.common.movielist.MovieListType
+import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.persondetail.info.PersonInfoFragment
 
 class PersionViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStatePagerAdapter(fm) {
@@ -16,12 +16,20 @@ class PersionViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentSta
             }
 
             1 -> {
-                var movieListType = MovieListType(data = id,type = MovieListType.Type.MOVIE_CREDITS);
+                var movieListType =
+                    ListType(
+                        data = id,
+                        type = ListType.Type.MOVIE_CREDITS
+                    );
                 MovieListFragment.newInstance(movieListType)
             }
 
             2 -> {
-                var movieListType = MovieListType(data = id,type = MovieListType.Type.TV_CREDITS);
+                var movieListType =
+                    ListType(
+                        data = id,
+                        type = ListType.Type.TV_CREDITS
+                    );
                 MovieListFragment.newInstance(movieListType)
             }
 

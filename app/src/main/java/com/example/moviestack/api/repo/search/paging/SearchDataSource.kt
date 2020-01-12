@@ -1,9 +1,7 @@
-package com.example.moviestack.api.repo.search.searchpaging
+package com.example.moviestack.api.repo.search.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import io.reactivex.disposables.CompositeDisposable
 import com.example.moviestack.api.pojo.Result

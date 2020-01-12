@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.moviestack.ui.common.person.paging.PersonPagingFragment
-import com.example.moviestack.ui.common.movielist.MovieListType
+import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
 import com.example.moviestack.ui.persondetail.info.PersonInfoFragment
 
@@ -13,17 +13,27 @@ class SerchViewPagerAdapter (fm : FragmentManager, var data :String) : FragmentS
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
-                var creditType = MovieListType(data = data,type = MovieListType.Type.MOVIE_SEARCH );
+                var creditType = ListType(
+                    data = data,
+                    type = ListType.Type.MOVIE_SEARCH
+                );
                 MovieListPaggingFragment.newInstance(creditType)
             }
 
             1 -> {
-                var creditType = MovieListType(data = data,type = MovieListType.Type.TV_SEARCH );
+                var creditType = ListType(
+                    data = data,
+                    type = ListType.Type.TV_SEARCH
+                );
                 MovieListPaggingFragment.newInstance(creditType)
             }
 
             2 -> {
-                var movieListType = MovieListType(data = data,type = MovieListType.Type.PERSON);
+                var movieListType =
+                    ListType(
+                        data = data,
+                        type = ListType.Type.PERSON_SEARCH
+                    );
                 PersonPagingFragment.newInstance(movieListType)
             }
 

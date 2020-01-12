@@ -1,7 +1,6 @@
 package com.example.moviestack.api.repo.person
 
-import com.example.moviestack.api.pojo.MovieCredits
-import com.example.moviestack.api.pojo.PersonImages
+import com.example.moviestack.api.pojo.*
 import com.example.moviestack.api.repo.movieInfo.MovieResponse
 import io.reactivex.Observable
 import retrofit2.Call
@@ -19,4 +18,6 @@ interface PersonRepositoryI {
     fun getMovieCredits(id : String) : Observable<PersonResponce>
 
     fun getTvCredits(id : String) : Observable<PersonResponce>
+
+    fun getPerson(page : String) : Observable<Person>
 }

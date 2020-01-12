@@ -16,4 +16,6 @@ interface MovieRepositoryI {
     fun getSimilars(id: String): Observable<MovieResponse>
 
     fun getSimilars(id: String,page :String): Observable<MovieResponse>
+
+
 }

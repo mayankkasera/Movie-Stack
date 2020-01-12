@@ -5,30 +5,30 @@ import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
 data class Credits(
-    @SerializedName("person")
-    var cast: List<Cast>,
+    @SerializedName("cast")
+    var cast: List<Cast> = listOf(),
     @SerializedName("crew")
-    var crew: List<Crew>,
+    var crew: List<Crew> = listOf(),
     @SerializedName("id")
-    var id: Int
+    var id: Int = 0
 ) {
     data class Cast(
         @SerializedName("cast_id")
-        var castId: Int,
+        var castId: Int = 0,
         @SerializedName("character")
-        var character: String,
+        var character: String = "",
         @SerializedName("credit_id")
-        var creditId: String,
+        var creditId: String = "",
         @SerializedName("gender")
-        var gender: Int,
+        var gender: Int = 0,
         @SerializedName("id")
-        var id: Int,
+        var id: Int = 0,
         @SerializedName("name")
-        var name: String,
+        var name: String = "",
         @SerializedName("order")
-        var order: Int,
+        var order: Int = 0,
         @SerializedName("profile_path")
-        var profilePath: String
+        var profilePath: String = ""
     ){
         fun getImage():String{
             return NetworkConstants.baseImageUrl+profilePath
@@ -37,20 +37,21 @@ data class Credits(
 
     data class Crew(
         @SerializedName("credit_id")
-        var creditId: String,
+        var creditId: String = "",
         @SerializedName("department")
-        var department: String,
+        var department: String = "",
         @SerializedName("gender")
-        var gender: Int,
+        var gender: Int = 0,
         @SerializedName("id")
-        var id: Int,
+        var id: Int = 0,
         @SerializedName("job")
-        var job: String,
+        var job: String = "",
         @SerializedName("name")
-        var name: String,
+        var name: String = "",
         @SerializedName("profile_path")
-        var profilePath: String
-    ){
+        var profilePath: String = ""
+    )
+    {
         fun getImage():String{
             return NetworkConstants.baseImageUrl+profilePath
         }

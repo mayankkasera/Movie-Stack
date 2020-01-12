@@ -5,7 +5,7 @@
 
     <data class="HomeFragmentBinding">
         <import type="android.view.View"/>
-        <import type="com.example.moviestack.ui.common.movielist.MovieListType"/>
+        <import type="com.example.moviestack.ui.common.ListType"/>
         <variable
             name="homeState"
             type="com.example.moviestack.ui.dashboard.home.HomeState"/>
@@ -62,7 +62,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-                  app:setMoreOnclick="@{MovieListType.Type.TRENDING_MOVIE}"
+                  app:setMoreOnclick="@{ListType.Type.TRENDING_MOVIE}"
                   android:id="@+id/tv_trending_movie_more"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-                  app:setMoreOnclick="@{MovieListType.Type.TRENDING_TV_SHOW}"
+                  app:setMoreOnclick="@{ListType.Type.TRENDING_TV_SHOW}"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_marginEnd="23dp"
@@ -176,7 +176,7 @@
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
 
-                  app:setMoreOnclick="@{MovieListType.Type.NOW_PLAYING}"
+                  app:setMoreOnclick="@{ListType.Type.NOW_PLAYING}"
 
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -233,7 +233,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-                  app:setMoreOnclick="@{MovieListType.Type.UPCOMING}"
+                  app:setMoreOnclick="@{ListType.Type.UPCOMING}"
 
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -290,7 +290,7 @@
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
 
-                  app:setMoreOnclick="@{MovieListType.Type.POPULAR}"
+                  app:setMoreOnclick="@{ListType.Type.POPULAR}"
 
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -347,7 +347,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-                  app:setMoreOnclick="@{MovieListType.Type.TOP_RATED}"
+                  app:setMoreOnclick="@{ListType.Type.TOP_RATED}"
 
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"

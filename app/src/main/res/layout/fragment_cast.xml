@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.common.person.simple.CreditFragment">
+        tools:context=".ui.common.person.simple.PersonSimpleFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cast"

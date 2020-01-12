@@ -14,28 +14,28 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
-import com.example.moviestack.ui.common.person.PersonType
+import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.utils.createFactory
 
 /**
  * A simple [Fragment] subclass.
  */
-class CreditFragment : Fragment() {
+class PersonSimpleFragment : Fragment() {
 
 
     private lateinit var mView: View
-    private lateinit var personType : PersonType
-    private lateinit var creditViewModel: CreditViewModel
+    private lateinit var listType: ListType
+    private lateinit var personSimpleViewModel: PersonSimpleViewModel
     private lateinit var binding: CastFragmentBinding
     private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(personType : PersonType): CreditFragment {
+        fun newInstance(listType: ListType): PersonSimpleFragment {
             val bundle = Bundle()
-            bundle.putParcelable(ID, personType)
+            bundle.putParcelable(ID, listType)
             val fragment =
-                CreditFragment()
+                PersonSimpleFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -53,27 +53,27 @@ class CreditFragment : Fragment() {
     }
 
     private fun loadData() {
-        when (personType.type) {
-            PersonType.Type.CAST -> creditViewModel.getCast(personType.data)
-            PersonType.Type.CREW -> creditViewModel.getCrew(personType.data)
+        when (listType.type) {
+            ListType.Type.CAST -> personSimpleViewModel.getCast(listType.data)
+            ListType.Type.CREW -> personSimpleViewModel.getCrew(listType.data)
         }
     }
 
 
     private fun init() {
-        personType = arguments?.getParcelable<PersonType>(
+        listType = arguments?.getParcelable<ListType>(
             ID
-        ) as PersonType
+        ) as ListType
         movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.root
-        val factory = CreditViewModel(
+        val factory = PersonSimpleViewModel(
             movieRepositoryI
         ).createFactory()
-        creditViewModel = ViewModelProvider(this, factory).get(CreditViewModel::class.java)
+        personSimpleViewModel = ViewModelProvider(this, factory).get(PersonSimpleViewModel::class.java)
     }
 
     private fun setObserver() {
-        creditViewModel.mutableLiveData.observe(this, Observer {
+        personSimpleViewModel.mutableLiveData.observe(this, Observer {
             binding.castState = it
             Log.i("dsnkjn","bcjsdb"+it.toString())
             binding.cast.adapter = it.personAdapter

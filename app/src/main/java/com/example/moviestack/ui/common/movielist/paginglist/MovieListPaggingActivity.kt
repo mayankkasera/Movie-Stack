@@ -4,20 +4,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.moviestack.R
-import com.example.moviestack.ui.common.movielist.MovieListType
+import com.example.moviestack.ui.common.ListType
 
 
-class MovieListActivity : AppCompatActivity() {
+class MovieListPaggingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
 
         var id = intent.getIntExtra("id",0)
-        val result: MovieListType.Type = intent.getSerializableExtra("type") as MovieListType.Type
+        val result: ListType.Type = intent.getSerializableExtra("type") as ListType.Type
 
         var creditType =
-            MovieListType(
+            ListType(
                 data = "${id}",
                 type = result
             );

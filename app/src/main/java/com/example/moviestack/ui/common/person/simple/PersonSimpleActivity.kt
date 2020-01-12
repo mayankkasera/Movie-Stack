@@ -1,12 +1,12 @@
-package com.example.moviestack.ui.common.person
+package com.example.moviestack.ui.common.person.simple
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.moviestack.R
-import com.example.moviestack.ui.common.person.simple.CreditFragment
+import com.example.moviestack.ui.common.ListType
 
-class PersonActivity : AppCompatActivity() {
+class PersonSimpleActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,12 +14,12 @@ class PersonActivity : AppCompatActivity() {
 
 
         var id = intent.getIntExtra("id",0)
-        var creditType = PersonType(
+        var creditType = ListType(
             data = "${id}",
-            type = PersonType.Type.CREW
+            type = ListType.Type.CREW
         );
         replace(
-            CreditFragment.newInstance(
+            PersonSimpleFragment.newInstance(
                 creditType
             )
         )
