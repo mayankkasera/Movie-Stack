@@ -7,20 +7,20 @@
         <import type="android.view.View"/>
         <variable
             name="castState"
-            type="com.example.moviestack.ui.common.credits.CreditSatate"/>
+            type="com.example.moviestack.ui.common.person.PersonSatate"/>
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.common.credits.simple.CreditFragment">
+        tools:context=".ui.common.person.simple.CreditFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/cast"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:adapter="@{castState.castAdapter}"
+            android:adapter="@{castState.personAdapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,11 +1,11 @@
-package com.example.moviestack.ui.common.credits
+package com.example.moviestack.ui.common.person
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 
 @Parcelize
-data class CreditType (
+data class PersonType (
     var data :String,
     var type :Type
 

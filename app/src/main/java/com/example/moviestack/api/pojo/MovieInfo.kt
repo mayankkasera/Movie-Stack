@@ -56,6 +56,14 @@ data class MovieInfo(
     @SerializedName("vote_count")
     var voteCount: Int = 0
 ) {
+
+    fun getLanguage():String{
+        return if(spokenLanguages.size>0)
+            spokenLanguages.get(0).name
+        else
+            ""
+    }
+
     data class Genre(
         @SerializedName("id")
         var id: Int = 0,

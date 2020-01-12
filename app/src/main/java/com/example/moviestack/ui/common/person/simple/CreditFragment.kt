@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.common.credits.simple
+package com.example.moviestack.ui.common.person.simple
 
 
 import android.os.Bundle
@@ -14,7 +14,7 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
-import com.example.moviestack.ui.common.credits.CreditType
+import com.example.moviestack.ui.common.person.PersonType
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -24,16 +24,16 @@ class CreditFragment : Fragment() {
 
 
     private lateinit var mView: View
-    private lateinit var creditType : CreditType
+    private lateinit var personType : PersonType
     private lateinit var creditViewModel: CreditViewModel
     private lateinit var binding: CastFragmentBinding
     private lateinit var movieRepositoryI: MovieRepositoryI
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(creditType : CreditType): CreditFragment {
+        fun newInstance(personType : PersonType): CreditFragment {
             val bundle = Bundle()
-            bundle.putParcelable(ID, creditType)
+            bundle.putParcelable(ID, personType)
             val fragment =
                 CreditFragment()
             fragment.arguments = bundle
@@ -53,17 +53,17 @@ class CreditFragment : Fragment() {
     }
 
     private fun loadData() {
-        when (creditType.type) {
-            CreditType.Type.CAST -> creditViewModel.getCast(creditType.data)
-            CreditType.Type.CREW -> creditViewModel.getCrew(creditType.data)
+        when (personType.type) {
+            PersonType.Type.CAST -> creditViewModel.getCast(personType.data)
+            PersonType.Type.CREW -> creditViewModel.getCrew(personType.data)
         }
     }
 
 
     private fun init() {
-        creditType = arguments?.getParcelable<CreditType>(
+        personType = arguments?.getParcelable<PersonType>(
             ID
-        ) as CreditType
+        ) as PersonType
         movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.root
         val factory = CreditViewModel(
@@ -76,7 +76,7 @@ class CreditFragment : Fragment() {
         creditViewModel.mutableLiveData.observe(this, Observer {
             binding.castState = it
             Log.i("dsnkjn","bcjsdb"+it.toString())
-            binding.cast.adapter = it.castAdapter
+            binding.cast.adapter = it.personAdapter
         })
     }
 

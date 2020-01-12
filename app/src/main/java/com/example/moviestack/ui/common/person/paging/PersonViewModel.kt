@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.common.credits.paging
+package com.example.moviestack.ui.common.person.paging
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -10,7 +10,6 @@ import com.example.moviestack.api.pojo.SmallItemList
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import com.example.moviestack.api.repo.search.searchpaging.SearchDataSource
 import com.example.moviestack.api.repo.search.searchpaging.SearchDataSourceFactory
-import com.example.moviestack.ui.common.credits.CreditSatate
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.disposables.CompositeDisposable
 

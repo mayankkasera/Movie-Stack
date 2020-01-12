@@ -444,7 +444,7 @@
                     android:id="@+id/originalLanguage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{infoState.movieInfo.spokenLanguages.get(0).name}"
+                    android:text="@{infoState.movieInfo.getLanguage()}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     android:layout_marginLeft="16dp"

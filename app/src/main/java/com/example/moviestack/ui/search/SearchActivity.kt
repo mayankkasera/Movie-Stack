@@ -6,6 +6,9 @@ import com.example.moviestack.R
 import com.example.moviestack.ui.persondetail.adapter.PersionViewPagerAdapter
 import com.example.moviestack.ui.search.adapter.SerchViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_person_detail.*
+import kotlinx.android.synthetic.main.activity_person_detail.tabLayout
+import kotlinx.android.synthetic.main.activity_person_detail.viewPager
+import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchActivity : AppCompatActivity() {
 
@@ -13,9 +16,14 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        viewPager.adapter = SerchViewPagerAdapter(supportFragmentManager,"")
         viewPager.offscreenPageLimit = 2
+        viewPager.adapter = SerchViewPagerAdapter(supportFragmentManager,edit.text.toString())
         tabLayout.setupWithViewPager(viewPager)
+
+        search.setOnClickListener{
+            viewPager.adapter = SerchViewPagerAdapter(supportFragmentManager,edit.text.toString())
+            tabLayout.setupWithViewPager(viewPager)
+        }
 
 
     }

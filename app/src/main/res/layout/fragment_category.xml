@@ -1,14 +1,326 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.dashboard.category.CategoryFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/category" />
+    <data class="SearchFragmentDataBinding">
 
-</FrameLayout>
+    </data>
+
+   <ScrollView
+       android:background="@color/background"
+
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:fillViewport="true">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:background="@color/background"
+           android:paddingBottom="20dp">
+
+
+           <LinearLayout
+               android:id="@+id/linearLayout"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="24dp"
+               android:layout_marginEnd="16dp"
+               android:background="@drawable/search_text_background"
+               android:gravity="center_vertical"
+               android:padding="8dp"
+               android:text="TextView"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.0"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/textView7">
+
+               <ImageView
+                   android:layout_width="32dp"
+                   android:layout_height="32dp"
+                   android:layout_marginLeft="10dp"
+                   android:src="@drawable/search"
+                   android:tint="@color/light_gray" />
+
+
+               <TextView
+                   android:id="@+id/textView5"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="16dp"
+                   android:text="Movie, Tv Show or Person"
+                   android:textColor="@color/light_gray"
+                   android:textSize="16sp" />
+
+
+           </LinearLayout>
+
+           <TextView
+               android:id="@+id/textView7"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="24dp"
+               android:layout_marginEnd="16dp"
+               android:fontFamily="@font/myfont"
+               android:gravity="center"
+               android:text="Discover"
+               android:textColor="@color/white"
+               android:textSize="32sp"
+               android:textStyle="bold"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/textView8"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="24dp"
+               android:layout_marginEnd="16dp"
+               android:fontFamily="@font/myfont"
+               android:text="For You"
+               android:textColor="@color/white"
+               android:textSize="24sp"
+               android:textStyle="bold"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+
+           <androidx.cardview.widget.CardView
+               app:cardCornerRadius="10dp"
+               android:id="@+id/cardView3"
+               android:layout_width="0dp"
+               app:layout_constraintWidth_percent="0.44"
+               android:layout_height="100dp"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="16dp"
+               android:src="@drawable/movie"
+               app:layout_constraintEnd_toStartOf="@+id/cardView2"
+               app:layout_constraintHorizontal_bias="0.5"
+               app:layout_constraintHorizontal_chainStyle="spread_inside"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+
+
+                   <ImageView
+                       android:scaleType="centerCrop"
+                       android:id="@+id/imageView6"
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+                       android:src="@drawable/trailer"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+
+                   <FrameLayout
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+                       android:background="@drawable/slider_background"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="10dp"
+                       android:layout_marginEnd="10dp"
+                       android:fontFamily="@font/myfont"
+                       android:gravity="center"
+                       android:text="Trailer"
+                       android:textColor="@color/white"
+                       android:textSize="24sp"
+                       app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent" />
+
+               </androidx.constraintlayout.widget.ConstraintLayout>
+
+           </androidx.cardview.widget.CardView>
+
+
+           <androidx.cardview.widget.CardView
+               app:cardCornerRadius="10dp"
+               android:id="@+id/cardView2"
+               app:layout_constraintWidth_percent="0.44"
+               android:layout_width="0dp"
+               android:layout_height="100dp"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="16dp"
+               android:src="@drawable/movie"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintHorizontal_bias="0.5"
+               app:layout_constraintStart_toEndOf="@+id/cardView3"
+               app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:scaleType="centerCrop"
+                       android:id="@+id/imageView7"
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+                       android:src="@drawable/people"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+
+                   <FrameLayout
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+                       android:background="@drawable/slider_background"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="10dp"
+                       android:layout_marginEnd="10dp"
+                       android:fontFamily="@font/myfont"
+                       android:gravity="center"
+                       android:text="People"
+                       android:textColor="@color/white"
+                       android:textSize="24sp"
+
+                       app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent" />
+
+
+               </androidx.constraintlayout.widget.ConstraintLayout>
+
+           </androidx.cardview.widget.CardView>
+
+
+           <androidx.cardview.widget.CardView
+               app:cardCornerRadius="10dp"
+
+               android:id="@+id/cardView"
+               android:layout_width="0dp"
+               android:layout_height="180dp"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="16dp"
+               android:scaleType="centerCrop"
+               android:src="@drawable/movie"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:id="@+id/imageView8"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:scaleType="centerCrop"
+                       android:src="@drawable/movie" />
+
+                   <FrameLayout
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+                       android:background="@drawable/slider_background"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+
+
+                   <TextView
+                       android:fontFamily="@font/myfont"
+                       android:gravity="center"
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="10dp"
+                       android:layout_marginEnd="10dp"
+                       android:text="Movie"
+                       android:textColor="@color/white"
+                       android:textSize="24sp"
+                       android:layout_marginBottom="12dp"
+                       app:layout_constraintBottom_toBottomOf="@+id/imageView8"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent" />
+
+
+               </androidx.constraintlayout.widget.ConstraintLayout>
+           </androidx.cardview.widget.CardView>
+
+
+           <androidx.cardview.widget.CardView
+               app:cardCornerRadius="10dp"
+               android:layout_width="0dp"
+               android:layout_height="180dp"
+               android:layout_marginStart="16dp"
+               android:layout_marginTop="16dp"
+               android:layout_marginEnd="16dp"
+               android:scaleType="centerCrop"
+               android:src="@drawable/movie"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent">
+
+                   <ImageView
+                       android:id="@+id/imageView9"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:scaleType="centerCrop"
+                       android:src="@drawable/tv" />
+
+                   <FrameLayout
+                       android:layout_width="0dp"
+                       android:layout_height="0dp"
+                       android:background="@drawable/slider_background"
+                       app:layout_constraintBottom_toBottomOf="parent"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toTopOf="parent" />
+
+                   <TextView
+                       android:layout_width="0dp"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="10dp"
+                       android:layout_marginEnd="10dp"
+                       android:fontFamily="@font/myfont"
+                       android:gravity="center"
+                       android:text="Tv Show"
+                       android:textColor="@color/white"
+                       android:textSize="24sp"
+                       android:layout_marginBottom="12dp"
+
+                       app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent" />
+
+
+               </androidx.constraintlayout.widget.ConstraintLayout>
+           </androidx.cardview.widget.CardView>
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+   </ScrollView>
+</layout>

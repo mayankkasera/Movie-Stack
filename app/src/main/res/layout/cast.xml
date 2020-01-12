@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data class="CastDataBinding">
-        <import type="com.example.moviestack.ui.common.credits.CreditType"/>
+        <import type="com.example.moviestack.ui.common.person.PersonType"/>
         <variable
             name="cast"
             type="com.example.moviestack.api.pojo.Credits.Cast"/>
@@ -19,13 +19,13 @@
 
         <variable
             name="type"
-            type="com.example.moviestack.ui.common.credits.CreditType.Type"/>
+            type="com.example.moviestack.ui.common.person.PersonType.Type"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        app:setCreditTitle="@{type==CreditType.Type.CAST?cast.name:crew.name}"
-        app:setCreditImage="@{type==CreditType.Type.CAST?cast.getImage():crew.getImage()}"
-        app:setCreditItemOnlick="@{type==CreditType.Type.CAST?String.valueOf(cast.id):String.valueOf(crew.id)}"
+        app:setCreditTitle="@{type==PersonType.Type.CAST?cast.name:crew.name}"
+        app:setCreditImage="@{type==PersonType.Type.CAST?cast.getImage():crew.getImage()}"
+        app:setCreditItemOnlick="@{type==PersonType.Type.CAST?String.valueOf(cast.id):String.valueOf(crew.id)}"
         android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -37,7 +37,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/user"
-            app:setImageResource="@{type==CreditType.Type.CAST?cast.getImage():crew.getImage()}"
+            app:setImageResource="@{type==PersonType.Type.CAST?cast.getImage():crew.getImage()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:text="@{type==CreditType.Type.CAST?cast.name:crew.name}"
+            android:text="@{type==PersonType.Type.CAST?cast.name:crew.name}"
             android:textSize="20dp"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,7 @@
             android:layout_marginEnd="16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{type==CreditType.Type.CAST?cast.character:crew.department}"
+            android:text="@{type==PersonType.Type.CAST?cast.character:crew.department}"
             android:textColor="@color/light_gray"
             android:textSize="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/circleImageView"

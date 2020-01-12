@@ -1,5 +1,6 @@
 package com.example.moviestack.api.pojo
 
+import android.util.Log
 import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
@@ -42,13 +43,10 @@ data class Result(
     var voteCount: Int = 0
 ){
     fun getImage() : String{
-
-        if(first_air_date.equals("")){
+        if(posterPath!=null&&posterPath.equals(""))
             return NetworkConstants.baseImageUrl+profile_path
-        }
-        else{
+        else
             return NetworkConstants.baseImageUrl+posterPath
-        }
     }
 
     fun getYear():String{

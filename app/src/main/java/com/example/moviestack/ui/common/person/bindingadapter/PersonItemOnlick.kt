@@ -1,14 +1,12 @@
-package com.example.moviestack.ui.common.credits.bindingadapter
+package com.example.moviestack.ui.common.person.bindingadapter
 
 import android.content.Intent
 import android.util.Log
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.ui.moviedetail.MovieDetailActivity
 import com.example.moviestack.ui.persondetail.PersonDetailActivity
 
-object CreditItemOnlick {
+object PersonItemOnlick {
 
     @JvmStatic
     @BindingAdapter("setCreditItemOnlick","setCreditTitle","setCreditImage")

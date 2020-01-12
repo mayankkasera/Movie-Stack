@@ -1,16 +1,16 @@
 package com.example.moviestack.ui.dashboard
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.moviestack.R
-import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.ui.dashboard.category.CategoryFragment
+import com.example.moviestack.ui.dashboard.search.SearchFragment
 import com.example.moviestack.ui.dashboard.featuredlists.FeaturedListsFragment
 import com.example.moviestack.ui.dashboard.home.HomeFragment
 import com.example.moviestack.ui.dashboard.papularpeople.PapularPeopleFragment
+import com.example.moviestack.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -25,7 +25,10 @@ class MainActivity : AppCompatActivity() {
         initBottomNavigation()
         replace(HomeFragment())
 
-        Log.i("jhdvs", NetworkHelper().gerRetrofit().toString())
+        search.setOnClickListener{
+              var intent = Intent(this@MainActivity,SearchActivity::class.java)
+              startActivity(intent)
+        }
 
     }
 
@@ -36,8 +39,8 @@ class MainActivity : AppCompatActivity() {
                     replace(HomeFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
-                R.id.category -> {
-                    replace(CategoryFragment())
+                R.id.search -> {
+                    replace(SearchFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.featured_lists -> {

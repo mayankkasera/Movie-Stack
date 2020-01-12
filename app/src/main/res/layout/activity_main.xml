@@ -45,7 +45,7 @@
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/search"
                     android:layout_width="32dp"
                     android:layout_height="32dp"

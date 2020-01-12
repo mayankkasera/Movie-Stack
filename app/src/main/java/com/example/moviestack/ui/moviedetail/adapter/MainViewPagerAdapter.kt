@@ -3,8 +3,8 @@ package com.example.qrcode.ui.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
-import com.example.moviestack.ui.common.credits.simple.CreditFragment
-import com.example.moviestack.ui.common.credits.CreditType
+import com.example.moviestack.ui.common.person.simple.CreditFragment
+import com.example.moviestack.ui.common.person.PersonType
 import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.review.ReviewFragment
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
@@ -19,7 +19,7 @@ class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStateP
             }
 
             1 -> {
-                var creditType = CreditType(data = id,type = CreditType.Type.CAST);
+                var creditType = PersonType(data = id,type = PersonType.Type.CAST);
                 CreditFragment.newInstance(creditType)
             }
 

@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.common
+package com.example.moviestack.ui.common.movielist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

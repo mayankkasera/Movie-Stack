@@ -1,6 +1,5 @@
-package com.example.moviestack.ui.common.credits.adapter
+package com.example.moviestack.ui.common.person.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -8,16 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.api.pojo.Credits
 import com.example.moviestack.databinding.CastDataBinding
-import com.example.moviestack.ui.common.credits.CreditType
+import com.example.moviestack.ui.common.person.PersonType
 
-class CastAdapter(private val credits: Credits,private val type: CreditType.Type) : RecyclerView.Adapter<CastAdapter.CastViewHolder>() {
+class PersonAdapter(private val credits: Credits, private val type: PersonType.Type) : RecyclerView.Adapter<PersonAdapter.CastViewHolder>() {
 
 
 
     inner class CastViewHolder(val castDataBinding: CastDataBinding) : RecyclerView.ViewHolder(castDataBinding.root) {
 
         fun bind(result: Credits,i: Int) {
-            if(type==CreditType.Type.CREW){
+            if(type==PersonType.Type.CREW){
                 this.castDataBinding.crew = credits.crew[i]
                 this.castDataBinding.cast = Credits.Cast(1,"","",1,1,"",1,"")
             }
@@ -40,9 +39,9 @@ class CastAdapter(private val credits: Credits,private val type: CreditType.Type
 
     override fun getItemCount(): Int {
         return when(type){
-            CreditType.Type.CAST -> credits.cast.size
+            PersonType.Type.CAST -> credits.cast.size
 
-            CreditType.Type.CREW -> credits.crew.size
+            PersonType.Type.CREW -> credits.crew.size
         }
 
     }

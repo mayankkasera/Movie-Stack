@@ -12,7 +12,7 @@
 
         <variable
             name="adapter"
-            type="com.example.moviestack.ui.common.credits.adapter.PersonPagingAdapter" />
+            type="com.example.moviestack.ui.common.person.adapter.PersonPagingAdapter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

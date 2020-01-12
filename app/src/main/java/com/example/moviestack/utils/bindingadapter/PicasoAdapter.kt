@@ -10,7 +10,8 @@ object PicasoAdapter{
     @JvmStatic
     @BindingAdapter("setImageResource")
     fun setImageResource (imageView : AppCompatImageView,url : String?){
-        Picasso.get().load(url).into(imageView)
+        if(url!=null&&!url.equals(""))
+         Picasso.get().load(url).into(imageView)
     }
 
     @JvmStatic

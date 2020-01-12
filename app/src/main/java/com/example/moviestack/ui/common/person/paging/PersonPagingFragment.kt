@@ -1,4 +1,4 @@
-package com.example.moviestack.ui.common.credits.paging
+package com.example.moviestack.ui.common.person.paging
 
 
 import android.os.Bundle
@@ -12,16 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRepository
 import com.example.moviestack.databinding.PersonPagingFragmentBinding
-import com.example.moviestack.ui.common.credits.CreditType
-import com.example.moviestack.ui.common.credits.adapter.PersonPagingAdapter
-import com.example.moviestack.ui.common.credits.simple.CreditFragment
+import com.example.moviestack.ui.common.person.adapter.PersonPagingAdapter
 import com.example.moviestack.ui.common.movielist.MovieListType
-import com.example.moviestack.ui.common.movielist.adapter.MovieListPagingAdapter
-import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingViewModel
 import com.example.moviestack.utils.createFactory
 
 /**
