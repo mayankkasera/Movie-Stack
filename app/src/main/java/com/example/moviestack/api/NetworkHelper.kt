@@ -3,7 +3,7 @@ package com.example.moviestack.api
 import com.example.moviestack.api.repo.discover.DiscoverRequests
 import com.example.moviestack.api.repo.movieInfo.MovieRequests
 import com.example.moviestack.api.repo.person.PersonRequests
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRequests
+import com.example.moviestack.api.repo.movie.MovieItemRequests
 import com.example.moviestack.utils.App
 import retrofit2.Retrofit
 import javax.inject.Inject
@@ -26,8 +26,8 @@ class NetworkHelper {
         App.networkComponent()?.inject(this)
     }
 
-    fun gerRetrofit(): SmallItemRequests? {
-        return retrofit.create(SmallItemRequests::class.java)
+    fun gerRetrofit(): MovieItemRequests? {
+        return retrofit.create(MovieItemRequests::class.java)
     }
 
     fun gerMovieRequests(): MovieRequests? {

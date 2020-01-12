@@ -12,6 +12,11 @@ import com.example.moviestack.api.repo.person.PersonRequests
 import com.example.moviestack.api.repo.search.SearchRepository
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import com.example.moviestack.api.repo.search.SearchRequests
+import com.example.moviestack.api.repo.trending.TrendingRepository
+import com.example.moviestack.api.repo.trending.TrendingRequest
+import com.example.moviestack.api.repo.tvshow.TvShowRepository
+import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
+import com.example.moviestack.api.repo.tvshow.TvShowRequests
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -46,4 +51,15 @@ class DataModule {
         return SearchRepository(searchRequests)
     }
 
+    @Provides
+    @Singleton
+    fun provideTvShowRepository(tvShowRequests: TvShowRequests) : TvShowRepositoryI {
+        return TvShowRepository(tvShowRequests)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTrendingRepository(trendingRequest: TrendingRequest) : TrendingRepository {
+        return TrendingRepository(trendingRequest)
+    }
 }

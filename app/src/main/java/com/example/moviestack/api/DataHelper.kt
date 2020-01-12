@@ -4,6 +4,8 @@ import com.example.moviestack.api.repo.discover.DiscoverRepositoryI
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.search.SearchRepositoryI
+import com.example.moviestack.api.repo.trending.TrendingRepository
+import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
 import com.example.moviestack.utils.App
 import javax.inject.Inject
 
@@ -24,5 +26,11 @@ class DataHelper {
 
     @Inject
     lateinit var searchRepositoryI: SearchRepositoryI
+
+    @Inject
+    lateinit var tvShowRepositoryI: TvShowRepositoryI
+
+    @Inject
+    lateinit var trendingRepositoryI: TrendingRepository
 
 }

@@ -4,6 +4,8 @@ import com.example.moviestack.api.repo.discover.DiscoverRequests
 import com.example.moviestack.api.repo.movieInfo.MovieRequests
 import com.example.moviestack.api.repo.person.PersonRequests
 import com.example.moviestack.api.repo.search.SearchRequests
+import com.example.moviestack.api.repo.trending.TrendingRequest
+import com.example.moviestack.api.repo.tvshow.TvShowRequests
 import com.example.moviestack.di.intercepter.AuthorizationInterceptor
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
@@ -60,6 +62,18 @@ class NetworkModule {
     @Singleton
     fun provideSearchRequest(retrofit: Retrofit) : SearchRequests {
         return retrofit.create(SearchRequests::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTvShowRequest(retrofit: Retrofit) : TvShowRequests {
+        return retrofit.create(TvShowRequests::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideTrendingRequest(retrofit: Retrofit) : TrendingRequest {
+        return retrofit.create(TrendingRequest::class.java)
     }
 
 

@@ -3,13 +3,15 @@ package com.example.moviestack.ui.dashboard.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.api.repo.trending.TrendingRepositoryI
 import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import java.util.*
 
-class HomeViewModel(var smallItemRepositoryI: SmallItemRepositoryI) : ViewModel() {
+class HomeViewModel(var movieItemRepositoryI: MovieItemRepositoryI,
+                    var trendingRepositoryI: TrendingRepositoryI) : ViewModel() {
 
     var mutableLiveData: MutableLiveData<HomeState> = MutableLiveData()
     private var compositeDisposable = CompositeDisposable()
@@ -25,12 +27,12 @@ class HomeViewModel(var smallItemRepositoryI: SmallItemRepositoryI) : ViewModel(
         compositeDisposable.add(
             Observable.merge(
                 Arrays.asList(
-                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_MOVIES),
-                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_TV_SHOW),
-                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.NOW_PLAYING),
-                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.UPCOMING),
-                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.POPULAR),
-                    smallItemRepositoryI.getSmallItemsList(SmallItemList.Type.TOP_RATED)
+                    trendingRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_MOVIES),
+                    trendingRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_TV_SHOW),
+                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.NOW_PLAYING),
+                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.UPCOMING),
+                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.POPULAR),
+                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.TOP_RATED)
                 )
             ).subscribe({
 

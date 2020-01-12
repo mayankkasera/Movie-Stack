@@ -1,24 +1,24 @@
-package com.example.moviestack.api.repo.smallitemlist.trendingmovie
+package com.example.moviestack.api.repo.movie.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.example.moviestack.api.pojo.Result
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import io.reactivex.disposables.CompositeDisposable
 
-class MoreItemDataSourceFactory(var compositeDisposable: CompositeDisposable,
-                                var smallItemRepositoryI: SmallItemRepositoryI,
-                                var type : SmallItemList.Type
+class MovieDataSourceFactory(var compositeDisposable: CompositeDisposable,
+                             var movieItemRepositoryI: MovieItemRepositoryI,
+                             var type : SmallItemList.Type
 ): DataSource.Factory<Int, Result>() {
 
-    val moviesLiveDataSource =  MutableLiveData<MoreItemDataSource>()
+    val moviesLiveDataSource =  MutableLiveData<MovieDataSource>()
 
     override fun create(): DataSource<Int, Result> {
         val trendingMoviesDataSource =
-            MoreItemDataSource(
+            MovieDataSource(
                 compositeDisposable,
-                smallItemRepositoryI,
+                movieItemRepositoryI,
                 type
             )
         moviesLiveDataSource.postValue(trendingMoviesDataSource)

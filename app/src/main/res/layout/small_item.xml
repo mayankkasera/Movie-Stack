@@ -6,7 +6,7 @@
     <data class ="TrendingDataBinding">
         <variable
             name="trendingModel"
-            type="com.example.moviestack.api.pojo.SmallItemList.Result"/>
+            type="com.example.moviestack.api.pojo.Result"/>
        <import type="com.example.moviestack.utils.NetworkConstants"/>
     </data>
 
@@ -42,7 +42,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:setImageResource="@{trendingModel.getPoster()}" />
+                    app:setImageResource="@{trendingModel.getImage()}" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -71,7 +71,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:maxLines="1"
-            android:text="@{trendingModel.hasTitle()?trendingModel.title:trendingModel.originalName}"
+            android:text="@{trendingModel.hasTitle()?trendingModel.title:trendingModel.originalTitle}"
             android:ellipsize="end"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

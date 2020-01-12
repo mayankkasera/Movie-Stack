@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="SearchFragmentDataBinding">
-
+        <import type="com.example.moviestack.ui.common.movielist.MovieListType"/>
     </data>
 
    <ScrollView
        android:background="@color/background"
-
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:fillViewport="true">
 
        <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_marginBottom="20dp"
            android:layout_width="match_parent"
            android:layout_height="match_parent"
            android:background="@color/background"
@@ -212,10 +212,10 @@
 
            <androidx.cardview.widget.CardView
                app:cardCornerRadius="10dp"
-
+               app:setSearchOnclick="@{MovieListType.Type.TRENDING_MOVIE}"
                android:id="@+id/cardView"
                android:layout_width="0dp"
-               android:layout_height="180dp"
+               android:layout_height="160dp"
                android:layout_marginStart="16dp"
                android:layout_marginTop="16dp"
                android:layout_marginEnd="16dp"
@@ -267,9 +267,10 @@
 
 
            <androidx.cardview.widget.CardView
+               app:setSearchOnclick="@{MovieListType.Type.TRENDING_TV_SHOW}"
                app:cardCornerRadius="10dp"
                android:layout_width="0dp"
-               android:layout_height="180dp"
+               android:layout_height="160dp"
                android:layout_marginStart="16dp"
                android:layout_marginTop="16dp"
                android:layout_marginEnd="16dp"

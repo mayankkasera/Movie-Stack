@@ -1,4 +1,4 @@
-package com.example.moviestack.api.repo.smallitemlist
+package com.example.moviestack.api.repo.movie
 
 import android.util.Log
 import com.example.moviestack.api.pojo.MovieList
@@ -8,7 +8,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SmallItemRepository(private val smallItemRequests : SmallItemRequests?) :SmallItemRepositoryI{
+class MovieItemRepository(private val movieItemRequests : MovieItemRequests?) :MovieItemRepositoryI{
 
 
      override fun getSmallItemsList(type : SmallItemList.Type): Observable<SmallItemList> {
@@ -17,13 +17,11 @@ class SmallItemRepository(private val smallItemRequests : SmallItemRequests?) :S
             var call : Call<SmallItemList>?
 
             when(type){
-                SmallItemList.Type.TRENDING_MOVIES -> call = smallItemRequests?.getTrendingMoviess()
-                SmallItemList.Type.TRENDING_TV_SHOW -> call = smallItemRequests?.getTrendingTvShow()
-                SmallItemList.Type.NOW_PLAYING -> call = smallItemRequests?.getNowPlaying()
-                SmallItemList.Type.UPCOMING -> call = smallItemRequests?.getUpcoming()
-                SmallItemList.Type.POPULAR -> call = smallItemRequests?.getPopular()
-                SmallItemList.Type.TOP_RATED -> call = smallItemRequests?.getTopRated()
-                else -> call = smallItemRequests?.getTopRated()
+                SmallItemList.Type.NOW_PLAYING -> call = movieItemRequests?.getNowPlaying()
+                SmallItemList.Type.UPCOMING -> call = movieItemRequests?.getUpcoming()
+                SmallItemList.Type.POPULAR -> call = movieItemRequests?.getPopular()
+                SmallItemList.Type.TOP_RATED -> call = movieItemRequests?.getTopRated()
+                else -> call = movieItemRequests?.getTopRated()
             }
 
             call?.enqueue(object : Callback<SmallItemList> {
@@ -53,13 +51,12 @@ class SmallItemRepository(private val smallItemRequests : SmallItemRequests?) :S
             var call : Call<MovieList>?
 
             when(type){
-                SmallItemList.Type.TRENDING_MOVIES -> call = smallItemRequests?.getTrendingMovies(page)
-                SmallItemList.Type.TRENDING_TV_SHOW -> call = smallItemRequests?.getTrendingTvShow(page)
-                SmallItemList.Type.NOW_PLAYING -> call = smallItemRequests?.getNowPlaying(page)
-                SmallItemList.Type.UPCOMING -> call = smallItemRequests?.getUpcoming(page)
-                SmallItemList.Type.POPULAR -> call = smallItemRequests?.getPopular(page)
-                SmallItemList.Type.TOP_RATED -> call = smallItemRequests?.getTopRated(page)
-                 else -> call = smallItemRequests?.getTrendingMovies(page)
+
+                SmallItemList.Type.NOW_PLAYING -> call = movieItemRequests?.getNowPlaying(page)
+                SmallItemList.Type.UPCOMING -> call = movieItemRequests?.getUpcoming(page)
+                SmallItemList.Type.POPULAR -> call = movieItemRequests?.getPopular(page)
+                SmallItemList.Type.TOP_RATED -> call = movieItemRequests?.getTopRated(page)
+                 else -> call = movieItemRequests?.getNowPlaying(page)
             }
 
             call?.enqueue(object : Callback<MovieList>  {

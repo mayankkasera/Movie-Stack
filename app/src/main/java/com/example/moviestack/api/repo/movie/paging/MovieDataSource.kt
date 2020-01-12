@@ -1,20 +1,20 @@
-package com.example.moviestack.api.repo.smallitemlist.trendingmovie
+package com.example.moviestack.api.repo.movie.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.example.moviestack.api.pojo.MovieList
 import com.example.moviestack.api.pojo.Result
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MoreItemDataSource(
+class MovieDataSource(
     var compositeDisposable: CompositeDisposable,
-    var smallItemRepositoryI: SmallItemRepositoryI,
+    var movieItemRepositoryI: MovieItemRepositoryI,
     var type : SmallItemList.Type
 ) : PageKeyedDataSource<Int, Result>() {
 
@@ -34,44 +34,9 @@ class MoreItemDataSource(
 
         var observable : Observable<MovieList>
 
-        observable =   when(type){
-            SmallItemList.Type.TRENDING_MOVIES -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_MOVIES
-            )
-
-            SmallItemList.Type.TRENDING_TV_SHOW -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_TV_SHOW
-            )
-
-            SmallItemList.Type.NOW_PLAYING -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.NOW_PLAYING
-            )
-
-            SmallItemList.Type.UPCOMING -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.UPCOMING
-            )
-
-            SmallItemList.Type.POPULAR -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.POPULAR
-            )
-
-            SmallItemList.Type.TOP_RATED -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TOP_RATED
-            )
-
-            else -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_MOVIES
-            )
-
-
-        }
+        observable =   movieItemRepositoryI.getMoviesList(
+            "$FIRST_PAGE",
+            type)
 
         compositeDisposable.add(
 
@@ -102,19 +67,9 @@ class MoreItemDataSource(
 
         var observable : Observable<MovieList>
 
-        observable =   when(type){
-            SmallItemList.Type.TRENDING_MOVIES -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_MOVIES
-            )
-
-            else -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_MOVIES
-            )
-
-
-        }
+        observable =   movieItemRepositoryI.getMoviesList(
+            "$FIRST_PAGE",
+            type)
 
         compositeDisposable.add(
                 observable
@@ -145,19 +100,9 @@ class MoreItemDataSource(
 
         var observable : Observable<MovieList>
 
-        observable =   when(type){
-            SmallItemList.Type.TRENDING_MOVIES -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_MOVIES
-            )
-
-            else -> smallItemRepositoryI.getMoviesList(
-                "$FIRST_PAGE",
-                SmallItemList.Type.TRENDING_MOVIES
-            )
-
-
-        }
+        observable =   movieItemRepositoryI.getMoviesList(
+            "$FIRST_PAGE",
+            type)
 
         compositeDisposable.add(
             observable

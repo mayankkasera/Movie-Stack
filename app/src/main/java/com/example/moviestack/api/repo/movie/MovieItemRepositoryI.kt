@@ -1,10 +1,10 @@
-package com.example.moviestack.api.repo.smallitemlist
+package com.example.moviestack.api.repo.movie
 
 import com.example.moviestack.api.pojo.MovieList
 import com.example.moviestack.api.pojo.SmallItemList
 import io.reactivex.Observable
 
-interface SmallItemRepositoryI {
+interface MovieItemRepositoryI {
 
     fun getSmallItemsList(type : SmallItemList.Type) : Observable<SmallItemList>
 

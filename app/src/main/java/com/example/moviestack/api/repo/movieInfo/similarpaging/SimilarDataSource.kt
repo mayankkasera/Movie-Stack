@@ -5,7 +5,6 @@ import androidx.paging.PageKeyedDataSource
 import com.example.moviestack.api.pojo.MovieList
 import com.example.moviestack.api.pojo.Result
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
-import com.example.moviestack.api.repo.smallitemlist.trendingmovie.MoreItemDataSource
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

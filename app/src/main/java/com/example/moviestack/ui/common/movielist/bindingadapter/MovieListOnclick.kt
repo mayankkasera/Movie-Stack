@@ -4,14 +4,14 @@ import android.content.Intent
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.api.pojo.Result
 import com.example.moviestack.ui.moviedetail.MovieDetailActivity
 import com.squareup.picasso.Picasso
 
 object MovieListOnclick {
     @JvmStatic
     @BindingAdapter("setMovieListOnclick")
-    fun setMovieListOnclick (layout : ConstraintLayout, result : SmallItemList.Result?){
+    fun setMovieListOnclick (layout : ConstraintLayout, result : Result?){
         layout.setOnClickListener{
             val intent = Intent(layout.context, MovieDetailActivity::class.java)
             intent.putExtra("id", "${result?.id}")

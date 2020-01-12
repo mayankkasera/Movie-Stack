@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.example.moviestack.api.pojo.Result
-import com.example.moviestack.api.pojo.Search
 import com.example.moviestack.api.pojo.SmallItemList
 import com.example.moviestack.api.repo.discover.DiscoverRepositoryI
 import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
@@ -17,9 +16,12 @@ import com.example.moviestack.api.repo.movieInfo.similarpaging.SimilarDataSource
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import com.example.moviestack.api.repo.search.searchpaging.SearchDataSource
 import com.example.moviestack.api.repo.search.searchpaging.SearchDataSourceFactory
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRepositoryI
-import com.example.moviestack.api.repo.smallitemlist.trendingmovie.MoreItemDataSource
-import com.example.moviestack.api.repo.smallitemlist.trendingmovie.MoreItemDataSourceFactory
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.api.repo.movie.paging.MovieDataSource
+import com.example.moviestack.api.repo.movie.paging.MovieDataSourceFactory
+import com.example.moviestack.api.repo.trending.TrendingRepositoryI
+import com.example.moviestack.api.repo.trending.paging.TrendingItemDataSource
+import com.example.moviestack.api.repo.trending.paging.TrendingItemDataSourceFactory
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.disposables.CompositeDisposable
 
@@ -35,16 +37,29 @@ class MovieListPaggingViewModel() : ViewModel() {
         .setPageSize(20)
         .build()
 
-    fun getMoviesData(smallItemRepositoryI: SmallItemRepositoryI, type : SmallItemList.Type){
-        var  trendingMoviesDataSourceFactory  =
-            MoreItemDataSourceFactory(
+
+    fun getTrendingData(trendingRepositoryI: TrendingRepositoryI, type : SmallItemList.Type){
+        var  trendingItemDataSourceFactory  =
+            TrendingItemDataSourceFactory(
                 compositeDisposable,
-                smallItemRepositoryI,
+                trendingRepositoryI,
+                type
+            )
+        moviePagedList = LivePagedListBuilder(trendingItemDataSourceFactory, config).build()
+        state = Transformations.switchMap<TrendingItemDataSource, MovieListState>(
+            trendingItemDataSourceFactory.moviesLiveDataSource, TrendingItemDataSource::mutableLiveData)
+    }
+
+    fun getMoviesData(movieItemRepositoryI: MovieItemRepositoryI, type : SmallItemList.Type){
+        var  trendingMoviesDataSourceFactory  =
+            MovieDataSourceFactory(
+                compositeDisposable,
+                movieItemRepositoryI,
                 type
             )
         moviePagedList = LivePagedListBuilder(trendingMoviesDataSourceFactory, config).build()
-        state = Transformations.switchMap<MoreItemDataSource, MovieListState>(
-                trendingMoviesDataSourceFactory.moviesLiveDataSource, MoreItemDataSource::mutableLiveData)
+        state = Transformations.switchMap<MovieDataSource, MovieListState>(
+                trendingMoviesDataSourceFactory.moviesLiveDataSource, MovieDataSource::mutableLiveData)
     }
 
     fun getSimilarData(id : String, movieRepositoryI: MovieRepositoryI){

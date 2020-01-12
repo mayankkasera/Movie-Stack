@@ -14,7 +14,7 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.smallitemlist.SmallItemRepository
+import com.example.moviestack.api.repo.movie.MovieItemRepository
 import com.example.moviestack.databinding.MovieLisPagingFragmentBinding
 import com.example.moviestack.ui.common.movielist.MovieListType
 import com.example.moviestack.ui.common.movielist.adapter.MovieListPagingAdapter
@@ -54,12 +54,12 @@ class MovieListPaggingFragment : Fragment() {
 
     private fun loadData() {
         when (movieListType.type) {
-            MovieListType.Type.TRENDING_MOVIE -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TRENDING_MOVIES)
-            MovieListType.Type.TRENDING_TV_SHOW -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TRENDING_TV_SHOW)
-            MovieListType.Type.NOW_PLAYING -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.NOW_PLAYING)
-            MovieListType.Type.UPCOMING -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.UPCOMING)
-            MovieListType.Type.POPULAR -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.POPULAR)
-            MovieListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(SmallItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TOP_RATED)
+            MovieListType.Type.TRENDING_MOVIE -> movieListPaggingViewModel.getTrendingData(DataHelper().trendingRepositoryI, SmallItemList.Type.TRENDING_MOVIES)
+            MovieListType.Type.TRENDING_TV_SHOW -> movieListPaggingViewModel.getTrendingData(DataHelper().trendingRepositoryI, SmallItemList.Type.TRENDING_TV_SHOW)
+            MovieListType.Type.NOW_PLAYING -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.NOW_PLAYING)
+            MovieListType.Type.UPCOMING -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.UPCOMING)
+            MovieListType.Type.POPULAR -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.POPULAR)
+            MovieListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TOP_RATED)
             MovieListType.Type.SMILER -> movieListPaggingViewModel.getSimilarData(movieListType.data, DataHelper().movieRepositoryI)
             MovieListType.Type.GENRE -> movieListPaggingViewModel.getGenreData(movieListType.data, DataHelper().discoverRepositoryI)
             MovieListType.Type.MOVIE_SEARCH -> movieListPaggingViewModel.getSearchMovieData(movieListType.data, DataHelper().searchRepositoryI,SmallItemList.Type.SEARCH_MOVIES)

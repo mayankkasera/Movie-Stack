@@ -1,9 +1,12 @@
 package com.example.moviestack.api.pojo
 
+import android.os.Parcelable
 import android.util.Log
 import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Result(
     @SerializedName("adult")
     var adult: Boolean = false,
@@ -41,7 +44,7 @@ data class Result(
     var voteAverage: Double = 0.0,
     @SerializedName("vote_count")
     var voteCount: Int = 0
-){
+) : Parcelable {
     fun getImage() : String{
         if(posterPath!=null&&posterPath.equals(""))
             return NetworkConstants.baseImageUrl+profile_path

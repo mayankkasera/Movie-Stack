@@ -33,7 +33,7 @@ class PersonAdapter(private val credits: Credits, private val type: PersonType.T
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CastViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val castDataBinding: CastDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.cast,parent,false)
+        val castDataBinding: CastDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.person,parent,false)
         return CastViewHolder(castDataBinding)
     }
 
