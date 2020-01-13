@@ -23,10 +23,11 @@
 
            <LinearLayout
                android:id="@+id/linearLayout"
+
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_marginStart="16dp"
-               android:layout_marginTop="24dp"
+               android:layout_marginTop="32dp"
                android:layout_marginEnd="16dp"
                android:background="@drawable/search_text_background"
                android:gravity="center_vertical"
@@ -35,7 +36,8 @@
                app:layout_constraintEnd_toEndOf="parent"
                app:layout_constraintHorizontal_bias="0.0"
                app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/textView7">
+               app:layout_constraintTop_toBottomOf="@+id/textView7"
+               app:setGoToActivityOnclick="@{null}">
 
                <ImageView
                    android:layout_width="32dp"
@@ -62,7 +64,7 @@
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_marginStart="16dp"
-               android:layout_marginTop="24dp"
+               android:layout_marginTop="100dp"
                android:layout_marginEnd="16dp"
                android:fontFamily="@font/myfont"
                android:gravity="center"
@@ -79,10 +81,10 @@
                android:layout_width="0dp"
                android:layout_height="wrap_content"
                android:layout_marginStart="16dp"
-               android:layout_marginTop="24dp"
+               android:layout_marginTop="48dp"
                android:layout_marginEnd="16dp"
                android:fontFamily="@font/myfont"
-               android:text="For You"
+               android:text="Recommended"
                android:textColor="@color/white"
                android:textSize="24sp"
                android:textStyle="bold"
@@ -92,6 +94,7 @@
 
 
            <androidx.cardview.widget.CardView
+               app:setSearchOnclick="@{ListType.Type.TRENDING_MOVIE}"
                app:cardCornerRadius="10dp"
                android:id="@+id/cardView3"
                android:layout_width="0dp"
@@ -117,7 +120,7 @@
                        android:id="@+id/imageView6"
                        android:layout_width="0dp"
                        android:layout_height="0dp"
-                       android:src="@drawable/trailer"
+                       android:src="@drawable/movie"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintEnd_toEndOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +142,7 @@
                        android:layout_marginEnd="10dp"
                        android:fontFamily="@font/myfont"
                        android:gravity="center"
-                       android:text="Trailer"
+                       android:text="Movies"
                        android:textColor="@color/white"
                        android:textSize="24sp"
                        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
@@ -152,7 +155,7 @@
 
 
            <androidx.cardview.widget.CardView
-               app:setPersonOnclick="@{ListType.Type.POPULAR_PERSON}"
+               app:setSearchOnclick="@{ListType.Type.TRENDING_TV_SHOW}"
                app:cardCornerRadius="10dp"
                android:id="@+id/cardView2"
                app:layout_constraintWidth_percent="0.44"
@@ -175,7 +178,7 @@
                        android:id="@+id/imageView7"
                        android:layout_width="0dp"
                        android:layout_height="0dp"
-                       android:src="@drawable/people"
+                       android:src="@drawable/tv"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintEnd_toEndOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -197,7 +200,7 @@
                        android:layout_marginEnd="10dp"
                        android:fontFamily="@font/myfont"
                        android:gravity="center"
-                       android:text="People"
+                       android:text="Tv Shows"
                        android:textColor="@color/white"
                        android:textSize="24sp"
 
@@ -212,8 +215,8 @@
 
 
            <androidx.cardview.widget.CardView
+               app:setPersonOnclick="@{null}"
                app:cardCornerRadius="10dp"
-               app:setSearchOnclick="@{ListType.Type.TRENDING_MOVIE}"
                android:id="@+id/cardView"
                android:layout_width="0dp"
                android:layout_height="160dp"
@@ -235,7 +238,7 @@
                        android:layout_width="match_parent"
                        android:layout_height="match_parent"
                        android:scaleType="centerCrop"
-                       android:src="@drawable/movie" />
+                       android:src="@drawable/people" />
 
                    <FrameLayout
                        android:layout_width="0dp"
@@ -254,7 +257,7 @@
                        android:layout_height="wrap_content"
                        android:layout_marginStart="10dp"
                        android:layout_marginEnd="10dp"
-                       android:text="Movie"
+                       android:text="Persons"
                        android:textColor="@color/white"
                        android:textSize="24sp"
                        android:layout_marginBottom="12dp"
@@ -267,59 +270,7 @@
            </androidx.cardview.widget.CardView>
 
 
-           <androidx.cardview.widget.CardView
-               app:setSearchOnclick="@{ListType.Type.TRENDING_TV_SHOW}"
-               app:cardCornerRadius="10dp"
-               android:layout_width="0dp"
-               android:layout_height="160dp"
-               android:layout_marginStart="16dp"
-               android:layout_marginTop="16dp"
-               android:layout_marginEnd="16dp"
-               android:scaleType="centerCrop"
-               android:src="@drawable/movie"
-               app:layout_constraintEnd_toEndOf="parent"
-               app:layout_constraintStart_toStartOf="parent"
-               app:layout_constraintTop_toBottomOf="@+id/cardView">
 
-               <androidx.constraintlayout.widget.ConstraintLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent">
-
-                   <ImageView
-                       android:id="@+id/imageView9"
-                       android:layout_width="match_parent"
-                       android:layout_height="match_parent"
-                       android:scaleType="centerCrop"
-                       android:src="@drawable/tv" />
-
-                   <FrameLayout
-                       android:layout_width="0dp"
-                       android:layout_height="0dp"
-                       android:background="@drawable/slider_background"
-                       app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"
-                       app:layout_constraintTop_toTopOf="parent" />
-
-                   <TextView
-                       android:layout_width="0dp"
-                       android:layout_height="wrap_content"
-                       android:layout_marginStart="10dp"
-                       android:layout_marginEnd="10dp"
-                       android:fontFamily="@font/myfont"
-                       android:gravity="center"
-                       android:text="Tv Show"
-                       android:textColor="@color/white"
-                       android:textSize="24sp"
-                       android:layout_marginBottom="12dp"
-
-                       app:layout_constraintBottom_toBottomOf="@+id/imageView9"
-                       app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintStart_toStartOf="parent" />
-
-
-               </androidx.constraintlayout.widget.ConstraintLayout>
-           </androidx.cardview.widget.CardView>
 
 
        </androidx.constraintlayout.widget.ConstraintLayout>
