@@ -61,11 +61,27 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="16dp"
-                    android:text="2 hrs 2 mins"
+                    android:text="@{infoState.movieInfo.getRuntime()}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/year"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="@{infoState.movieInfo.getName()}"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+                    app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+                    app:layout_constraintTop_toBottomOf="@+id/duration" />
+
+
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -77,7 +93,7 @@
                     android:layout_marginTop="16dp"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/duration" />
+                    app:layout_constraintTop_toBottomOf="@+id/title" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/description"
@@ -293,7 +309,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="10dp"
-                            android:text="@{infoState.images.getBackdropSize()()}"
+                            android:text="@{infoState.images.getBackdropSize()}"
                             android:textColor="@color/white"
                             android:textSize="12dp"
                             app:layout_constraintBottom_toBottomOf="@+id/backdrops"
@@ -536,6 +552,25 @@
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
                     app:layout_constraintTop_toBottomOf="@+id/producationCompaniesText" />
 
+                <ImageView
+                    android:id="@+id/imageView13"
+                    android:layout_width="22dp"
+                    android:layout_height="24dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/title"
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+                    app:layout_constraintTop_toTopOf="@+id/year"
+                    app:srcCompat="@drawable/bookmark" />
+
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginRight="16dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/title"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView13"
+                    app:layout_constraintTop_toTopOf="@+id/year"
+                    app:srcCompat="@drawable/playlist_add" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

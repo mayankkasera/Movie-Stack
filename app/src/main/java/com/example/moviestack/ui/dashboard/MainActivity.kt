@@ -9,7 +9,7 @@ import com.example.moviestack.R
 import com.example.moviestack.ui.dashboard.search.SearchFragment
 import com.example.moviestack.ui.dashboard.featuredlists.FeaturedListsFragment
 import com.example.moviestack.ui.dashboard.home.HomeFragment
-import com.example.moviestack.ui.dashboard.papularpeople.PapularPeopleFragment
+import com.example.moviestack.ui.dashboard.settings.SettingsFragment
 import com.example.moviestack.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
                     replace(FeaturedListsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
-                R.id.papular_people -> {
-                    replace(PapularPeopleFragment())
+                R.id.settings -> {
+                    replace(SettingsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {

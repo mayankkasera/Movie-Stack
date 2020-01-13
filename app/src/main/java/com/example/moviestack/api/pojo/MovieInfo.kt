@@ -12,7 +12,7 @@ data class MovieInfo(
     @SerializedName("belongs_to_collection")
     var belongsToCollection: Any = Any(),
     @SerializedName("budget")
-    var budget: Int = 0,
+    var budget: Long = 0,
     @SerializedName("genres")
     var genres: List<Genre> = listOf(),
     @SerializedName("homepage")
@@ -38,7 +38,7 @@ data class MovieInfo(
     @SerializedName("release_date")
     var releaseDate: String = "",
     @SerializedName("revenue")
-    var revenue: Int = 0,
+    var revenue: Long = 0,
     @SerializedName("runtime")
     var runtime: Int = 0,
     @SerializedName("spoken_languages")
@@ -57,12 +57,18 @@ data class MovieInfo(
     var voteCount: Int = 0
 ) {
 
+
     fun getLanguage():String{
         return if(spokenLanguages.size>0)
             spokenLanguages.get(0).name
         else
             ""
     }
+
+    fun getName():String{
+        return if(title.equals("")) originalTitle else  title
+    }
+
 
     data class Genre(
         @SerializedName("id")
@@ -120,5 +126,14 @@ data class MovieInfo(
 
     fun getRevenue():String{
         return "$"+ budget
+    }
+
+    fun getRuntime (): String{
+
+        val hours: Int = runtime / 60 //since both are ints, you get an int
+        val minutes: Int = runtime % 60
+        System.out.printf("%d:%02d", hours, minutes)
+
+        return "$hours hour $minutes minutes"
     }
 }

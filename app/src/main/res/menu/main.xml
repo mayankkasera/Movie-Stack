@@ -18,9 +18,9 @@
         android:title="Featured Lists" />
 
     <item
-        android:id="@+id/papular_people"
-        android:icon="@drawable/papular_people"
-        android:title="Papular People" />
+        android:id="@+id/settings"
+        android:icon="@drawable/settings"
+        android:title="Settings" />
 
 
 

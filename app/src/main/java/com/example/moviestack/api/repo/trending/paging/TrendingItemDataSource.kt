@@ -1,5 +1,6 @@
 package com.example.moviestack.api.repo.trending.paging
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.example.moviestack.api.pojo.MovieList
@@ -18,7 +19,9 @@ class TrendingItemDataSource(
     var type : SmallItemList.Type
 ) : PageKeyedDataSource<Int, Result>() {
 
-    val FIRST_PAGE = 1
+    companion object{
+        val FIRST_PAGE = 1
+    }
     val mutableLiveData: MutableLiveData<MovieListState> = MutableLiveData()
 
     private var state = MovieListState()
@@ -31,6 +34,8 @@ class TrendingItemDataSource(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Result>
     ) {
+
+        Log.i("jcnjid","loadInitial")
 
         var observable : Observable<MovieList>
 
@@ -45,7 +50,7 @@ class TrendingItemDataSource(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-
+                    Log.i("jcnjid","loadInitial ${FIRST_PAGE + 1}")
                     callback.onResult(it.results, null, FIRST_PAGE + 1)
                 }, {
                     state = state.copy(
@@ -66,10 +71,12 @@ class TrendingItemDataSource(
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
 
+        Log.i("jcnjid","loadAfter")
+
         var observable : Observable<MovieList>
 
         observable =  trendingRepositoryI.getMoviesList(
-            "$FIRST_PAGE",
+            "${params.key}",
             type
         )
 
@@ -79,9 +86,13 @@ class TrendingItemDataSource(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    if (it.totalPages >= params.key) {
+
+                    if (it != null && it.totalPages>params.key) {
+                        Log.i("jcnjid","loadAfter  ${params.key + 1}")
                         callback.onResult(it.results, params.key + 1)
                     }
+
+
                 }, {
                     state = state.copy(
                         loading = false,
@@ -101,10 +112,12 @@ class TrendingItemDataSource(
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
 
+        Log.i("jcnjid","loadBefore")
+
         var observable : Observable<MovieList>
 
         observable =  trendingRepositoryI.getMoviesList(
-            "$FIRST_PAGE",
+            "${params.key}",
             type
         )
 
@@ -114,8 +127,10 @@ class TrendingItemDataSource(
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
+
                     if (it != null) {
                         var i: Int = if (params.key > 1) params.key - 1 else 0
+                        Log.i("jcnjid","loadAfter  ${i}")
                         callback.onResult(it!!.results, i)
                     }
                 }, {

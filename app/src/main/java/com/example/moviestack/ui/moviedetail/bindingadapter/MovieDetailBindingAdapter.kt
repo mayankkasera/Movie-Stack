@@ -27,7 +27,7 @@ object MovieDetailBindingAdapter {
                 arrayList.add(result.results.get(1).getImage())
 
             if(result.results.size>2)
-                arrayList.add(result.results.get(3).getImage())
+                arrayList.add(result.results.get(2).getImage())
 
             slider.setAdapter(MainSliderAdapter(arrayList))
 
