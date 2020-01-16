@@ -3,9 +3,9 @@ package com.example.moviestack.api.repo.trending.paging
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.api.pojo.Result
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.MovieList
+import com.example.moviestack.pojo.Result
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.trending.TrendingRepositoryI
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.Observable

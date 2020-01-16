@@ -7,7 +7,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.Result
+import com.example.moviestack.pojo.Result
 import com.example.moviestack.databinding.SimilarDataBinding
 
 class MovieListPagingAdapter  : PagedListAdapter<Result, MovieListPagingAdapter.MovieListPagingViewHolder>(MovieDiffCallback()){

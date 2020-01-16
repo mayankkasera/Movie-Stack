@@ -12,8 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.SimilarFragmentBinding
+import com.example.moviestack.roomdb.LocaleDataBase
+import com.example.moviestack.roomdb.RoomDatabaseHelper
+import com.example.moviestack.roomdb.movieInfo.MovieListViewModel
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.utils.createFactory
+import com.example.qrcode.roomdb.utils.MovieInfoHelper
 
 /**
  * A simple [Fragment] subclass.
@@ -53,6 +57,7 @@ class MovieListFragment : Fragment() {
         when (listType.type) {
             ListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(listType.data,DataHelper().personRepositoryI)
             ListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(listType.data,DataHelper().personRepositoryI)
+            ListType.Type.BOOKMARK_MOVIE->movieListViewModel.getResult( movieInfoHelperI = MovieInfoHelper(RoomDatabaseHelper().localeDataBase))
         }
     }
 
@@ -68,7 +73,10 @@ class MovieListFragment : Fragment() {
     }
 
     private fun setObserver() {
-        movieListViewModel.mutableLiveData.observe(this, Observer { binding.movieListState = it })
+        movieListViewModel.mutableLiveData.observe(this, Observer {
+            binding.movieListState = it
+
+        })
     }
 
 }

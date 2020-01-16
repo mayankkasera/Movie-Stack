@@ -3,12 +3,12 @@ package com.example.moviestack.ui.moviedetail.info
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.Credits
-import com.example.moviestack.api.pojo.Images
-import com.example.moviestack.api.pojo.MovieInfo
-import com.example.moviestack.api.pojo.Videos
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
-import com.example.moviestack.api.repo.movieInfo.MovieResponse
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.pojo.Credits
+import com.example.moviestack.pojo.Images
+import com.example.moviestack.pojo.MovieInfo
+import com.example.moviestack.pojo.Videos
+import com.example.moviestack.api.repo.movie.MovieResponse
 import com.example.moviestack.ui.moviedetail.info.adapter.CrewAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.GenreAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.VideosAdapter
@@ -17,7 +17,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class InfoViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
+class InfoViewModel(val movieItemRepositoryI: MovieItemRepositoryI) : ViewModel() {
 
     private var compositeDisposable = CompositeDisposable()
     var mutableLiveData: MutableLiveData<InfoState> = MutableLiveData()
@@ -34,30 +34,33 @@ class InfoViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
 
         compositeDisposable.add(
             Observable.merge(
-                movieRepositoryI.getMovieInfo(id),
-                movieRepositoryI.getCredits(id),
-                movieRepositoryI.getVideos(id),
-                movieRepositoryI.getImages(id)
+                movieItemRepositoryI.getMovieInfo(id),
+                movieItemRepositoryI.getCredits(id),
+                movieItemRepositoryI.getVideos(id),
+                movieItemRepositoryI.getImages(id)
             )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    Log.i("dkjhfckjds", "success : " + it.toString())
+
                     when (it.type) {
                         MovieResponse.Type.MOVIE_INFO -> {
                             var movieInfo: MovieInfo = it.data as MovieInfo
+                            Log.i("dkjhfckjds", "success : " + movieInfo.toString())
                             state = state.copy(
                                 movieInfo = movieInfo,
-                                genreAdapter = GenreAdapter(movieInfo.genres)
+                                genreAdapter = GenreAdapter(movieInfo?.genres!!)
                             )
                         }
                         MovieResponse.Type.CREDIT -> {
                             var credits: Credits = it.data as Credits
-                            state = state.copy(crewAdapter = CrewAdapter(credits.crew))
+                            if(credits.crew.size>0)
+                               state = state.copy(crewAdapter = CrewAdapter(credits.crew))
                         }
                         MovieResponse.Type.VIDEOS -> {
                             var videos: Videos = it.data as Videos
-                            state = state.copy(videosAdapter = VideosAdapter(videos.results))
+                            if(videos.results.size>0)
+                               state = state.copy(videosAdapter = VideosAdapter(videos.results))
                         }
 
                         MovieResponse.Type.IMAGES -> {

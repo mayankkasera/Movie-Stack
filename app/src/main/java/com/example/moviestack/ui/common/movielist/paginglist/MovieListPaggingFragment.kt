@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.movie.MovieItemRepository
 import com.example.moviestack.databinding.MovieLisPagingFragmentBinding
 import com.example.moviestack.ui.common.ListType
@@ -60,10 +60,12 @@ class MovieListPaggingFragment : Fragment() {
             ListType.Type.UPCOMING -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.UPCOMING)
             ListType.Type.POPULAR -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.POPULAR)
             ListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TOP_RATED)
-            ListType.Type.SMILER -> movieListPaggingViewModel.getSimilarData(listType.data, DataHelper().movieRepositoryI)
+            ListType.Type.SMILER -> movieListPaggingViewModel.getSimilarData(listType.data, DataHelper().movieItemRepositoryI)
             ListType.Type.GENRE -> movieListPaggingViewModel.getGenreData(listType.data, DataHelper().discoverRepositoryI)
-            ListType.Type.MOVIE_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,SmallItemList.Type.SEARCH_MOVIES)
-            ListType.Type.TV_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,SmallItemList.Type.SEARCH_TV)
+            ListType.Type.MOVIE_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,
+                SmallItemList.Type.SEARCH_MOVIES)
+            ListType.Type.TV_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,
+                SmallItemList.Type.SEARCH_TV)
         }
     }
 

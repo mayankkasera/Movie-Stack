@@ -8,6 +8,10 @@
         <variable
             name="infoState"
             type="com.example.moviestack.ui.moviedetail.info.InfoState"/>
+        <variable
+            name="bookmarkHelperI"
+            type="com.example.moviestack.roomdb.bookmark.BookmarkHelperI" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,8 +51,8 @@
                     android:id="@+id/year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="16dp"
                     android:text="@{infoState.movieInfo.getYear()}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
@@ -71,26 +75,24 @@
                     android:id="@+id/title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
                     android:text="@{infoState.movieInfo.getName()}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView14"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
                     app:layout_constraintTop_toBottomOf="@+id/duration" />
 
 
-
-
                 <androidx.recyclerview.widget.RecyclerView
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:adapter="@{infoState.genreAdapter}"
                     android:id="@+id/genres"
-                    android:orientation="horizontal"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:adapter="@{infoState.genreAdapter}"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
                     app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -100,6 +102,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:visibility="@{infoState.movieInfo.overview.length()>0?View.VISIBLE:View.GONE}"
                     android:text="@{infoState.movieInfo.overview}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
@@ -118,6 +121,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/description" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:visibility="gone"
                     android:id="@+id/crewTexr"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -135,12 +139,12 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Show all"
-                    app:showAllCrewOnclick="@{infoState.movieInfo.id}"
                     android:textColor="@color/pink"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/crewTexr"
-                    app:layout_constraintEnd_toStartOf="@+id/guidelineright" />
+                    app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+                    app:showAllCrewOnclick="@{infoState.movieInfo.id}" />
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -148,12 +152,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     android:adapter="@{infoState.crewAdapter}"
-                    app:spanCount="2"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/crewTexr" />
+                    app:layout_constraintTop_toBottomOf="@+id/crewTexr"
+                    app:spanCount="2" />
 
                 <View
                     android:id="@+id/crew_bottom_line"
@@ -181,13 +186,13 @@
 
 
                 <androidx.recyclerview.widget.RecyclerView
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:adapter="@{infoState.videosAdapter}"
-                    android:orientation="horizontal"
                     android:id="@+id/trailers"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
+                    android:adapter="@{infoState.videosAdapter}"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
                     app:layout_constraintTop_toBottomOf="@+id/trailersText" />
@@ -218,13 +223,13 @@
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/poster_holder"
-                    app:layout_constraintStart_toStartOf="@+id/guidelineleft"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.25"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     app:cardCornerRadius="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/mediaText">
+                    app:layout_constraintStart_toStartOf="@+id/guidelineleft"
+                    app:layout_constraintTop_toBottomOf="@+id/mediaText"
+                    app:layout_constraintWidth_percent="0.25">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -323,8 +328,6 @@
                 </androidx.cardview.widget.CardView>
 
 
-
-
                 <View
                     android:id="@+id/media_bottom_line"
                     android:layout_width="0dp"
@@ -372,24 +375,24 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/statusText"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.40"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Status"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/originalTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/originalTitle"
+                    app:layout_constraintWidth_percent="0.40" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/runtimeText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="Runtime"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
                     app:layout_constraintStart_toEndOf="@+id/statusText"
                     app:layout_constraintTop_toBottomOf="@+id/originalTitle"
                     app:layout_constraintWidth_percent="0.40" />
@@ -398,22 +401,22 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/status"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.40"
                     android:layout_height="wrap_content"
                     android:text="@{infoState.movieInfo.status}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/runtimeText" />
+                    app:layout_constraintTop_toBottomOf="@+id/runtimeText"
+                    app:layout_constraintWidth_percent="0.40" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/runtime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
                     android:text="@{String.valueOf(infoState.movieInfo.runtime)}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
-                    android:layout_marginLeft="16dp"
                     app:layout_constraintStart_toEndOf="@+id/status"
                     app:layout_constraintTop_toBottomOf="@+id/runtimeText"
                     app:layout_constraintWidth_percent="0.40" />
@@ -422,24 +425,24 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/releaseDateText"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.40"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Release Date"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/status" />
+                    app:layout_constraintTop_toBottomOf="@+id/status"
+                    app:layout_constraintWidth_percent="0.40" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/originalLanguageText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="Original Language"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
                     app:layout_constraintStart_toEndOf="@+id/releaseDateText"
                     app:layout_constraintTop_toBottomOf="@+id/status"
                     app:layout_constraintWidth_percent="0.40" />
@@ -448,22 +451,22 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/releaseDate"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.40"
                     android:layout_height="wrap_content"
                     android:text="@{infoState.movieInfo.releaseDate}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/releaseDateText" />
+                    app:layout_constraintTop_toBottomOf="@+id/releaseDateText"
+                    app:layout_constraintWidth_percent="0.40" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/originalLanguage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
                     android:text="@{infoState.movieInfo.getLanguage()}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
-                    android:layout_marginLeft="16dp"
                     app:layout_constraintStart_toEndOf="@+id/releaseDate"
                     app:layout_constraintTop_toBottomOf="@+id/releaseDateText"
                     app:layout_constraintWidth_percent="0.40" />
@@ -472,24 +475,24 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/budgetText"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.40"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Budget"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+                    app:layout_constraintTop_toBottomOf="@+id/releaseDate"
+                    app:layout_constraintWidth_percent="0.40" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/revenueText"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
                     android:text="Revenue"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
                     app:layout_constraintStart_toEndOf="@+id/budgetText"
                     app:layout_constraintTop_toBottomOf="@+id/releaseDate"
                     app:layout_constraintWidth_percent="0.40" />
@@ -498,22 +501,22 @@
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/budget"
                     android:layout_width="0dp"
-                    app:layout_constraintWidth_percent="0.40"
                     android:layout_height="wrap_content"
                     android:text="@{String.valueOf(infoState.movieInfo.getRevenue())}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
-                    app:layout_constraintTop_toBottomOf="@+id/budgetText" />
+                    app:layout_constraintTop_toBottomOf="@+id/budgetText"
+                    app:layout_constraintWidth_percent="0.40" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/revenue"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
                     android:text="@{String.valueOf(infoState.movieInfo.getBudget())}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
-                    android:layout_marginLeft="16dp"
                     app:layout_constraintStart_toEndOf="@+id/budget"
                     app:layout_constraintTop_toBottomOf="@+id/budgetText"
                     app:layout_constraintWidth_percent="0.40" />
@@ -544,25 +547,28 @@
                     android:id="@+id/producationCompanies"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/light_gray"
-                    android:textSize="16sp"
                     android:layout_marginBottom="16dp"
                     android:text="@{infoState.movieInfo.getProductionCompanies()}"
+                    android:textColor="@color/light_gray"
+                    android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
                     app:layout_constraintTop_toBottomOf="@+id/producationCompaniesText" />
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageView13"
                     android:layout_width="22dp"
                     android:layout_height="24dp"
                     app:layout_constraintBottom_toBottomOf="@+id/title"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
                     app:layout_constraintTop_toTopOf="@+id/year"
-                    app:srcCompat="@drawable/bookmark" />
+                    app:bookmarkOnclick="@{infoState.movieInfo}"
+                    app:setBookmarkHelperI="@{bookmarkHelperI}"
+
+                    app:srcCompat="@drawable/bookmark_selection" />
 
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imageView14"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
@@ -571,6 +577,20 @@
                     app:layout_constraintEnd_toStartOf="@+id/imageView13"
                     app:layout_constraintTop_toTopOf="@+id/year"
                     app:srcCompat="@drawable/playlist_add" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{infoState.crewAdapter!=null?View.VISIBLE:View.GONE}"
+                    app:constraint_referenced_ids="crew_bottom_line,crewTexr,crewShowAllTexr,crew" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/group4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{infoState.videosAdapter!=null?View.VISIBLE:View.GONE}"
+                    app:constraint_referenced_ids="trailers,trailersText,trailers_bottom_line"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

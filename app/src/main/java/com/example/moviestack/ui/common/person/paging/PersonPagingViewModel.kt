@@ -5,8 +5,8 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.example.moviestack.api.pojo.Result
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.Result
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.person.paging.PersonDataSource
 import com.example.moviestack.api.repo.person.paging.PersonDataSourceFactory

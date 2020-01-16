@@ -6,7 +6,7 @@
     <data class ="VideoDataBinding">
         <variable
             name="video"
-            type="com.example.moviestack.api.pojo.Videos.Result"/>
+            type="com.example.moviestack.pojo.Videos.Result"/>
         <import type="com.example.moviestack.utils.NetworkConstants"/>
     </data>
 

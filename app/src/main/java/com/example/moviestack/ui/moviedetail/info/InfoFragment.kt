@@ -1,7 +1,6 @@
 package com.example.moviestack.ui.moviedetail.info
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.InfoFragmentBinding
+import com.example.moviestack.roomdb.LocaleDataBase
+import com.example.moviestack.roomdb.RoomDatabaseHelper
+import com.example.moviestack.roomdb.bookmark.BookmarkHelper
 import com.example.moviestack.utils.createFactory
+import com.example.qrcode.roomdb.utils.MovieInfoHelper
 
 
 class InfoFragment : Fragment() {
@@ -22,7 +24,7 @@ class InfoFragment : Fragment() {
     private lateinit var id: String
     private lateinit var infoViewModel: InfoViewModel
     private lateinit var binding: InfoFragmentBinding
-    private lateinit var movieRepositoryI: MovieRepositoryI
+
 
     companion object {
         private const val ID = "Id"
@@ -52,15 +54,15 @@ class InfoFragment : Fragment() {
 
     private fun init() {
         id = arguments?.getSerializable(ID) as String
-        movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.root
-        val factory = InfoViewModel(movieRepositoryI).createFactory()
+        val factory = InfoViewModel(DataHelper().movieItemRepositoryI).createFactory()
         infoViewModel = ViewModelProvider(this, factory).get(InfoViewModel::class.java)
     }
 
     private fun setObserver() {
         infoViewModel.mutableLiveData.observe(this, Observer {
             binding.infoState = it
+            binding.bookmarkHelperI = BookmarkHelper(RoomDatabaseHelper().localeDataBase)
         })
     }
 

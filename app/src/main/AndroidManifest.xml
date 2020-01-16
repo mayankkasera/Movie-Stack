@@ -13,9 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.common.person.paging.PersonPagingActivity"></activity>
-        <activity android:name=".ui.search.SearchActivity"></activity>
-        <activity android:name=".ui.common.movielist.simplelist.ShowMoreActivity"></activity>
+        <activity android:name=".ui.boookmark.BookamrkActivity"></activity>
+        <activity android:name=".ui.common.person.paging.PersonPagingActivity" />
+        <activity android:name=".ui.search.SearchActivity" />
+        <activity android:name=".ui.common.movielist.simplelist.MovieListActivity" />
         <activity android:name=".ui.persondetail.PersonDetailActivity" />
         <activity android:name=".ui.common.person.simple.PersonSimpleActivity" />
         <activity android:name=".ui.common.movielist.paginglist.MovieListPaggingActivity" />

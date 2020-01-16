@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.MovieInfo
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.MovieInfo
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.databinding.GenresDataBinding
 import com.example.moviestack.databinding.TrendingDataBinding
 import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter
@@ -15,7 +15,7 @@ class GenreAdapter(private val list: List<MovieInfo.Genre>)  : RecyclerView.Adap
 
     inner class GenreViewHolder(val trending: GenresDataBinding) : RecyclerView.ViewHolder(trending.root) {
 
-        fun bind(result: MovieInfo.Genre) {
+        fun bind(result: MovieInfo.Genre?) {
             this.trending.genres = result
             this.trending.executePendingBindings()
         }

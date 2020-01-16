@@ -2,14 +2,14 @@ package com.example.moviestack.ui.moviedetail.review
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.Review
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.pojo.Review
 import com.example.moviestack.ui.moviedetail.review.adapter.ReviewAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ReviewViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
+class ReviewViewModel(val movieItemRepositoryI: MovieItemRepositoryI) : ViewModel() {
 
     private var compositeDisposable = CompositeDisposable()
 
@@ -23,7 +23,7 @@ class ReviewViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
 
     fun getReview(id: String) {
         compositeDisposable.add(
-            movieRepositoryI.getReviews(id)
+            movieItemRepositoryI.getReviews(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({

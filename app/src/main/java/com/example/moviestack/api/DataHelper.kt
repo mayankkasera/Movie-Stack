@@ -1,7 +1,7 @@
 package com.example.moviestack.api
 
 import com.example.moviestack.api.repo.discover.DiscoverRepositoryI
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import com.example.moviestack.api.repo.trending.TrendingRepository
@@ -18,8 +18,6 @@ class DataHelper {
     @Inject
     lateinit var discoverRepositoryI: DiscoverRepositoryI
 
-    @Inject
-    lateinit var movieRepositoryI: MovieRepositoryI
 
     @Inject
     lateinit var personRepositoryI: PersonRepositoryI
@@ -32,5 +30,8 @@ class DataHelper {
 
     @Inject
     lateinit var trendingRepositoryI: TrendingRepository
+
+    @Inject
+    lateinit var movieItemRepositoryI: MovieItemRepositoryI
 
 }

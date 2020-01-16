@@ -1,7 +1,7 @@
 package com.example.moviestack.ui.moviedetail.info
 
-import com.example.moviestack.api.pojo.Images
-import com.example.moviestack.api.pojo.MovieInfo
+import com.example.moviestack.pojo.Images
+import com.example.moviestack.pojo.MovieInfo
 import com.example.moviestack.ui.moviedetail.info.adapter.CrewAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.GenreAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.VideosAdapter

@@ -1,7 +1,7 @@
 package com.example.moviestack.api.repo.trending
 
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.MovieList
+import com.example.moviestack.pojo.SmallItemList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

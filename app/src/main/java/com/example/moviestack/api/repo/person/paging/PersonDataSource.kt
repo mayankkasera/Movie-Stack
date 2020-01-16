@@ -2,7 +2,7 @@ package com.example.moviestack.api.repo.person.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.example.moviestack.api.pojo.Result
+import com.example.moviestack.pojo.Result
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import com.example.moviestack.ui.common.movielist.MovieListState

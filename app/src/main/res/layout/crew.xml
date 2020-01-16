@@ -6,7 +6,7 @@
     <data class ="CrewDataBinding">
         <variable
             name="crew"
-            type="com.example.moviestack.api.pojo.Credits.Crew"/>
+            type="com.example.moviestack.pojo.Credits.Crew"/>
 
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout

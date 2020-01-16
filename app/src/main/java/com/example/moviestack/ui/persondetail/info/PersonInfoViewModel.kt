@@ -3,10 +3,11 @@ package com.example.moviestack.ui.persondetail.info
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.*
-import com.example.moviestack.api.repo.movieInfo.MovieResponse
+
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.person.PersonResponce
+import com.example.moviestack.pojo.PersonImages
+import com.example.moviestack.pojo.PersonInfo
 import com.example.moviestack.ui.moviedetail.info.adapter.CrewAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.GenreAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.VideosAdapter

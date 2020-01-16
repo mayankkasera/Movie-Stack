@@ -2,8 +2,8 @@ package com.example.moviestack.api.repo.movie.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import com.example.moviestack.api.pojo.Result
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.Result
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import io.reactivex.disposables.CompositeDisposable
 

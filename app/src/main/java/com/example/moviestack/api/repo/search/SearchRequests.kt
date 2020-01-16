@@ -1,7 +1,7 @@
 package com.example.moviestack.api.repo.search
 
-import com.example.moviestack.api.pojo.MovieCredits
-import com.example.moviestack.api.pojo.Search
+import com.example.moviestack.pojo.MovieCredits
+import com.example.moviestack.pojo.Search
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

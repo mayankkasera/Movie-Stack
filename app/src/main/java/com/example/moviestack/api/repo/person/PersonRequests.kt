@@ -1,6 +1,7 @@
 package com.example.moviestack.api.repo.person
 
-import com.example.moviestack.api.pojo.*
+
+import com.example.moviestack.pojo.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

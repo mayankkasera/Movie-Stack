@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.Credits
+import com.example.moviestack.pojo.Credits
 import com.example.moviestack.databinding.CastDataBinding
 import com.example.moviestack.ui.common.ListType
 
@@ -15,7 +15,7 @@ class PersonAdapter(private val credits: Credits, private val type: ListType.Typ
 
     inner class CastViewHolder(val castDataBinding: CastDataBinding) : RecyclerView.ViewHolder(castDataBinding.root) {
 
-        fun bind(result: Credits,i: Int) {
+        fun bind(result: Credits, i: Int) {
             if(type==ListType.Type.CREW){
                 this.castDataBinding.crew = credits.crew[i]
                 this.castDataBinding.cast = Credits.Cast(1,"","",1,1,"",1,"")

@@ -2,7 +2,7 @@ package com.example.moviestack.ui.dashboard.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.api.repo.trending.TrendingRepositoryI
 import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter

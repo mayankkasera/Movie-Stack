@@ -14,8 +14,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.api.repo.movieInfo.MovieRepository
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.ReviewtFragmentBinding
 import com.example.moviestack.utils.createFactory
 
@@ -28,7 +26,7 @@ class ReviewFragment : Fragment() {
     private lateinit var mView: View
     private lateinit var reviewViewModel: ReviewViewModel
     private lateinit var binding: ReviewtFragmentBinding
-    private lateinit var movieRepositoryI: MovieRepositoryI
+
 
     companion object {
         private const val ID = "Id"
@@ -59,9 +57,8 @@ class ReviewFragment : Fragment() {
 
     private fun init() {
         id = arguments?.getSerializable(ReviewFragment.ID) as String
-        movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.getRoot()
-        val factory = ReviewViewModel(movieRepositoryI).createFactory()
+        val factory = ReviewViewModel(DataHelper().movieItemRepositoryI).createFactory()
         reviewViewModel = ViewModelProvider(this, factory).get(ReviewViewModel::class.java)
     }
 

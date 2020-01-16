@@ -15,11 +15,11 @@
 
         <variable
             name="taggedImages"
-            type="com.example.moviestack.api.pojo.TaggedImages" />
+            type="com.example.moviestack.pojo.TaggedImages" />
 
         <variable
             name="externalIds"
-            type="com.example.moviestack.api.pojo.ExternalIds" />
+            type="com.example.moviestack.pojo.ExternalIds" />
 
     </data>
 

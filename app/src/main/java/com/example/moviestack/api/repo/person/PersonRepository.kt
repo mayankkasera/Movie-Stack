@@ -1,7 +1,8 @@
 package com.example.moviestack.api.repo.person
 
 import android.util.Log
-import com.example.moviestack.api.pojo.*
+
+import com.example.moviestack.pojo.*
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback

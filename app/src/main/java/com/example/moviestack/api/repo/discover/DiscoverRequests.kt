@@ -1,6 +1,6 @@
 package com.example.moviestack.api.repo.discover
 
-import com.example.moviestack.api.pojo.MovieList
+import com.example.moviestack.pojo.MovieList
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

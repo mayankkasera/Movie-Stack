@@ -3,9 +3,9 @@ package com.example.moviestack.ui.moviedetail.bindingadapter
 
 import android.util.Log
 import androidx.databinding.BindingAdapter
-import com.example.moviestack.api.pojo.Images
-import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.pojo.Videos
+import com.example.moviestack.pojo.Images
+import com.example.moviestack.pojo.SmallItemList
+import com.example.moviestack.pojo.Videos
 import com.example.moviestack.ui.moviedetail.adapter.MainSliderAdapter
 import com.example.moviestack.utils.NetworkConstants
 import com.example.moviestack.utils.PicassoImageLoadingService

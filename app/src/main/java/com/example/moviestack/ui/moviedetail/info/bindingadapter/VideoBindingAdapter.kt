@@ -6,7 +6,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.SmallItemList
 
 
 object VideoBindingAdapter {

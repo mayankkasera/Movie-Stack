@@ -3,8 +3,8 @@ package com.example.moviestack.ui.common.person.simple
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.Credits
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.pojo.Credits
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.person.PersonSatate
 import com.example.moviestack.ui.common.person.adapter.PersonAdapter
@@ -12,7 +12,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class PersonSimpleViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel() {
+class PersonSimpleViewModel(val movieItemRepositoryI: MovieItemRepositoryI) : ViewModel() {
     private var compositeDisposable = CompositeDisposable()
     var mutableLiveData: MutableLiveData<PersonSatate> = MutableLiveData()
     private var state =
@@ -25,7 +25,7 @@ class PersonSimpleViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel(
     fun getCast(id : String){
 
         state = state.copy(loading = true)
-        compositeDisposable.add(movieRepositoryI.getCredits(id)
+        compositeDisposable.add(movieItemRepositoryI.getCredits(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -53,7 +53,7 @@ class PersonSimpleViewModel(val movieRepositoryI: MovieRepositoryI) : ViewModel(
     fun getCrew(id : String){
 
         state = state.copy(loading = true)
-        compositeDisposable.add(movieRepositoryI.getCredits(id)
+        compositeDisposable.add(movieItemRepositoryI.getCredits(id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

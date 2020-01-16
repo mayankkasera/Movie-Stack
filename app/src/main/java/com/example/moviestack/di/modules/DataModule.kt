@@ -3,9 +3,9 @@ package com.example.moviestack.di.modules
 import com.example.moviestack.api.repo.discover.DiscoverRepository
 import com.example.moviestack.api.repo.discover.DiscoverRepositoryI
 import com.example.moviestack.api.repo.discover.DiscoverRequests
-import com.example.moviestack.api.repo.movieInfo.MovieRepository
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
-import com.example.moviestack.api.repo.movieInfo.MovieRequests
+import com.example.moviestack.api.repo.movie.MovieItemRepository
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.api.repo.movie.MovieItemRequests
 import com.example.moviestack.api.repo.person.PersonRepository
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.api.repo.person.PersonRequests
@@ -32,11 +32,6 @@ class DataModule {
         return DiscoverRepository(discoverRequests)
     }
 
-    @Provides
-    @Singleton
-    fun provideMovieRepository(movieRequests: MovieRequests) : MovieRepositoryI {
-        return MovieRepository(movieRequests)
-    }
 
     @Provides
     @Singleton
@@ -44,6 +39,11 @@ class DataModule {
         return PersonRepository(personRequests)
     }
 
+    @Provides
+    @Singleton
+    fun provideMovieItemRepository(movieItemRequests: MovieItemRequests) : MovieItemRepositoryI {
+        return MovieItemRepository(movieItemRequests)
+    }
 
     @Provides
     @Singleton

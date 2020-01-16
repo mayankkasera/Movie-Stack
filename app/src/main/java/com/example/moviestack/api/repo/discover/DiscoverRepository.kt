@@ -1,7 +1,7 @@
 package com.example.moviestack.api.repo.discover
 
 import android.util.Log
-import com.example.moviestack.api.pojo.MovieList
+import com.example.moviestack.pojo.MovieList
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback

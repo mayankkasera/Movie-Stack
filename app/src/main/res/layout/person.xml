@@ -7,11 +7,11 @@
         <import type="com.example.moviestack.ui.common.ListType"/>
         <variable
             name="cast"
-            type="com.example.moviestack.api.pojo.Credits.Cast"/>
+            type="com.example.moviestack.pojo.Credits.Cast"/>
 
         <variable
             name="crew"
-            type="com.example.moviestack.api.pojo.Credits.Crew"/>
+            type="com.example.moviestack.pojo.Credits.Crew"/>
 
         <variable
             name="i"

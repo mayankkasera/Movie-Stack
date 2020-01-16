@@ -1,9 +1,9 @@
 package com.example.moviestack.ui.persondetail.info
 
-import com.example.moviestack.api.pojo.ExternalIds
-import com.example.moviestack.api.pojo.PersonImages
-import com.example.moviestack.api.pojo.PersonInfo
-import com.example.moviestack.api.pojo.TaggedImages
+import com.example.moviestack.pojo.ExternalIds
+import com.example.moviestack.pojo.PersonImages
+import com.example.moviestack.pojo.PersonInfo
+import com.example.moviestack.pojo.TaggedImages
 import com.example.moviestack.ui.persondetail.info.adapter.PersonImageAdapter
 
 data class PersonInfoState (

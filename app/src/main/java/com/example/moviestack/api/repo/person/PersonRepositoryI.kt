@@ -1,7 +1,7 @@
 package com.example.moviestack.api.repo.person
 
-import com.example.moviestack.api.pojo.*
-import com.example.moviestack.api.repo.movieInfo.MovieResponse
+
+import com.example.moviestack.pojo.Person
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.http.Path

@@ -16,7 +16,6 @@
         tools:context=".ui.moviedetail.review.ReviewFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-
             android:id="@+id/review"
             android:layout_width="0dp"
             android:layout_height="0dp"

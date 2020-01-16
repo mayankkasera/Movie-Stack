@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.databinding.MovieDetailActivityBinding
 import com.example.moviestack.databinding.PersonDetailActivityBinding

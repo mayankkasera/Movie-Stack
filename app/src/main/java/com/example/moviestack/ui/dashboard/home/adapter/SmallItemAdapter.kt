@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.Result
+import com.example.moviestack.pojo.Result
 import com.example.moviestack.databinding.TrendingDataBinding
 
 class SmallItemAdapter(private val list: List<Result>) :

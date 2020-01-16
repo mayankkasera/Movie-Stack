@@ -5,7 +5,7 @@
     <data class="ImagesDataBinding">
         <variable
             name="images"
-            type="com.example.moviestack.api.pojo.PersonImages.Profile"/>
+            type="com.example.moviestack.pojo.PersonImages.Profile"/>
     </data>
 
    <androidx.cardview.widget.CardView

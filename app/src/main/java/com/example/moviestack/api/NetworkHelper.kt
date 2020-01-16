@@ -1,7 +1,6 @@
 package com.example.moviestack.api
 
 import com.example.moviestack.api.repo.discover.DiscoverRequests
-import com.example.moviestack.api.repo.movieInfo.MovieRequests
 import com.example.moviestack.api.repo.person.PersonRequests
 import com.example.moviestack.api.repo.movie.MovieItemRequests
 import com.example.moviestack.utils.App
@@ -13,8 +12,6 @@ class NetworkHelper {
     @Inject
     lateinit var retrofit: Retrofit
 
-    @Inject
-    lateinit var movieRequests: MovieRequests
 
     @Inject
     lateinit var discoverRequests: DiscoverRequests
@@ -30,9 +27,7 @@ class NetworkHelper {
         return retrofit.create(MovieItemRequests::class.java)
     }
 
-    fun gerMovieRequests(): MovieRequests? {
-        return movieRequests
-    }
+
 
     fun gerDiscoverRequests(): DiscoverRequests? {
         return discoverRequests

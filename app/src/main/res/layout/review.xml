@@ -6,7 +6,7 @@
     <data class="ReviewDataBinding">
         <variable
             name="review"
-            type="com.example.moviestack.api.pojo.Review.Result"/>
+            type="com.example.moviestack.pojo.Review.Result"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

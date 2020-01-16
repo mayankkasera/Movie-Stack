@@ -12,7 +12,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
 import com.example.moviestack.databinding.CastFragmentBinding
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.utils.createFactory
@@ -27,7 +26,7 @@ class PersonSimpleFragment : Fragment() {
     private lateinit var listType: ListType
     private lateinit var personSimpleViewModel: PersonSimpleViewModel
     private lateinit var binding: CastFragmentBinding
-    private lateinit var movieRepositoryI: MovieRepositoryI
+
 
     companion object {
         private const val ID = "Id"
@@ -64,10 +63,9 @@ class PersonSimpleFragment : Fragment() {
         listType = arguments?.getParcelable<ListType>(
             ID
         ) as ListType
-        movieRepositoryI = DataHelper().movieRepositoryI
         mView = binding.root
         val factory = PersonSimpleViewModel(
-            movieRepositoryI
+            DataHelper().movieItemRepositoryI
         ).createFactory()
         personSimpleViewModel = ViewModelProvider(this, factory).get(PersonSimpleViewModel::class.java)
     }

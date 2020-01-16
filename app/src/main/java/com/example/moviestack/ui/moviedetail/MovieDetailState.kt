@@ -1,6 +1,6 @@
 package com.example.moviestack.ui.moviedetail
 
-import com.example.moviestack.api.pojo.Videos
+import com.example.moviestack.pojo.Videos
 
 data class MovieDetailState(
     var loading: Boolean = false,

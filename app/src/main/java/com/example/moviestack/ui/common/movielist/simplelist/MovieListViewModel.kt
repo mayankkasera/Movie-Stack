@@ -1,12 +1,13 @@
-package com.example.moviestack.ui.common.movielist.simplelist
+package com.example.moviestack.roomdb.movieInfo
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.moviestack.api.pojo.Result
+import com.example.moviestack.pojo.Result
 import com.example.moviestack.api.repo.person.PersonRepositoryI
 import com.example.moviestack.ui.common.movielist.MovieListState
 import com.example.moviestack.ui.common.movielist.adapter.MovieListAdapter
+
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
@@ -18,6 +19,7 @@ class MovieListViewModel
     private var compositeDisposable = CompositeDisposable()
 
     var mutableLiveData: MutableLiveData<MovieListState> = MutableLiveData()
+
 
     private var state =
         MovieListState()
@@ -80,6 +82,12 @@ class MovieListViewModel
                 }, {
 
                 }))
+    }
+
+    fun getResult(movieInfoHelperI: MovieInfoHelperI){
+        state = state.copy(
+            movieListAdapter = MovieListAdapter(movieInfoHelperI.getAllResults())
+        )
     }
 
     override fun onCleared() {

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.databinding.PersonPagingFragmentBinding
 import com.example.moviestack.ui.common.person.adapter.PersonPagingAdapter
 import com.example.moviestack.ui.common.ListType

@@ -1,8 +1,8 @@
 package com.example.moviestack.api.repo.search
 
 import android.util.Log
-import com.example.moviestack.api.pojo.Search
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.Search
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.person.PersonResponce
 import io.reactivex.Observable
 import retrofit2.Call

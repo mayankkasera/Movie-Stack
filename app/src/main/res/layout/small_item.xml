@@ -6,7 +6,7 @@
     <data class ="TrendingDataBinding">
         <variable
             name="trendingModel"
-            type="com.example.moviestack.api.pojo.Result"/>
+            type="com.example.moviestack.pojo.Result"/>
        <import type="com.example.moviestack.utils.NetworkConstants"/>
     </data>
 

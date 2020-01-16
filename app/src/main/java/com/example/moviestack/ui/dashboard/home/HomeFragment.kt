@@ -20,7 +20,6 @@ import com.example.moviestack.utils.createFactory
 class HomeFragment : Fragment() {
 
     private lateinit var mView: View
-    private val movieItemRepositoryI: MovieItemRepositoryI = MovieItemRepository(NetworkHelper().gerRetrofit())
     private lateinit var viewModel: HomeViewModel
     private lateinit var binding: HomeFragmentBinding
 
@@ -39,7 +38,7 @@ class HomeFragment : Fragment() {
 
     private fun init() {
         mView = binding.getRoot()
-        val factory = HomeViewModel(movieItemRepositoryI,DataHelper().trendingRepositoryI).createFactory()
+        val factory = HomeViewModel(DataHelper().movieItemRepositoryI,DataHelper().trendingRepositoryI).createFactory()
         viewModel = ViewModelProvider(this, factory).get(HomeViewModel::class.java)
     }
 

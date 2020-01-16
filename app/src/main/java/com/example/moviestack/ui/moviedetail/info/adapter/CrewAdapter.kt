@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.Credits
+import com.example.moviestack.pojo.Credits
 import com.example.moviestack.databinding.CrewDataBinding
 
 class CrewAdapter(private val list: List<Credits.Crew>) : RecyclerView.Adapter<CrewAdapter.CrewViewHolder>() {

@@ -1,9 +1,9 @@
 package com.example.moviestack.ui.persondetail
 
-import com.example.moviestack.api.pojo.ExternalIds
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.api.pojo.TaggedImages
-import com.example.moviestack.api.pojo.Videos
+import com.example.moviestack.pojo.ExternalIds
+import com.example.moviestack.pojo.MovieList
+import com.example.moviestack.pojo.TaggedImages
+import com.example.moviestack.pojo.Videos
 
 data class PersonDetailState (
     var loading: Boolean = false,

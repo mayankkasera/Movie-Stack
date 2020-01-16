@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.MovieInfo
-import com.example.moviestack.api.pojo.Videos
+import com.example.moviestack.pojo.MovieInfo
+import com.example.moviestack.pojo.Videos
 import com.example.moviestack.databinding.VideoDataBinding
 
 class VideosAdapter(private val list: List<Videos.Result>) : RecyclerView.Adapter<VideosAdapter.VideosViewHolder>() {

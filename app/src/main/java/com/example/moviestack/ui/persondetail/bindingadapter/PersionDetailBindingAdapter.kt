@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.example.moviestack.R
-import com.example.moviestack.api.pojo.TaggedImages
+import com.example.moviestack.pojo.TaggedImages
 import com.example.moviestack.ui.moviedetail.adapter.MainSliderAdapter
 import com.example.moviestack.utils.NetworkConstants
 import com.example.moviestack.utils.PicassoImageLoadingService

@@ -1,7 +1,7 @@
 package com.example.moviestack.api.repo.tvshow
 
 import android.util.Log
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.SmallItemList
 import io.reactivex.Observable
 import retrofit2.Call
 import retrofit2.Callback

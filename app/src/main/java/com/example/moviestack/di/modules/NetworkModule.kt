@@ -1,7 +1,7 @@
 package com.example.moviestack.di.modules
 
 import com.example.moviestack.api.repo.discover.DiscoverRequests
-import com.example.moviestack.api.repo.movieInfo.MovieRequests
+import com.example.moviestack.api.repo.movie.MovieItemRequests
 import com.example.moviestack.api.repo.person.PersonRequests
 import com.example.moviestack.api.repo.search.SearchRequests
 import com.example.moviestack.api.repo.trending.TrendingRequest
@@ -39,11 +39,7 @@ class NetworkModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun provideMovieRequest(retrofit: Retrofit) : MovieRequests{
-        return retrofit.create(MovieRequests::class.java)
-    }
+
 
     @Provides
     @Singleton
@@ -55,6 +51,12 @@ class NetworkModule {
     @Singleton
     fun providePersonRequest(retrofit: Retrofit) : PersonRequests {
         return retrofit.create(PersonRequests::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieItemRequest(retrofit: Retrofit) : MovieItemRequests {
+        return retrofit.create(MovieItemRequests::class.java)
     }
 
 

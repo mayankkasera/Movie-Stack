@@ -2,9 +2,9 @@ package com.example.moviestack.api.repo.movie.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.example.moviestack.api.pojo.MovieList
-import com.example.moviestack.api.pojo.Result
-import com.example.moviestack.api.pojo.SmallItemList
+import com.example.moviestack.pojo.MovieList
+import com.example.moviestack.pojo.Result
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.Observable

@@ -7,8 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.api.pojo.SmallItemList
-import com.example.moviestack.api.repo.movieInfo.MovieRepositoryI
+import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.databinding.MovieDetailActivityBinding
 import com.example.moviestack.utils.createFactory
 import com.example.qrcode.ui.adapter.MainViewPagerAdapter
@@ -21,7 +20,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var title : String
     lateinit var mainBinding: MovieDetailActivityBinding
     private lateinit var movieDetailViewModel: MovieDetailViewModel
-    private lateinit var movieRepositoryI: MovieRepositoryI
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,9 +43,7 @@ class MovieDetailActivity : AppCompatActivity() {
     fun init() {
         title = intent.getStringExtra("title")
         id = intent.getStringExtra("id")
-
-        movieRepositoryI = DataHelper().movieRepositoryI
-        val factory = MovieDetailViewModel(movieRepositoryI).createFactory()
+        val factory = MovieDetailViewModel(DataHelper().movieItemRepositoryI).createFactory()
         movieDetailViewModel =
             ViewModelProvider(this, factory).get(MovieDetailViewModel::class.java)
     }
