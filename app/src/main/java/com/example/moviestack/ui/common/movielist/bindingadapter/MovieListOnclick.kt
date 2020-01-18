@@ -11,12 +11,18 @@ import com.squareup.picasso.Picasso
 
 object MovieListOnclick {
     @JvmStatic
-    @BindingAdapter("setMovieListOnclick")
-    fun setMovieListOnclick (layout : ConstraintLayout, result : Result?){
+    @BindingAdapter("setMovieListOnclick","movieListOnclickType")
+    fun setMovieListOnclick (layout : ConstraintLayout, result : Result?,type: DetailData.Type?){
         layout.setOnClickListener{
             val intent = Intent(layout.context, MovieDetailActivity::class.java)
 
+            var data = DetailData(
+                "${result?.id}",
+                if(result?.name.equals("")) result?.originalTitle!! else  result?.name!!,
+                type!!
+            )
 
+            intent.putExtra("datasdcds", data)
             intent.putExtra("id", "${result?.id}")
             intent.putExtra("title", if(result?.name.equals("")) result?.originalTitle else  result?.name)
             layout.context.startActivity(intent)

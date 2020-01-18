@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.pojo.Result
 import com.example.moviestack.databinding.TrendingDataBinding
+import com.example.moviestack.ui.moviedetail.DetailData
 
-class SmallItemAdapter(private val list: List<Result>) :
+class SmallItemAdapter(private val list: List<Result>,private val type : DetailData.Type) :
 
     RecyclerView.Adapter<SmallItemAdapter.TrendingMovieViewHolder>() {
 
@@ -34,6 +35,7 @@ class SmallItemAdapter(private val list: List<Result>) :
 
         fun bind(result: Result) {
             this.trending.trendingModel = result
+            this.trending.type = type
             this.trending.executePendingBindings()
         }
 

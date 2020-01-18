@@ -5,8 +5,8 @@ import com.example.moviestack.api.repo.movie.MovieItemRequests
 import com.example.moviestack.api.repo.person.PersonRequests
 import com.example.moviestack.api.repo.search.SearchRequests
 import com.example.moviestack.api.repo.trending.TrendingRequest
-import com.example.moviestack.api.repo.tvshow.TvShowRequests
 import com.example.moviestack.di.intercepter.AuthorizationInterceptor
+import com.example.tvstack.api.repo.tvshow.TvShowRequests
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import dagger.Module
 import dagger.Provides

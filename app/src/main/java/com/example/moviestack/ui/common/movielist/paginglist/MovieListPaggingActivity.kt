@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.moviestack.R
 import com.example.moviestack.ui.common.ListType
+import com.example.moviestack.ui.moviedetail.DetailData
+import kotlinx.android.synthetic.main.crew.*
 
 
 class MovieListPaggingActivity : AppCompatActivity() {
@@ -15,6 +17,7 @@ class MovieListPaggingActivity : AppCompatActivity() {
 
         var id = intent.getIntExtra("id",0)
         val result: ListType.Type = intent.getSerializableExtra("type") as ListType.Type
+        val type: DetailData.Type = intent.getParcelableExtra("detailType") as DetailData.Type
 
         var creditType =
             ListType(
@@ -23,7 +26,8 @@ class MovieListPaggingActivity : AppCompatActivity() {
             );
         replace(
             MovieListPaggingFragment.newInstance(
-                creditType
+                creditType,
+                type
             )
         )
         

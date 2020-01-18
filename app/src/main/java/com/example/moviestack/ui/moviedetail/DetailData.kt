@@ -10,7 +10,8 @@ data class DetailData (
     var type : Type
 
 ) : Parcelable {
-    enum class Type{
+    @Parcelize
+    enum class Type : Parcelable {
         MOVIE,TV_SHOW,PERSON
     }
 }

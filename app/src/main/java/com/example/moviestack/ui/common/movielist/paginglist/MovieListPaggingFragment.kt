@@ -18,6 +18,8 @@ import com.example.moviestack.api.repo.movie.MovieItemRepository
 import com.example.moviestack.databinding.MovieLisPagingFragmentBinding
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.movielist.adapter.MovieListPagingAdapter
+import com.example.moviestack.ui.moviedetail.DetailData
+import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -28,11 +30,23 @@ class MovieListPaggingFragment : Fragment() {
 
     private lateinit var mView: View
     private lateinit var listType: ListType
+    var type : DetailData.Type? = null
     private lateinit var movieListPaggingViewModel: MovieListPaggingViewModel
     private lateinit var binding: MovieLisPagingFragmentBinding
 
     companion object {
         private const val ID = "Id"
+        private const val TYPE = "type"
+        fun newInstance(listType: ListType,type : DetailData.Type): MovieListPaggingFragment {
+            val bundle = Bundle()
+            bundle.putParcelable(ID, listType)
+            bundle.putParcelable(TYPE,type)
+            val fragment =
+                MovieListPaggingFragment()
+            fragment.arguments = bundle
+            return fragment
+        }
+
         fun newInstance(listType: ListType): MovieListPaggingFragment {
             val bundle = Bundle()
             bundle.putParcelable(ID, listType)
@@ -60,19 +74,24 @@ class MovieListPaggingFragment : Fragment() {
             ListType.Type.UPCOMING -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.UPCOMING)
             ListType.Type.POPULAR -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.POPULAR)
             ListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TOP_RATED)
-            ListType.Type.SMILER -> movieListPaggingViewModel.getSimilarData(listType.data, DataHelper().movieItemRepositoryI)
+            ListType.Type.SMILER -> {
+
+                if(type==DetailData.Type.MOVIE)
+                    movieListPaggingViewModel.getSimilarData(listType.data, DataHelper().movieItemRepositoryI)
+                else if(type==DetailData.Type.TV_SHOW)
+                    movieListPaggingViewModel.getSimilarData(listType.data,DataHelper().tvShowRepositoryI)
+
+            }
             ListType.Type.GENRE -> movieListPaggingViewModel.getGenreData(listType.data, DataHelper().discoverRepositoryI)
-            ListType.Type.MOVIE_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,
-                SmallItemList.Type.SEARCH_MOVIES)
-            ListType.Type.TV_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI,
-                SmallItemList.Type.SEARCH_TV)
+            ListType.Type.MOVIE_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI, SmallItemList.Type.SEARCH_MOVIES)
+            ListType.Type.TV_SEARCH -> movieListPaggingViewModel.getSearchMovieData(listType.data, DataHelper().searchRepositoryI, SmallItemList.Type.SEARCH_TV)
         }
     }
 
     private fun init() {
-        listType = arguments?.getParcelable<ListType>(
-            ID
-        ) as ListType
+        listType = arguments?.getParcelable<ListType>(ID) as ListType
+        type = arguments?.getParcelable<DetailData.Type>(TYPE) as? DetailData.Type
+
         mView = binding.root
         val factory = MovieListPaggingViewModel()
             .createFactory()
@@ -80,7 +99,7 @@ class MovieListPaggingFragment : Fragment() {
     }
 
     private fun setObserver() {
-        binding.adapter = MovieListPagingAdapter()
+        binding.adapter = MovieListPagingAdapter(type!!)
         movieListPaggingViewModel.state.observe(this, Observer { binding.movieListState = it })
         movieListPaggingViewModel.moviePagedList.observe(this, Observer { binding!!.adapter!!.submitList(it!!) })
     }

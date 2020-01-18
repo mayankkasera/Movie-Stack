@@ -7,11 +7,18 @@
         <variable
             name="similar"
             type="com.example.moviestack.pojo.Result"/>
+
+
+        <variable
+            name="type"
+            type="com.example.moviestack.ui.moviedetail.DetailData.Type"/>
+
         <import type="com.example.moviestack.utils.NetworkConstants"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:setSmallItemOnclick="@{similar}"
+        app:smallItemOnclickType="@{type}"
         android:background="@color/background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

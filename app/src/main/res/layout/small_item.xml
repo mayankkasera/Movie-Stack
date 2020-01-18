@@ -7,11 +7,17 @@
         <variable
             name="trendingModel"
             type="com.example.moviestack.pojo.Result"/>
+
+        <variable
+            name="type"
+            type="com.example.moviestack.ui.moviedetail.DetailData.Type" />
+
        <import type="com.example.moviestack.utils.NetworkConstants"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:setMovieListOnclick="@{trendingModel}"
+        app:movieListOnclickType="@{type}"
         android:background="@color/background"
         android:orientation="vertical"
         android:layout_width="120dp"

@@ -16,7 +16,7 @@ import com.example.moviestack.api.repo.trending.TrendingRepository
 import com.example.moviestack.api.repo.trending.TrendingRequest
 import com.example.moviestack.api.repo.tvshow.TvShowRepository
 import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
-import com.example.moviestack.api.repo.tvshow.TvShowRequests
+import com.example.tvstack.api.repo.tvshow.TvShowRequests
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

@@ -9,12 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.pojo.Result
 import com.example.moviestack.databinding.SimilarDataBinding
+import com.example.moviestack.ui.moviedetail.DetailData
 
-class MovieListPagingAdapter  : PagedListAdapter<Result, MovieListPagingAdapter.MovieListPagingViewHolder>(MovieDiffCallback()){
+class MovieListPagingAdapter(var type : DetailData.Type)  : PagedListAdapter<Result, MovieListPagingAdapter.MovieListPagingViewHolder>(MovieDiffCallback()){
+
+
 
     inner class MovieListPagingViewHolder(val similarDataBinding : SimilarDataBinding) : RecyclerView.ViewHolder(similarDataBinding.root) {
         fun bind(result: Result) {
             this.similarDataBinding.similar = result
+            this.similarDataBinding.type = type
             this.similarDataBinding.executePendingBindings()
         }
     }

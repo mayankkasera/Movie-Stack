@@ -2,9 +2,11 @@ package com.example.moviestack.ui.common.person.simple
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.moviestack.R
 import com.example.moviestack.ui.common.ListType
+import com.example.moviestack.ui.moviedetail.DetailData
 
 class PersonSimpleActivity : AppCompatActivity() {
 
@@ -13,15 +15,14 @@ class PersonSimpleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_credit)
 
 
-        var id = intent.getIntExtra("id",0)
+        var id = intent.getLongExtra("id",0)
+        var type = intent.getParcelableExtra("type") as DetailData.Type
         var creditType = ListType(
             data = "${id}",
             type = ListType.Type.CREW
         );
         replace(
-            PersonSimpleFragment.newInstance(
-                creditType
-            )
+            PersonSimpleFragment.newInstance(creditType,type)
         )
     }
 

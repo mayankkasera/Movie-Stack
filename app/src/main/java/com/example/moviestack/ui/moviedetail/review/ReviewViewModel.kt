@@ -3,13 +3,14 @@ package com.example.moviestack.ui.moviedetail.review
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
 import com.example.moviestack.pojo.Review
 import com.example.moviestack.ui.moviedetail.review.adapter.ReviewAdapter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ReviewViewModel(val movieItemRepositoryI: MovieItemRepositoryI) : ViewModel() {
+class ReviewViewModel() : ViewModel() {
 
     private var compositeDisposable = CompositeDisposable()
 
@@ -21,9 +22,34 @@ class ReviewViewModel(val movieItemRepositoryI: MovieItemRepositoryI) : ViewMode
             publishState(value)
         }
 
-    fun getReview(id: String) {
+    fun getReview(id: String,movieItemRepositoryI: MovieItemRepositoryI) {
         compositeDisposable.add(
             movieItemRepositoryI.getReviews(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    val review: Review = it.data as Review
+                    state = state.copy(reviewAdapter = ReviewAdapter(review.results))
+                }, {
+                    state = state.copy(
+                        loading = false,
+                        failure = true,
+                        message = it.localizedMessage
+                    )
+                }, {
+                    state = state.copy(
+                        loading = false,
+                        success = true
+                    )
+                }, {
+
+                })
+        )
+    }
+
+    fun getReview(id: String,tvShowRepositoryI: TvShowRepositoryI) {
+        compositeDisposable.add(
+            tvShowRepositoryI.getReviews(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({

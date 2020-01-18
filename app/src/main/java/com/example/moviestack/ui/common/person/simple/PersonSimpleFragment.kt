@@ -14,6 +14,7 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.CastFragmentBinding
 import com.example.moviestack.ui.common.ListType
+import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -24,17 +25,19 @@ class PersonSimpleFragment : Fragment() {
 
     private lateinit var mView: View
     private lateinit var listType: ListType
+    private lateinit var type : DetailData.Type
     private lateinit var personSimpleViewModel: PersonSimpleViewModel
     private lateinit var binding: CastFragmentBinding
 
 
     companion object {
-        private const val ID = "Id"
-        fun newInstance(listType: ListType): PersonSimpleFragment {
+        private const val ID = "id"
+        private const val TYPE = "type"
+        fun newInstance(listType: ListType,detailDataType : DetailData.Type): PersonSimpleFragment {
             val bundle = Bundle()
             bundle.putParcelable(ID, listType)
-            val fragment =
-                PersonSimpleFragment()
+            bundle.putParcelable(TYPE,detailDataType)
+            val fragment = PersonSimpleFragment()
             fragment.arguments = bundle
             return fragment
         }
@@ -52,21 +55,27 @@ class PersonSimpleFragment : Fragment() {
     }
 
     private fun loadData() {
-        when (listType.type) {
-            ListType.Type.CAST -> personSimpleViewModel.getCast(listType.data)
-            ListType.Type.CREW -> personSimpleViewModel.getCrew(listType.data)
+        if(type==DetailData.Type.MOVIE){
+            when (listType.type) {
+                ListType.Type.CAST -> personSimpleViewModel.getMovieCast(listType.data,DataHelper().movieItemRepositoryI)
+                ListType.Type.CREW -> personSimpleViewModel.getMovieCrew(listType.data,DataHelper().movieItemRepositoryI)
+            }
+        }
+        else{
+            when (listType.type) {
+                ListType.Type.CAST -> personSimpleViewModel.getTvCast(listType.data,DataHelper().tvShowRepositoryI)
+                ListType.Type.CREW -> personSimpleViewModel.getTvCrew(listType.data,DataHelper().tvShowRepositoryI)
+            }
         }
     }
 
 
     private fun init() {
-        listType = arguments?.getParcelable<ListType>(
-            ID
-        ) as ListType
+        listType = arguments?.getParcelable<ListType>(ID) as ListType
+        type = arguments?.getParcelable<DetailData.Type>(TYPE) as DetailData.Type
+
         mView = binding.root
-        val factory = PersonSimpleViewModel(
-            DataHelper().movieItemRepositoryI
-        ).createFactory()
+        val factory = PersonSimpleViewModel().createFactory()
         personSimpleViewModel = ViewModelProvider(this, factory).get(PersonSimpleViewModel::class.java)
     }
 

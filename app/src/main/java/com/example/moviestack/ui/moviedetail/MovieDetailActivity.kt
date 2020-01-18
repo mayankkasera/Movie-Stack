@@ -1,6 +1,7 @@
 package com.example.moviestack.ui.moviedetail
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -18,6 +19,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var id : String
     private lateinit var title : String
+    private lateinit var data : DetailData
     lateinit var mainBinding: MovieDetailActivityBinding
     private lateinit var movieDetailViewModel: MovieDetailViewModel
 
@@ -29,7 +31,7 @@ class MovieDetailActivity : AppCompatActivity() {
         init()
         loadData()
         setObserver()
-        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager, "${id}")
+        viewPager.adapter = MainViewPagerAdapter(supportFragmentManager, "${id}",data.type)
         viewPager.offscreenPageLimit = 2
         tabLayout.setupWithViewPager(viewPager)
 
@@ -41,6 +43,10 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     fun init() {
+
+        Log.i("dsbcjd","sdcs :${intent.getParcelableExtra<DetailData>("datasdcds")}")
+
+        data = intent.getParcelableExtra<DetailData>("datasdcds")
         title = intent.getStringExtra("title")
         id = intent.getStringExtra("id")
         val factory = MovieDetailViewModel(DataHelper().movieItemRepositoryI).createFactory()

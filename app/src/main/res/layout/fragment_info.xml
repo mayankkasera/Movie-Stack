@@ -11,6 +11,9 @@
         <variable
             name="bookmarkHelperI"
             type="com.example.moviestack.roomdb.bookmark.BookmarkHelperI" />
+        <variable
+            name="type"
+            type="com.example.moviestack.ui.moviedetail.DetailData.Type" />
 
     </data>
 
@@ -77,7 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
-                    android:text="@{infoState.movieInfo.getName()}"
+                    android:text="@{infoState.movieInfo.originalTitle.length()>0?infoState.movieInfo.originalTitle:infoState.movieInfo.name_}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toStartOf="@+id/imageView14"
@@ -144,7 +147,9 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/crewTexr"
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
-                    app:showAllCrewOnclick="@{infoState.movieInfo.id}" />
+                    app:showAllCrewOnclick="@{infoState.movieInfo.id}"
+                    app:AllCrewOnclickType="@{type}"
+                    />
 
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -355,7 +360,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Original Title"
+                    android:text="Title"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
@@ -365,7 +370,7 @@
                     android:id="@+id/originalTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{infoState.movieInfo.originalTitle}"
+                    android:text="@{infoState.movieInfo.originalTitle.length()>0?infoState.movieInfo.originalTitle:infoState.movieInfo.name_}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
@@ -414,7 +419,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
-                    android:text="@{String.valueOf(infoState.movieInfo.runtime)}"
+                    android:text="@{String.valueOf(infoState.movieInfo.getRuntime())}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/status"
@@ -452,7 +457,7 @@
                     android:id="@+id/releaseDate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{infoState.movieInfo.releaseDate}"
+                    android:text="@{infoState.movieInfo.getreleaseDate()}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
@@ -478,6 +483,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="Budget"
+                    android:visibility="@{infoState.movieInfo.budgetOfMovie>0?View.VISIBLE:View.GONE}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
@@ -491,6 +497,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="16dp"
                     android:text="Revenue"
+                    android:visibility="@{infoState.movieInfo.budgetOfMovie>0?View.VISIBLE:View.GONE}"
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/budgetText"
@@ -503,6 +510,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@{String.valueOf(infoState.movieInfo.getRevenue())}"
+                    android:visibility="@{infoState.movieInfo.budgetOfMovie>0?View.VISIBLE:View.GONE}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/guidelineleft"
@@ -515,6 +523,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:text="@{String.valueOf(infoState.movieInfo.getBudget())}"
+                    android:visibility="@{infoState.movieInfo.budgetOfMovie>0?View.VISIBLE:View.GONE}"
                     android:textColor="@color/light_gray"
                     android:textSize="16sp"
                     app:layout_constraintStart_toEndOf="@+id/budget"

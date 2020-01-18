@@ -15,6 +15,8 @@ import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.databinding.ReviewtFragmentBinding
+import com.example.moviestack.ui.moviedetail.DetailData
+import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.utils.createFactory
 
 /**
@@ -24,15 +26,18 @@ class ReviewFragment : Fragment() {
 
     private lateinit var id: String
     private lateinit var mView: View
+    private lateinit var type : DetailData.Type
     private lateinit var reviewViewModel: ReviewViewModel
     private lateinit var binding: ReviewtFragmentBinding
 
 
     companion object {
         private const val ID = "Id"
-        fun newInstance(id : String): ReviewFragment {
+        private const val TYPE = "type"
+        fun newInstance(id : String,type : DetailData.Type): ReviewFragment {
             val bundle = Bundle()
             bundle.putSerializable(ID, id)
+            bundle.putParcelable(TYPE,type)
             val fragment = ReviewFragment()
             fragment.arguments = bundle
             return fragment
@@ -51,14 +56,19 @@ class ReviewFragment : Fragment() {
     }
 
     private fun loadData() {
-        reviewViewModel.getReview(id)
+        when(type){
+            DetailData.Type.MOVIE ->reviewViewModel.getReview(id,DataHelper().movieItemRepositoryI)
+                DetailData.Type.TV_SHOW ->reviewViewModel.getReview(id,DataHelper().tvShowRepositoryI)
+        }
+
     }
 
 
     private fun init() {
+        type = arguments?.getParcelable<DetailData.Type>(TYPE) as DetailData.Type
         id = arguments?.getSerializable(ReviewFragment.ID) as String
         mView = binding.getRoot()
-        val factory = ReviewViewModel(DataHelper().movieItemRepositoryI).createFactory()
+        val factory = ReviewViewModel().createFactory()
         reviewViewModel = ViewModelProvider(this, factory).get(ReviewViewModel::class.java)
     }
 

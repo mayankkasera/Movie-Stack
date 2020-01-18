@@ -6,6 +6,7 @@ import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.api.repo.trending.TrendingRepositoryI
 import com.example.moviestack.ui.dashboard.home.adapter.SmallItemAdapter
+import com.example.moviestack.ui.moviedetail.DetailData
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import java.util.*
@@ -39,17 +40,17 @@ class HomeViewModel(var movieItemRepositoryI: MovieItemRepositoryI,
                 when (it.type) {
 
                     SmallItemList.Type.TRENDING_MOVIES -> state =
-                        state.copy(trendingMovieAdapter = SmallItemAdapter(it.results))
+                        state.copy(trendingMovieAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
                     SmallItemList.Type.TRENDING_TV_SHOW -> state =
-                        state.copy(trendingTvShowAdapter = SmallItemAdapter(it.results))
+                        state.copy(trendingTvShowAdapter = SmallItemAdapter(it.results,DetailData.Type.TV_SHOW))
                     SmallItemList.Type.NOW_PLAYING -> state =
-                        state.copy(nowPlayingAdapter = SmallItemAdapter(it.results))
+                        state.copy(nowPlayingAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
                     SmallItemList.Type.UPCOMING -> state =
-                        state.copy(upComingAdapter = SmallItemAdapter(it.results))
+                        state.copy(upComingAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
                     SmallItemList.Type.POPULAR -> state =
-                        state.copy(popularAdapter = SmallItemAdapter(it.results))
+                        state.copy(popularAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
                     SmallItemList.Type.TOP_RATED -> state =
-                        state.copy(topRatedAdapter = SmallItemAdapter(it.results))
+                        state.copy(topRatedAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
 
                 }
             }, {

@@ -8,22 +8,23 @@ import com.example.moviestack.ui.moviedetail.info.InfoFragment
 import com.example.moviestack.ui.moviedetail.review.ReviewFragment
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
 import com.example.moviestack.ui.common.ListType
+import com.example.moviestack.ui.moviedetail.DetailData
 
-class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStatePagerAdapter(fm){
+class MainViewPagerAdapter (fm : FragmentManager,var id :String,var type : DetailData.Type) : FragmentStatePagerAdapter(fm){
 
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
-                InfoFragment.newInstance(id)
+                InfoFragment.newInstance(id,type)
             }
 
             1 -> {
                 var creditType = ListType(data = id,type = ListType.Type.CAST);
-                PersonSimpleFragment.newInstance(creditType)
+                PersonSimpleFragment.newInstance(creditType,type)
             }
 
             2 -> {
-                ReviewFragment.newInstance(id)
+                ReviewFragment.newInstance(id,type)
             }
 
             3 -> {
@@ -31,11 +32,11 @@ class MainViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentStateP
                     data = "${id}",
                     type = ListType.Type.SMILER
                 );
-                MovieListPaggingFragment.newInstance(creditType)
+                MovieListPaggingFragment.newInstance(creditType,type)
             }
 
             else -> {
-                InfoFragment.newInstance(id)
+                InfoFragment.newInstance(id,type)
             }
         }
     }

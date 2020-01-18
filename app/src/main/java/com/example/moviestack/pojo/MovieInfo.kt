@@ -15,6 +15,7 @@ import java.util.*
 
 @Entity
 @TypeConverters(
+    MovieInfo.EpisodeRunTimeConverter::class,
     MovieInfo.GenreConverter::class,
     MovieInfo.ProductionCompaniesConverter::class,
     MovieInfo.ProductionCountryConverter::class,
@@ -24,6 +25,14 @@ import java.util.*
 
 data class MovieInfo(
 
+    @SerializedName("first_air_date")
+    var firstAirDate: String? = "",
+
+    @SerializedName("name")
+    var name_: String? = "",
+
+    @SerializedName("episode_run_time")
+    var episodeRunTime: List<Int> = listOf(),
 
     @SerializedName("adult")
     var adult: Boolean? = false,
@@ -131,8 +140,14 @@ data class MovieInfo(
     fun getLanguage():String?{
         return if(spokenLanguages?.size!! >0)
             spokenLanguages?.get(0)?.name
+        else if(originalLanguage?.length!! >0)
+            originalLanguage
         else
             ""
+    }
+
+    fun getreleaseDate():String?{
+        return if(releaseDate.equals("")) firstAirDate!! else  releaseDate!!
     }
 
     fun getName():String?{
@@ -140,9 +155,18 @@ data class MovieInfo(
     }
 
     fun getYear():String{
-        val parts = releaseDate?.split("-")
-        Log.i("jhcbvxd"," "+parts)
-        return parts!![0]
+
+        if(releaseDate?.length!!>0){
+            val parts = releaseDate?.split("-")
+            Log.i("jhcbvxd"," "+parts)
+            return parts!![0]
+        }
+        else{
+            val parts = firstAirDate?.split("-")
+            Log.i("jhcbvxd"," "+parts)
+            return parts!![0]
+        }
+
     }
 
     fun getProductionCompanies() : String{
@@ -166,11 +190,18 @@ data class MovieInfo(
     }
 
     fun getRuntime (): String{
-        if (runtimeOfMovie != null) {
+        if (runtimeOfMovie != null&& runtimeOfMovie!! > 0) {
             val hours: Int = runtimeOfMovie!! / 60 //since both are ints, you get an int
             val minutes: Int = runtimeOfMovie!! % 60
             return "$hours hour $minutes minutes"
         }
+        else if(episodeRunTime.size>0){
+            Log.i("sdlcns","sdfsdfc ${episodeRunTime[0]}")
+            val hours: Int = episodeRunTime[0]!! / 60 //since both are ints, you get an int
+            val minutes: Int = episodeRunTime[0]!! % 60
+            return "$hours hour $minutes minutes"
+        }
+
         else
             return ""
     }
@@ -247,6 +278,24 @@ data class MovieInfo(
 
         @TypeConverter
         fun setGenre(myObjects: List<MovieInfo.Genre?>?): String? {
+            val gson = Gson()
+            return gson.toJson(myObjects)
+        }
+    }
+
+    class EpisodeRunTimeConverter{
+        @TypeConverter
+        fun getEpisodeRunTime(data: String?): List<Int>? {
+            val gson = Gson()
+            if (data == null) {
+                return Collections.emptyList()
+            }
+            val listType: Type = object : TypeToken<List<Int>?>() {}.type
+            return gson.fromJson<List<Int>>(data, listType)
+        }
+
+        @TypeConverter
+        fun setEpisodeRunTime(myObjects: List<Int>?): String? {
             val gson = Gson()
             return gson.toJson(myObjects)
         }

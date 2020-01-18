@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.moviestack.ui.common.person.paging.PersonPagingFragment
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingFragment
+import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.ui.persondetail.info.PersonInfoFragment
 
 class SerchViewPagerAdapter (fm : FragmentManager, var data :String) : FragmentStatePagerAdapter(fm){
@@ -17,7 +18,7 @@ class SerchViewPagerAdapter (fm : FragmentManager, var data :String) : FragmentS
                     data = data,
                     type = ListType.Type.MOVIE_SEARCH
                 );
-                MovieListPaggingFragment.newInstance(creditType)
+                MovieListPaggingFragment.newInstance(creditType,DetailData.Type.MOVIE)
             }
 
             1 -> {
@@ -25,7 +26,7 @@ class SerchViewPagerAdapter (fm : FragmentManager, var data :String) : FragmentS
                     data = data,
                     type = ListType.Type.TV_SEARCH
                 );
-                MovieListPaggingFragment.newInstance(creditType)
+                MovieListPaggingFragment.newInstance(creditType,DetailData.Type.TV_SHOW)
             }
 
             2 -> {

@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.pojo.Result
+import com.example.moviestack.ui.moviedetail.DetailData
 import io.reactivex.disposables.CompositeDisposable
 
 class SimilarDataSourceFactory(var id : String,

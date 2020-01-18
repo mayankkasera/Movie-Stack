@@ -21,7 +21,11 @@ import com.example.moviestack.api.repo.movie.similarpaging.SimilarDataSourceFact
 import com.example.moviestack.api.repo.trending.TrendingRepositoryI
 import com.example.moviestack.api.repo.trending.paging.TrendingItemDataSource
 import com.example.moviestack.api.repo.trending.paging.TrendingItemDataSourceFactory
+import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
+import com.example.moviestack.api.repo.tvshow.similarpaging.TvShowSimilarDataSource
+import com.example.moviestack.api.repo.tvshow.similarpaging.TvShowSimilarDataSourceFactory
 import com.example.moviestack.ui.common.movielist.MovieListState
+import com.example.moviestack.ui.moviedetail.DetailData
 import io.reactivex.disposables.CompositeDisposable
 
 class MovieListPaggingViewModel() : ViewModel() {
@@ -66,6 +70,13 @@ class MovieListPaggingViewModel() : ViewModel() {
         moviePagedList = LivePagedListBuilder(similarDataSourceFactory, config).build()
         state = Transformations.switchMap<SimilarDataSource, MovieListState>(
             similarDataSourceFactory.moviesLiveDataSource, SimilarDataSource::mutableLiveData)
+    }
+
+    fun getSimilarData(id : String, tvShowRepositoryI: TvShowRepositoryI){
+        var tvShowSimilarDataSourceFactory = TvShowSimilarDataSourceFactory(id,compositeDisposable,tvShowRepositoryI)
+        moviePagedList = LivePagedListBuilder(tvShowSimilarDataSourceFactory, config).build()
+        state = Transformations.switchMap<TvShowSimilarDataSource, MovieListState>(
+            tvShowSimilarDataSourceFactory.moviesLiveDataSource, TvShowSimilarDataSource::mutableLiveData)
     }
 
     fun getGenreData(data : String, discoverRepositoryI: DiscoverRepositoryI){
