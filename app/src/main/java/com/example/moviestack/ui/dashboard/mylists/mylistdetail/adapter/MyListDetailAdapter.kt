@@ -7,17 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.databinding.MyListDataBinding
 import com.example.moviestack.pojo.MyList
+import com.example.moviestack.ui.common.ListType
 
-class MyListAdapter(private val list: List<MyList>): RecyclerView.Adapter<MyListAdapter.MyListDetailViewHolder>() {
+class MyListDetailAdapter(private val list: List<MyList>,var type: ListType.Type): RecyclerView.Adapter<MyListDetailAdapter.MyListDetailViewHolder>() {
 
     inner class MyListDetailViewHolder(val myListDataBinding : MyListDataBinding) : RecyclerView.ViewHolder(myListDataBinding.root) {
         fun bind(result: MyList) {
             this.myListDataBinding.mylist = result
+            this.myListDataBinding.type = type
             this.myListDataBinding.executePendingBindings()
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyListAdapter.MyListDetailViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyListDetailAdapter.MyListDetailViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val similarDataBinding : MyListDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.my_list_detail,parent,false)
         return MyListDetailViewHolder(similarDataBinding)

@@ -10,13 +10,21 @@ class BookmarkPagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm)
     override fun getItem(position: Int): Fragment {
 
         return when(position){
-            0,2,1 -> {
+            0 -> {
                 var listType = ListType(
                     data = "${0}",
                     type = ListType.Type.BOOKMARK_MOVIE
                 )
                 MovieListFragment.newInstance(listType)
             }
+            1 -> {
+                var listType = ListType(
+                    data = "${0}",
+                    type = ListType.Type.BOOKMARK_TV_SHOW
+                )
+                MovieListFragment.newInstance(listType)
+            }
+
             else -> {
                 var listType = ListType(
                     data = "${0}",
@@ -30,14 +38,13 @@ class BookmarkPagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm)
     }
 
     override fun getCount(): Int {
-          return 3
+          return 2
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
         return when(position){
             0 ->  "Movie"
             1 ->  "Tv Show"
-            2 ->  "Person"
             else -> ""
         }
     }

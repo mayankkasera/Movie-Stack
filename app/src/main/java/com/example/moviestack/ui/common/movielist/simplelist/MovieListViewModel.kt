@@ -5,8 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.moviestack.pojo.Result
 import com.example.moviestack.api.repo.person.PersonRepositoryI
+import com.example.moviestack.pojo.MyListDetail
+import com.example.moviestack.roomdb.bookmark.BookmarkHelperI
+import com.example.moviestack.roomdb.mylistdetail.MyListDetailHelperI
 import com.example.moviestack.ui.common.movielist.MovieListState
 import com.example.moviestack.ui.common.movielist.adapter.MovieListAdapter
+import com.example.moviestack.ui.moviedetail.DetailData
 
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -29,7 +33,7 @@ class MovieListViewModel
         }
 
 
-    fun getMovieCredits(id : String,personRepositoryI: PersonRepositoryI){
+    fun getMovieCredits(id : String,personRepositoryI: PersonRepositoryI,detailDataType : DetailData.Type){
         state = state.copy(loading = true)
         compositeDisposable.add(
             personRepositoryI.getMovieCredits(id)
@@ -39,7 +43,7 @@ class MovieListViewModel
                     var joined = it.data as ArrayList<Result>
                     Log.i("dsjvhc",joined.toString())
                     state = state.copy(
-                        movieListAdapter = MovieListAdapter(joined)
+                        movieListAdapter = MovieListAdapter(joined,detailDataType)
                     )
                 }, {
                     state = state.copy(
@@ -57,7 +61,7 @@ class MovieListViewModel
                 }))
     }
 
-    fun getTvCredits(id : String,personRepositoryI: PersonRepositoryI){
+    fun getTvCredits(id : String,personRepositoryI: PersonRepositoryI,detailDataType : DetailData.Type){
         state = state.copy(loading = true)
         compositeDisposable.add(
             personRepositoryI.getTvCredits(id)
@@ -66,7 +70,7 @@ class MovieListViewModel
                 .subscribe({
                     var joined = it.data as ArrayList<Result>
                     state = state.copy(
-                        movieListAdapter = MovieListAdapter(joined)
+                        movieListAdapter = MovieListAdapter(joined,detailDataType)
                     )
                 }, {
                     state = state.copy(
@@ -84,9 +88,15 @@ class MovieListViewModel
                 }))
     }
 
-    fun getResult(movieInfoHelperI: MovieInfoHelperI){
+    fun getResult(bookmarkHelperI: BookmarkHelperI,type : DetailData.Type){
         state = state.copy(
-            movieListAdapter = MovieListAdapter(movieInfoHelperI.getAllResults())
+            movieListAdapter = MovieListAdapter(bookmarkHelperI.getAllBookmarkMovieInfo(type),type)
+        )
+    }
+
+    fun getMyList(myListDetailHelper: MyListDetailHelperI,type : MyListDetail.Type,myListId : Int,detailDataType : DetailData.Type){
+        state = state.copy(
+            movieListAdapter = MovieListAdapter(myListDetailHelper.getAllMyListDetail(myListId,type),detailDataType)
         )
     }
 

@@ -8,12 +8,16 @@
         <variable
             name="infoState"
             type="com.example.moviestack.ui.moviedetail.info.InfoState"/>
+
         <variable
-            name="bookmarkHelperI"
-            type="com.example.moviestack.roomdb.bookmark.BookmarkHelperI" />
+            name="localDatabase"
+            type="com.example.moviestack.roomdb.LocaleDataBase" />
+
         <variable
             name="type"
             type="com.example.moviestack.ui.moviedetail.DetailData.Type" />
+
+
 
     </data>
 
@@ -572,12 +576,15 @@
                     app:layout_constraintEnd_toStartOf="@+id/guidelineright"
                     app:layout_constraintTop_toTopOf="@+id/year"
                     app:bookmarkOnclick="@{infoState.movieInfo}"
-                    app:setBookmarkHelperI="@{bookmarkHelperI}"
-
+                    app:setlocaleDataBase="@{localDatabase}"
+                    app:bookmarkOnclickType="@{type}"
                     app:srcCompat="@drawable/bookmark_selection" />
 
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    app:myListOnclick="@{infoState.movieInfo}"
+                    app:setlocaleDataBaseMyListOnclick="@{localDatabase}"
+                    app:myListOnclickType="@{type}"
                     android:id="@+id/imageView14"
                     android:layout_width="28dp"
                     android:layout_height="28dp"

@@ -73,7 +73,8 @@ class InfoFragment : Fragment() {
         infoViewModel.mutableLiveData.observe(this, Observer {
             binding.infoState = it
             binding.type = type
-            binding.bookmarkHelperI = BookmarkHelper(RoomDatabaseHelper().localeDataBase)
+            binding.localDatabase = RoomDatabaseHelper().localeDataBase
+
         })
     }
 

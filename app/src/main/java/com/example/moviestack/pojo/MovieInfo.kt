@@ -2,10 +2,7 @@ package com.example.moviestack.pojo
 
 
 import android.util.Log
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverter
-import androidx.room.TypeConverters
+import androidx.room.*
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
@@ -24,6 +21,8 @@ import java.util.*
 
 
 data class MovieInfo(
+
+
 
     @SerializedName("first_air_date")
     var firstAirDate: String? = "",
@@ -50,6 +49,7 @@ data class MovieInfo(
     @SerializedName("homepage")
     var homepage: String? = "",
     @PrimaryKey()
+    @ColumnInfo(name = "movie_id")
     @SerializedName("id")
     var id: Long? = 0,
     @SerializedName("imdb_id")

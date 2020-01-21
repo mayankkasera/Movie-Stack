@@ -12,12 +12,15 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.SimilarFragmentBinding
+import com.example.moviestack.pojo.MyListDetail
 import com.example.moviestack.roomdb.LocaleDataBase
 import com.example.moviestack.roomdb.RoomDatabaseHelper
+import com.example.moviestack.roomdb.bookmark.BookmarkHelper
 import com.example.moviestack.roomdb.movieInfo.MovieListViewModel
+import com.example.moviestack.roomdb.mylistdetail.MyListDetailHelper
 import com.example.moviestack.ui.common.ListType
+import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.utils.createFactory
-import com.example.qrcode.roomdb.utils.MovieInfoHelper
 
 /**
  * A simple [Fragment] subclass.
@@ -55,9 +58,12 @@ class MovieListFragment : Fragment() {
 
     private fun loadData() {
         when (listType.type) {
-            ListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(listType.data,DataHelper().personRepositoryI)
-            ListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(listType.data,DataHelper().personRepositoryI)
-            ListType.Type.BOOKMARK_MOVIE->movieListViewModel.getResult( movieInfoHelperI = MovieInfoHelper(RoomDatabaseHelper().localeDataBase))
+            ListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(listType.data,DataHelper().personRepositoryI,detailDataType=DetailData.Type.MOVIE)
+            ListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(listType.data,DataHelper().personRepositoryI,detailDataType=DetailData.Type.TV_SHOW)
+            ListType.Type.BOOKMARK_MOVIE->movieListViewModel.getResult( bookmarkHelperI  = BookmarkHelper(RoomDatabaseHelper().localeDataBase),type = DetailData.Type.MOVIE)
+            ListType.Type.BOOKMARK_TV_SHOW->movieListViewModel.getResult( bookmarkHelperI = BookmarkHelper(RoomDatabaseHelper().localeDataBase),type = DetailData.Type.TV_SHOW)
+            ListType.Type.MY_LIST_MOVIE->movieListViewModel.getMyList( myListDetailHelper  = MyListDetailHelper(RoomDatabaseHelper().localeDataBase),type = MyListDetail.Type.MOVIE,myListId = listType.data.toInt(),detailDataType=DetailData.Type.MOVIE)
+            ListType.Type.MY_LIST_TV_SHOW->movieListViewModel.getMyList( myListDetailHelper  = MyListDetailHelper(RoomDatabaseHelper().localeDataBase),type = MyListDetail.Type.TV_SHOW,myListId = listType.data.toInt(),detailDataType=DetailData.Type.TV_SHOW)
         }
     }
 

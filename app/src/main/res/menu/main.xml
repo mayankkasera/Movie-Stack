@@ -15,7 +15,7 @@
     <item
         android:id="@+id/featured_lists"
         android:icon="@drawable/playlist"
-        android:title="Featured Lists" />
+        android:title="My Lists" />
 
     <item
         android:id="@+id/settings"

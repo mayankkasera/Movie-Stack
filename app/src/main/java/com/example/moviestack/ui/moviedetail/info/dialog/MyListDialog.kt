@@ -3,14 +3,14 @@ package com.example.moviestack.ui.moviedetail.info.dialog
 import android.app.Dialog
 import android.content.Context
 import com.example.moviestack.R
-import kotlinx.android.synthetic.main.new_my_list.*
+import kotlinx.android.synthetic.main.my_list.*
 
 class MyListDialog (var context: Context) {
     private lateinit var dialog: Dialog
 
     init{
         dialog = Dialog(context)
-        dialog.setContentView(R.layout.new_my_list)
+        dialog.setContentView(R.layout.my_list)
         dialog.setCancelable(false)
         dialog.show()
     }
@@ -23,7 +23,7 @@ class MyListDialog (var context: Context) {
         dialog.show()
     }
 
-    fun setOnClickListener(onclick: NewMyListDialogOnclick){
+    fun setOnClickListener(onclick: MyListDialogOnclick){
         dialog.ok.setOnClickListener{
             dismiss()
             onclick.onClick(dialog.text.text.toString())

@@ -8,7 +8,7 @@ import java.util.*
 
 @Entity(foreignKeys = arrayOf(
     ForeignKey(entity = MovieInfo::class,
-    parentColumns = arrayOf("id"),
+    parentColumns = arrayOf("movie_id"),
     childColumns = arrayOf("movieInfoId"),
     onDelete = ForeignKey.CASCADE)
 ))

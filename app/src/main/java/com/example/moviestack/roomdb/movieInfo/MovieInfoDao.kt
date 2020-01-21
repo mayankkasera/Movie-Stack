@@ -15,10 +15,10 @@ interface MovieInfoDao {
     @Query("SELECT * FROM MovieInfo")
     fun getAllMovieInfo(): List<MovieInfo>
 
-    @Query("DELETE FROM MovieInfo WHERE id = :id")
+    @Query("DELETE FROM MovieInfo WHERE movie_id == :id")
     fun deleteQrResults(id: Long): Int
 
-    @Query("SELECT * FROM MovieInfo WHERE  id == (:id)")
+    @Query("SELECT * FROM MovieInfo WHERE  movie_id == (:id)")
     fun hasMovie(id : Int) : List<MovieInfo>
 
 }

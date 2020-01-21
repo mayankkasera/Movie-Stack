@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.moviestack.R
 import com.example.moviestack.ui.dashboard.search.SearchFragment
-import com.example.moviestack.ui.dashboard.featuredlists.FeaturedListsFragment
+import com.example.moviestack.ui.dashboard.mylists.MyListsFragment
 import com.example.moviestack.ui.dashboard.home.HomeFragment
 import com.example.moviestack.ui.dashboard.settings.SettingsFragment
 import com.example.moviestack.ui.search.SearchActivity
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.featured_lists -> {
-                    replace(FeaturedListsFragment())
+                    replace(MyListsFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.settings -> {

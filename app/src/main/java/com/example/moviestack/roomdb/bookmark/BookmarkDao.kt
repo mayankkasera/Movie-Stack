@@ -23,7 +23,7 @@ interface BookmarkDao {
     @Query("SELECT * FROM Bookmark WHERE  movieInfoId == (:id)")
     fun hasBookmark(id : Int) : List<Bookmark>
 
-    @Query("SELECT * FROM MovieInfo INNER JOIN Bookmark ON MovieInfo.id == Bookmark.id WHERE Bookmark.type == (:type)"  )
+    @Query("SELECT * FROM MovieInfo INNER JOIN Bookmark ON MovieInfo.movie_id == Bookmark.movieInfoId WHERE Bookmark.type == (:type)"  )
     fun getAllBookmarkMovieInfo(type : Bookmark.Type) : List<MovieInfo>
 
 }

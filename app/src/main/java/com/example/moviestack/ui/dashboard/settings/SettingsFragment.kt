@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import com.example.moviestack.R
 import com.example.moviestack.databinding.ShareFregmentBinding
 import com.example.moviestack.ui.boookmark.BookamrkActivity
-import com.example.moviestack.ui.common.movielist.simplelist.MovieListActivity
 
 /**
  * A simple [Fragment] subclass.

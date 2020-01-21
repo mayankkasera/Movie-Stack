@@ -28,7 +28,7 @@ object SmallItemOnclick {
                 type!!
                 )
 
-            Log.i("dsbcjd","sdxzchbzjcs :${data}")
+            Log.i("dsbcjd","sdxzchbzjcs :${result}")
             intent.putExtra("datasdcds", data)
             intent.putExtra("id", "${result?.id}")
             intent.putExtra("title", if(result?.title.equals(""))result?.originalTitle else  result?.title)
