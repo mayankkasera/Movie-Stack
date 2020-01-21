@@ -6,12 +6,18 @@
         <variable
             name="genres"
             type="com.example.moviestack.pojo.MovieInfo.Genre"/>
+
+        <variable
+            name="type"
+            type="com.example.moviestack.ui.moviedetail.DetailData.Type"/>
+
         <import type="com.example.moviestack.utils.NetworkConstants"/>
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         app:setGenreOnclick="@{genres.id}"
+        app:genreOnclickType="@{type}"
         android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

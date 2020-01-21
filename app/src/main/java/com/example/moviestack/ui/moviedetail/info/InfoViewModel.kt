@@ -10,6 +10,7 @@ import com.example.moviestack.pojo.MovieInfo
 import com.example.moviestack.pojo.Videos
 import com.example.moviestack.api.repo.movie.MovieResponse
 import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
+import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.ui.moviedetail.info.adapter.CrewAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.GenreAdapter
 import com.example.moviestack.ui.moviedetail.info.adapter.VideosAdapter
@@ -28,7 +29,7 @@ class InfoViewModel() : ViewModel() {
             publishState(value)
         }
 
-    fun getMovie(id: String, tvShowRepositoryI: MovieItemRepositoryI) {
+    fun getMovie(id: String, tvShowRepositoryI: MovieItemRepositoryI,type: DetailData.Type) {
 
 
         state = state.copy(loading = true)
@@ -50,7 +51,7 @@ class InfoViewModel() : ViewModel() {
                             Log.i("dkjhfckjds", "success : " + movieInfo.toString())
                             state = state.copy(
                                 movieInfo = movieInfo,
-                                genreAdapter = GenreAdapter(movieInfo?.genres!!)
+                                genreAdapter = GenreAdapter(movieInfo?.genres!!,type)
                             )
                         }
                         MovieResponse.Type.CREDIT -> {
@@ -93,7 +94,7 @@ class InfoViewModel() : ViewModel() {
 
     }
 
-    fun getTvShow(id : String,tvShowRepositoryI: TvShowRepositoryI){
+    fun getTvShow(id : String,tvShowRepositoryI: TvShowRepositoryI,type: DetailData.Type){
         state = state.copy(loading = true)
 
         compositeDisposable.add(
@@ -113,7 +114,7 @@ class InfoViewModel() : ViewModel() {
                             Log.i("dkjhfckjds", "success : " + movieInfo.toString())
                             state = state.copy(
                                 movieInfo = movieInfo,
-                                genreAdapter = GenreAdapter(movieInfo?.genres!!)
+                                genreAdapter = GenreAdapter(movieInfo?.genres!!,type)
                             )
                         }
                         MovieResponse.Type.CREDIT -> {

@@ -113,6 +113,7 @@
             app:layout_constraintTop_toTopOf="@+id/appCompatImageView" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:visibility="gone"
             android:id="@+id/fab"
             android:layout_width="24dp"
             android:layout_height="24dp"
@@ -122,6 +123,7 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:visibility="gone"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginRight="5dp"

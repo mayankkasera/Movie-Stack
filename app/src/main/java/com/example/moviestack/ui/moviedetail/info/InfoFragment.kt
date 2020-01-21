@@ -53,8 +53,8 @@ class InfoFragment : Fragment() {
 
     private fun loadData() {
          when(type){
-             DetailData.Type.MOVIE ->  infoViewModel.getMovie(id,DataHelper().movieItemRepositoryI)
-             DetailData.Type.TV_SHOW ->  infoViewModel.getTvShow(id,DataHelper().tvShowRepositoryI)
+             DetailData.Type.MOVIE ->  infoViewModel.getMovie(id,DataHelper().movieItemRepositoryI,type)
+             DetailData.Type.TV_SHOW ->  infoViewModel.getTvShow(id,DataHelper().tvShowRepositoryI,type)
          }
     }
 
