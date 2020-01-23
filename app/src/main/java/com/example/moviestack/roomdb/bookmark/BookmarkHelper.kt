@@ -56,8 +56,11 @@ class BookmarkHelper(var qrMovieInfoDataBase: LocaleDataBase) : BookmarkHelperI{
 
         var resultList = ArrayList<Result>()
         for(movieInfo:MovieInfo in list){
+            val s = if(movieInfo?.hasName())(movieInfo?.name_)else(if(movieInfo?.hasTitle())movieInfo?.title else (movieInfo?.originalTitle))
             var result : Result = Result(
-                title = movieInfo?.title,
+                first_air_date = movieInfo?.firstAirDate,
+                title = s,
+                releaseDate = movieInfo?.releaseDate,
                 id = movieInfo?.id,
                 originalTitle =  movieInfo?.originalTitle,
                 backdropPath = movieInfo?.backdropPath,

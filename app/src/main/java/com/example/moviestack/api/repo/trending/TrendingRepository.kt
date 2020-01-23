@@ -22,7 +22,7 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
 
             call?.enqueue(object : Callback<SmallItemList> {
                 override fun onResponse(call: Call<SmallItemList>, response: Response<SmallItemList>) {
-                    Log.i("kdsjcn","shdvcjds  : "+response.body().toString())
+                    Log.i("kdsjcn","shdvcjds  : "+response.toString())
                     response.body()?.let {
                         it.type = type
                         emitter.onNext(it)

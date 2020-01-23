@@ -24,6 +24,7 @@ data class MovieInfo(
 
 
 
+
     @SerializedName("first_air_date")
     var firstAirDate: String? = "",
 
@@ -300,6 +301,22 @@ data class MovieInfo(
             return gson.toJson(myObjects)
         }
     }
+
+    fun hasTitle():Boolean{
+        if(title.equals(""))
+            return false
+        else
+            return true
+    }
+
+    fun hasName():Boolean{
+        if(name_.equals(""))
+            return false
+        else
+            return true
+    }
+
+
 
 
 

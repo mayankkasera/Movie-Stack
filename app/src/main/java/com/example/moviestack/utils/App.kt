@@ -6,6 +6,8 @@ import com.example.moviestack.di.component.NetworkComponent
 import com.example.moviestack.di.component.NetworkComponentFactory
 import com.example.moviestack.di.component.RoomComponent
 import com.facebook.stetho.Stetho
+import io.reactivex.plugins.RxJavaPlugins
+
 
 class App : Application() {
 
@@ -15,6 +17,7 @@ class App : Application() {
         networkComponent = NetworkComponentFactory.create()
         roomComponent = DaggerRoomComponent.factory().create(applicationContext)
         Stetho.initializeWithDefaults(this)
+        RxJavaPlugins.setErrorHandler { throwable: Throwable? -> }
     }
 
     companion object {

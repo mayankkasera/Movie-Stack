@@ -101,5 +101,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'com.ss.bannerslider:bannerslider:2.0.0'
     implementation 'com.ms-square:expandableTextView:0.1.4'
+    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+    implementation 'tyrantgit:explosionfield:1.0.1'
 
 }

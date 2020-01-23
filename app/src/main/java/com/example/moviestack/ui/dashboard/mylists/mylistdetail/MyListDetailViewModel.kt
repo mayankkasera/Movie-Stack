@@ -1,5 +1,6 @@
 package com.example.moviestack.ui.dashboard.mylists.mylistdetail
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,7 +28,7 @@ class MyListDetailViewModel(var myListHelperI: MyListHelperI) : ViewModel() {
             publishState(value)
         }
 
-    fun getResult(myListType : MyList.Type){
+    fun getResult(activity: Activity,myListType : MyList.Type){
 
         var type= if(myListType==MyList.Type.MOVIE)
             ListType.Type.MY_LIST_MOVIE
@@ -35,7 +36,7 @@ class MyListDetailViewModel(var myListHelperI: MyListHelperI) : ViewModel() {
             ListType.Type.MY_LIST_TV_SHOW
 
       state = state.copy(
-          myListDetailAdapter = MyListDetailAdapter(myListHelperI.getAllMyListMovie(myListType),type)
+          myListDetailAdapter = MyListDetailAdapter(activity,myListHelperI.getAllMyListMovie(myListType),type)
       )
 
 

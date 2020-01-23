@@ -1,5 +1,6 @@
 package com.example.moviestack.ui.moviedetail.info.dialog.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,6 +11,7 @@ import com.example.moviestack.pojo.MovieInfo
 import com.example.moviestack.pojo.MyList
 import com.example.moviestack.pojo.MyListDetail
 import com.example.moviestack.roomdb.RoomDatabaseHelper
+import com.example.moviestack.roomdb.mylist.MyListHelper
 import com.example.moviestack.roomdb.mylistdetail.MyListDetailHelper
 import com.example.qrcode.roomdb.utils.MovieInfoHelper
 
@@ -39,6 +41,12 @@ class MyListAdapter(
     }
 
     override fun onBindViewHolder(holder: MyListViewHolder, position: Int) {
+
+        Log.i("dskjcn","ddhbcjd : "+list.get(position).image)
+
+
+        val myListHelperI = MyListHelper(RoomDatabaseHelper().localeDataBase)
+        val myList = myListHelperI.getMyList(list.get(position).id)
         val myListDetailHelper = MyListDetailHelper(RoomDatabaseHelper().localeDataBase)
         val movieInfoHelper = MovieInfoHelper(RoomDatabaseHelper().localeDataBase)
                 holder.Binding.checkBox.setOnCheckedChangeListener(null)
@@ -47,10 +55,16 @@ class MyListAdapter(
             if(isChecked){
                 if(!movieInfoHelper.hasMovie("${movieInfo.id}"))
                     movieInfoHelper.insertResult(movieInfo)
-                  myListDetailHelper.insertMyListDetail(MyListDetail(movieInfoId = movieInfo.id!!,myListId = list.get(position).id,type = type))
+
+                myListDetailHelper.insertMyListDetail(MyListDetail(movieInfoId = movieInfo.id!!,myListId = list.get(position).id,type = type))
+                myList.size = myList.size+1;
+                myListHelperI.updateMyList(myList)
+
             }
             else{
                 myListDetailHelper.deleteMyListDetail(movieInfoId = movieInfo.id!!,myListId = list.get(position).id,type = type)
+                myList.size = myList.size-1
+                myListHelperI.updateMyList(myList)
             }
         }
         holder.bind(list[position])

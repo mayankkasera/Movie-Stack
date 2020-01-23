@@ -63,7 +63,7 @@ class MyListDetailFragment : Fragment() {
     }
 
     private fun loadData() {
-        viewModel.getResult(type)
+        viewModel.getResult(activity!!,type)
     }
 
     private fun setObserver() {

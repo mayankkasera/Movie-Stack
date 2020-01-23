@@ -18,6 +18,9 @@ interface MyListHelperI {
 
     fun deleteMyList(id: Int): Int
 
+    fun updateMyList(list : MyList): Int
+
+    fun getMyList(id: Int): MyList
 
     fun hasMyList(id : Int) : Boolean
 

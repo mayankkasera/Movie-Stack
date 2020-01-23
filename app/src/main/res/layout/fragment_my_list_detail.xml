@@ -16,6 +16,7 @@
         tools:context=".ui.dashboard.mylists.mylistdetail.MyListDetailFragment">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_margin="5dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:adapter="@{state.myListDetailAdapter}"
             android:id="@+id/recyclerView"

@@ -4,9 +4,11 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
+import com.example.moviestack.utils.NetworkConstants
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.parcel.Parcelize
+import okhttp3.internal.Util
 
 @Entity
 @Parcelize
@@ -18,6 +20,10 @@ data class MyList (
    var type : Type = Type.MOVIE,
    var image : String = ""
 ) : Parcelable {
+
+   fun getImageUrl() : String{
+      return NetworkConstants.baseImageUrl500+image
+   }
 
    @Parcelize
    enum class Type : Parcelable {

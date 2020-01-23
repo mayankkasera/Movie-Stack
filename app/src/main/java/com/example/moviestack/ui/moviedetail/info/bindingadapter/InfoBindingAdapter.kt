@@ -11,8 +11,10 @@ import com.example.moviestack.pojo.MovieInfo
 import com.example.moviestack.pojo.MyList
 import com.example.moviestack.pojo.MyListDetail
 import com.example.moviestack.roomdb.LocaleDataBase
+import com.example.moviestack.roomdb.RoomDatabaseHelper
 import com.example.moviestack.roomdb.bookmark.BookmarkHelper
 import com.example.moviestack.roomdb.mylist.MyListHelper
+import com.example.moviestack.roomdb.mylistdetail.MyListDetailHelper
 import com.example.moviestack.ui.common.person.simple.PersonSimpleActivity
 import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.ui.moviedetail.info.dialog.MyListDetailDialog
@@ -20,6 +22,7 @@ import com.example.moviestack.ui.moviedetail.info.dialog.MyListDetailDialogOnlic
 import com.example.moviestack.ui.moviedetail.info.dialog.MyListDialog
 import com.example.moviestack.ui.moviedetail.info.dialog.MyListDialogOnclick
 import com.example.moviestack.ui.moviedetail.info.dialog.adapter.MyListAdapter
+import com.example.qrcode.roomdb.utils.MovieInfoHelper
 
 object InfoBindingAdapter {
     @JvmStatic
@@ -99,11 +102,16 @@ object InfoBindingAdapter {
                                     override fun onClick(s: String) {
                                         val myList = MyList(
                                             name = s,
-                                            size = 0,
+                                            size = 1,
                                             type = type,
                                             image = movieInfo?.backdropPath!!
                                         )
-                                        myListHelperI.insertMyList(myList)
+                                        val l = myListHelperI.insertMyList(myList)
+                                        val myListDetailHelper = MyListDetailHelper(RoomDatabaseHelper().localeDataBase)
+                                        val movieInfoHelper = MovieInfoHelper(RoomDatabaseHelper().localeDataBase)
+                                        if(!movieInfoHelper.hasMovie("${movieInfo.id}"))
+                                            movieInfoHelper.insertResult(movieInfo)
+                                        myListDetailHelper.insertMyListDetail(MyListDetail(movieInfoId = movieInfo.id!!,myListId = l.toInt(),type = myListDetailType))
                                     }
 
                                     @SuppressLint("ShowToast")

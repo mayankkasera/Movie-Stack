@@ -19,9 +19,12 @@ class MyListDetailHelper(var qrMovieInfoDataBase: LocaleDataBase) : MyListDetail
         Log.i("sdkcns","resultList : ${list.toString()}")
         var resultList = ArrayList<Result>()
         for(movieInfo:MovieInfo in list){
+            val s = if(movieInfo?.hasName())(movieInfo?.name_)else(if(movieInfo?.hasTitle())movieInfo?.title else (movieInfo?.originalTitle))
             var result : Result = Result(
-                title = movieInfo?.title,
+                first_air_date = movieInfo?.firstAirDate,
+                title = s,
                 id = movieInfo?.id,
+                releaseDate = movieInfo?.releaseDate,
                 originalTitle =  movieInfo?.originalTitle,
                 backdropPath = movieInfo?.backdropPath,
                 voteAverage = movieInfo?.voteAverage,

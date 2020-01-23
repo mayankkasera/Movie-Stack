@@ -24,4 +24,5 @@ object MyListDetailOnclick {
             layout.context.startActivity(intent)
         }
     }
+
 }

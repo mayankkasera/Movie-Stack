@@ -8,26 +8,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.dashboard.mylists.MyListsFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <LinearLayout
+        android:id="@+id/container"
+        android:gravity="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextAppearance="@style/TabText"
-        app:tabTextColor="@color/light_gray" />
+        >
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/pink"
+            app:tabIndicatorColor="@color/pink"
+            app:tabTextAppearance="@style/TabText"
+            app:tabTextColor="@color/light_gray" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:nestedScrollingEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/container"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

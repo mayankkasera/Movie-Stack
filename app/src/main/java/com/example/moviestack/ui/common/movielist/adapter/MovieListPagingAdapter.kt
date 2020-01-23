@@ -7,15 +7,16 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
+import com.example.moviestack.databinding.MovieListDataBinding
 import com.example.moviestack.pojo.Result
-import com.example.moviestack.databinding.SimilarDataBinding
 import com.example.moviestack.ui.moviedetail.DetailData
 
 class MovieListPagingAdapter(var type : DetailData.Type)  : PagedListAdapter<Result, MovieListPagingAdapter.MovieListPagingViewHolder>(MovieDiffCallback()){
 
 
 
-    inner class MovieListPagingViewHolder(val similarDataBinding : SimilarDataBinding) : RecyclerView.ViewHolder(similarDataBinding.root) {
+    inner class MovieListPagingViewHolder(val similarDataBinding :
+                                          MovieListDataBinding) : RecyclerView.ViewHolder(similarDataBinding.root) {
         fun bind(result: Result) {
             this.similarDataBinding.similar = result
             this.similarDataBinding.type = type
@@ -25,7 +26,7 @@ class MovieListPagingAdapter(var type : DetailData.Type)  : PagedListAdapter<Res
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListPagingViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val similarDataBinding : SimilarDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.similar,parent,false)
+        val similarDataBinding : MovieListDataBinding = DataBindingUtil.inflate(layoutInflater, R.layout.similar,parent,false)
         return MovieListPagingViewHolder(similarDataBinding)
     }
 

@@ -32,9 +32,9 @@ data class Result(
     @SerializedName("poster_path")
     var posterPath: String? = "",
     @SerializedName("release_date")
-    var releaseDate: String = "",
+    var releaseDate: String? = "",
     @SerializedName("first_air_date")
-    var first_air_date: String = "",
+    var first_air_date: String? = "",
     @SerializedName("title")
     var title: String? = "",
     @SerializedName("known_for_department")
@@ -59,12 +59,12 @@ data class Result(
 
     fun getYear():String{
         if(first_air_date.equals("")){
-            val parts = releaseDate.split("-")
-            return parts[0]
+            val parts = releaseDate?.split("-")
+            return parts!![0]
         }
         else{
-            val parts = first_air_date.split("-")
-            return parts[0]
+            val parts = first_air_date?.split("-")
+            return parts!![0]
         }
 
     }
