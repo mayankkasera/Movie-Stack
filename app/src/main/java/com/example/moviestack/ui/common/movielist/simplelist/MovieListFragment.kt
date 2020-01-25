@@ -21,6 +21,7 @@ import com.example.moviestack.roomdb.mylistdetail.MyListDetailHelper
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.utils.createFactory
+import kotlinx.android.synthetic.main.fragment_my_list_detail.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -52,8 +53,11 @@ class MovieListFragment : Fragment() {
         init()
         loadData()
         setObserver()
+        setRefreshLayout()
+
         return mView
     }
+
 
 
     private fun loadData() {
@@ -81,8 +85,25 @@ class MovieListFragment : Fragment() {
     private fun setObserver() {
         movieListViewModel.mutableLiveData.observe(this, Observer {
             binding.movieListState = it
-
+            mView.swipeContainer.isRefreshing = false
         })
     }
+
+    private fun setRefreshLayout() {
+        when (listType.type) {
+            ListType.Type.MOVIE_CREDITS,ListType.Type.TV_CREDITS -> mView.swipeContainer.isEnabled = false
+
+            ListType.Type.BOOKMARK_MOVIE,
+            ListType.Type.BOOKMARK_TV_SHOW,
+            ListType.Type.MY_LIST_MOVIE,
+            ListType.Type.MY_LIST_TV_SHOW -> mView.swipeContainer.isEnabled = true
+        }
+
+        mView.swipeContainer.setOnRefreshListener{
+            mView.swipeContainer.isRefreshing = true
+            loadData()
+        }
+    }
+
 
 }

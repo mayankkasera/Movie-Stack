@@ -9,18 +9,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.RoomDatabase
 
 import com.example.moviestack.R
-import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.MyListDetailFragmentDataBinding
 import com.example.moviestack.pojo.MyList
 import com.example.moviestack.roomdb.RoomDatabaseHelper
 import com.example.moviestack.roomdb.mylist.MyListHelper
-import com.example.moviestack.roomdb.mylist.MyListHelperI
-import com.example.moviestack.ui.dashboard.home.HomeViewModel
-import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.utils.createFactory
+import kotlinx.android.synthetic.main.fragment_my_list_detail.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -52,6 +48,10 @@ class MyListDetailFragment : Fragment() {
         loadData()
         setObserver()
 
+        mView.swipeContainer.setOnRefreshListener{
+            mView.swipeContainer.isRefreshing = true
+            loadData()
+        }
         return mView
     }
 
@@ -67,7 +67,10 @@ class MyListDetailFragment : Fragment() {
     }
 
     private fun setObserver() {
-        viewModel.mutableLiveData.observe(this, Observer { binding.state = it })
+        viewModel.mutableLiveData.observe(this, Observer {
+            binding.state = it
+            mView.swipeContainer.isRefreshing = false
+        })
     }
 
 }

@@ -6,11 +6,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.moviestack.R
 import com.example.moviestack.pojo.MyList
 import com.example.moviestack.ui.dashboard.mylists.adapter.MyListPagerAdapter
 import com.example.moviestack.ui.dashboard.mylists.mylistdetail.MyListDetailFragment
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.fragment_my_list_detail.view.*
 import kotlinx.android.synthetic.main.fragment_my_lists.view.*
 
 /**
@@ -24,6 +26,7 @@ class MyListsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar!!.show()
         mView = inflater.inflate(R.layout.fragment_my_lists, container, false)
 
 
@@ -49,6 +52,8 @@ class MyListsFragment : Fragment() {
         })
 
         replace(MyListDetailFragment.newInstance(MyList.Type.MOVIE))
+
+
 
         return mView
     }

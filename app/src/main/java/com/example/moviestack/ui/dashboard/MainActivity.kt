@@ -6,10 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.moviestack.R
-import com.example.moviestack.ui.dashboard.dummy.DummyFragment
+import com.example.moviestack.ui.dashboard.home.HomeFragment
 import com.example.moviestack.ui.dashboard.search.SearchFragment
 import com.example.moviestack.ui.dashboard.mylists.MyListsFragment
-import com.example.moviestack.ui.dashboard.home.HomeFragment
 import com.example.moviestack.ui.dashboard.settings.SettingsFragment
 import com.example.moviestack.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         initBottomNavigation()
-        replace(DummyFragment())
+        replace(HomeFragment())
 
         search.setOnClickListener{
               var intent = Intent(this@MainActivity,SearchActivity::class.java)
@@ -39,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home -> {
-                    replace(DummyFragment())
+                    replace(HomeFragment())
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.search -> {
