@@ -12,6 +12,72 @@ import retrofit2.Response
 class TvShowRepository(val tvShowRequests: TvShowRequests): TvShowRepositoryI{
 
 
+    override fun getSmallItemsList(type : SmallItemList.Type): Observable<SmallItemList> {
+        return Observable.create<SmallItemList> { emitter ->
+
+            var call : Call<SmallItemList>?
+
+            when(type){
+                SmallItemList.Type.TOP_RATED_TV_SHOW -> call = tvShowRequests?.getTopRatedTvShow()
+                SmallItemList.Type.POPULAR_TV_SHOW -> call = tvShowRequests?.getPopularTvShow()
+
+                else -> call = tvShowRequests?.getPopularTvShow()
+            }
+
+            call?.enqueue(object : Callback<SmallItemList> {
+                override fun onResponse(call: Call<SmallItemList>, response: Response<SmallItemList>) {
+                    Log.i("kdsjcn","shdvcjds  : "+response.body().toString())
+                    Log.i("kdsjcn","shdvcjds  : "+response.toString())
+                    response.body()?.let {
+                        it.type = type
+                        emitter.onNext(it)
+                        emitter.onComplete()
+                    } ?: run {
+                        emitter.onNext(SmallItemList())
+                        emitter.onComplete()
+                    }
+                }
+
+                override fun onFailure(call: Call<SmallItemList>, t: Throwable) {
+                    Log.i("kdsjcn",""+t.toString())
+                    emitter.onError(t)
+                }
+            })
+        }
+    }
+
+    override fun getTvShowList(page: String, type : SmallItemList.Type): Observable<MovieList> {
+        return Observable.create<MovieList> { emitter ->
+
+            var call : Call<MovieList>?
+
+            when(type){
+                SmallItemList.Type.POPULAR_TV_SHOW -> call = tvShowRequests?.getPopular(page)
+                SmallItemList.Type.TOP_RATED_TV_SHOW -> call = tvShowRequests?.getTopRated(page)
+                else -> call = tvShowRequests?.getPopular(page)
+            }
+
+            call?.enqueue(object : Callback<MovieList>  {
+
+                override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+                    response.body()?.let {
+                        emitter.onNext(it)
+                        emitter.onComplete()
+                    } ?: run {
+                        emitter.onNext(MovieList())
+                        emitter.onComplete()
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieList>, t: Throwable) {
+                    Log.i("kdsjcn",""+t.toString())
+                    emitter.onError(t)
+                }
+
+            })
+        }
+    }
+
     override fun getTvShowInfo(id: String): Observable<MovieResponse> {
         return Observable.create<MovieResponse> { emitter ->
             tvShowRequests?.getTvShowInfo(id)?.enqueue(object : Callback<MovieInfo> {

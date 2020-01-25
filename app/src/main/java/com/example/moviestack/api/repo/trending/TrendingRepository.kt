@@ -17,6 +17,7 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
             when(type){
                 SmallItemList.Type.TRENDING_MOVIES -> call = trendingRequest?.getTrendingMovies()
                 SmallItemList.Type.TRENDING_TV_SHOW -> call = trendingRequest?.getTrendingTvShow()
+                SmallItemList.Type.TRENDING_PERSON -> call = trendingRequest?.getTrendingPerson()
                 else -> call = trendingRequest?.getTrendingMovies()
             }
 
@@ -49,6 +50,7 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
                 when(type){
                     SmallItemList.Type.TRENDING_MOVIES -> call = trendingRequest?.getTrendingMovies(page)
                     SmallItemList.Type.TRENDING_TV_SHOW -> call = trendingRequest?.getTrendingTvShow(page)
+                    SmallItemList.Type.TRENDING_PERSON -> call = trendingRequest?.getTrendingPerson(page)
                     else -> call = trendingRequest?.getTrendingMovies(page)
                 }
 

@@ -3,11 +3,8 @@ package com.example.moviestack.ui.moviedetail.bindingadapter
 
 import android.util.Log
 import androidx.databinding.BindingAdapter
-import com.example.moviestack.pojo.Images
-import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.pojo.Videos
-import com.example.moviestack.ui.moviedetail.adapter.MainSliderAdapter
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.utils.adapter.MainSliderAdapter
 import com.example.moviestack.utils.PicassoImageLoadingService
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import ss.com.bannerslider.Slider
@@ -29,9 +26,12 @@ object MovieDetailBindingAdapter {
             if(result.results.size>2)
                 arrayList.add(result.results.get(2).getImage())
 
-            slider.setAdapter(MainSliderAdapter(arrayList))
+            slider.setAdapter(
+                MainSliderAdapter(
+                    arrayList
+                )
+            )
 
-            slider.setAdapter(MainSliderAdapter(arrayList))
             Log.i("sddhvgch","sdcvhsd 1111")
         }
         else{

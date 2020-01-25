@@ -19,8 +19,8 @@ class MovieItemRepository(private val movieItemRequests : MovieItemRequests?) :M
             when(type){
                 SmallItemList.Type.NOW_PLAYING -> call = movieItemRequests?.getNowPlaying()
                 SmallItemList.Type.UPCOMING -> call = movieItemRequests?.getUpcoming()
-                SmallItemList.Type.POPULAR -> call = movieItemRequests?.getPopular()
-                SmallItemList.Type.TOP_RATED -> call = movieItemRequests?.getTopRated()
+                SmallItemList.Type.POPULAR_MOVIES -> call = movieItemRequests?.getPopular()
+                SmallItemList.Type.TOP_RATED_TV_SHOW -> call = movieItemRequests?.getTopRated()
                 else -> call = movieItemRequests?.getTopRated()
             }
 
@@ -55,8 +55,8 @@ class MovieItemRepository(private val movieItemRequests : MovieItemRequests?) :M
 
                 SmallItemList.Type.NOW_PLAYING -> call = movieItemRequests?.getNowPlaying(page)
                 SmallItemList.Type.UPCOMING -> call = movieItemRequests?.getUpcoming(page)
-                SmallItemList.Type.POPULAR -> call = movieItemRequests?.getPopular(page)
-                SmallItemList.Type.TOP_RATED -> call = movieItemRequests?.getTopRated(page)
+                SmallItemList.Type.POPULAR_MOVIES -> call = movieItemRequests?.getPopular(page)
+                SmallItemList.Type.TOP_RATED_MOVIES -> call = movieItemRequests?.getTopRated(page)
                  else -> call = movieItemRequests?.getNowPlaying(page)
             }
 

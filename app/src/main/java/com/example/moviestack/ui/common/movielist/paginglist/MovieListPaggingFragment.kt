@@ -15,6 +15,7 @@ import com.example.moviestack.api.DataHelper
 import com.example.moviestack.api.NetworkHelper
 import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.api.repo.movie.MovieItemRepository
+import com.example.moviestack.api.repo.tvshow.TvShowRepository
 import com.example.moviestack.databinding.MovieLisPagingFragmentBinding
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.movielist.adapter.MovieListPagingAdapter
@@ -70,10 +71,12 @@ class MovieListPaggingFragment : Fragment() {
         when (listType.type) {
             ListType.Type.TRENDING_MOVIE -> movieListPaggingViewModel.getTrendingData(DataHelper().trendingRepositoryI, SmallItemList.Type.TRENDING_MOVIES)
             ListType.Type.TRENDING_TV_SHOW -> movieListPaggingViewModel.getTrendingData(DataHelper().trendingRepositoryI, SmallItemList.Type.TRENDING_TV_SHOW)
-            ListType.Type.NOW_PLAYING -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.NOW_PLAYING)
-            ListType.Type.UPCOMING -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.UPCOMING)
-            ListType.Type.POPULAR -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.POPULAR)
-            ListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(MovieItemRepository(NetworkHelper().gerRetrofit()), SmallItemList.Type.TOP_RATED)
+            ListType.Type.NOW_PLAYING -> movieListPaggingViewModel.getMoviesData(DataHelper().movieItemRepositoryI, SmallItemList.Type.NOW_PLAYING)
+            ListType.Type.UPCOMING -> movieListPaggingViewModel.getMoviesData(DataHelper().movieItemRepositoryI, SmallItemList.Type.UPCOMING)
+            ListType.Type.POPULAR -> movieListPaggingViewModel.getMoviesData(DataHelper().movieItemRepositoryI, SmallItemList.Type.POPULAR_MOVIES)
+            ListType.Type.POPULAR_TV_SHOW -> movieListPaggingViewModel.getMoviesData(DataHelper().movieItemRepositoryI, SmallItemList.Type.POPULAR_TV_SHOW)
+            ListType.Type.TOP_RATED -> movieListPaggingViewModel.getMoviesData(DataHelper().movieItemRepositoryI, SmallItemList.Type.TOP_RATED_MOVIES)
+            ListType.Type.TOP_RATED_TV_SHOW -> movieListPaggingViewModel.getTvShowData(DataHelper().tvShowRepositoryI, SmallItemList.Type.TOP_RATED_TV_SHOW)
             ListType.Type.SMILER -> {
 
                 if(type==DetailData.Type.MOVIE)

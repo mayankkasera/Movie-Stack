@@ -10,6 +10,7 @@ import androidx.databinding.BindingAdapter
 import com.example.moviestack.pojo.Result
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.movielist.paginglist.MovieListPaggingActivity
+import com.example.moviestack.ui.common.person.paging.PersonPagingActivity
 import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.ui.moviedetail.MovieDetailActivity
 import java.io.Serializable
@@ -61,6 +62,18 @@ object SmallItemOnclick {
         }
     }
 
+
+    @JvmStatic
+    @BindingAdapter("setMorePersonOnclick")
+    fun setMorePersonOnclick (layout : AppCompatTextView, type : ListType.Type?){
+        layout.setOnClickListener{
+            var detailDataType :  DetailData.Type? = DetailData.Type.PERSON
+            val intent = Intent(layout.context, PersonPagingActivity::class.java)
+            intent.putExtra("type", type)
+            intent.putExtra("detailType",detailDataType as Parcelable)
+            layout.context.startActivity(intent)
+        }
+    }
 
 
 }

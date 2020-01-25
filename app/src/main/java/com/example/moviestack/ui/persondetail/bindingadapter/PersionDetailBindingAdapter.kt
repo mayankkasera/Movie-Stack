@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.example.moviestack.R
 import com.example.moviestack.pojo.TaggedImages
-import com.example.moviestack.ui.moviedetail.adapter.MainSliderAdapter
+import com.example.moviestack.utils.adapter.MainSliderAdapter
 import com.example.moviestack.utils.NetworkConstants
 import com.example.moviestack.utils.PicassoImageLoadingService
 import ss.com.bannerslider.Slider
@@ -35,7 +35,11 @@ object PersionDetailBindingAdapter {
             Log.i("dsgcvh", arrayList.toString())
             Log.i("dsgcvh", result.toString())
 
-            slider.setAdapter(MainSliderAdapter(arrayList))
+            slider.setAdapter(
+                MainSliderAdapter(
+                    arrayList
+                )
+            )
         } else {
             Log.i("sddhvgch", "sdcvhsd")
         }

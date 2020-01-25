@@ -13,6 +13,9 @@ import com.example.moviestack.api.repo.person.paging.PersonDataSourceFactory
 import com.example.moviestack.api.repo.search.SearchRepositoryI
 import com.example.moviestack.api.repo.search.paging.SearchDataSource
 import com.example.moviestack.api.repo.search.paging.SearchDataSourceFactory
+import com.example.moviestack.api.repo.trending.TrendingRepositoryI
+import com.example.moviestack.api.repo.trending.paging.TrendingItemDataSource
+import com.example.moviestack.api.repo.trending.paging.TrendingItemDataSourceFactory
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.disposables.CompositeDisposable
 
@@ -39,5 +42,17 @@ class PersonPagingViewModel : ViewModel() {
         moviePagedList = LivePagedListBuilder(personDataSourceFactory, config).build()
         state = Transformations.switchMap<PersonDataSource, MovieListState>(
             personDataSourceFactory.moviesLiveDataSource, PersonDataSource::mutableLiveData)
+    }
+
+    fun getTrendingData(trendingRepositoryI: TrendingRepositoryI, type : SmallItemList.Type){
+        var  trendingItemDataSourceFactory  =
+            TrendingItemDataSourceFactory(
+                compositeDisposable,
+                trendingRepositoryI,
+                type
+            )
+        moviePagedList = LivePagedListBuilder(trendingItemDataSourceFactory, config).build()
+        state = Transformations.switchMap<TrendingItemDataSource, MovieListState>(
+            trendingItemDataSourceFactory.moviesLiveDataSource, TrendingItemDataSource::mutableLiveData)
     }
 }

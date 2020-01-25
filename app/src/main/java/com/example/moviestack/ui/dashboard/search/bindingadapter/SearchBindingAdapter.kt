@@ -28,8 +28,12 @@ object SearchBindingAdapter {
     @BindingAdapter("setPersonOnclick")
     fun setPersonOnclick (layout : CardView, any : Any?){
         layout.setOnClickListener{
+            var detailDataType :  DetailData.Type? = DetailData.Type.PERSON
             val intent = Intent(layout.context, PersonPagingActivity::class.java)
+            intent.putExtra("type", ListType.Type.POPULAR_PERSON)
+            intent.putExtra("detailType",detailDataType as Parcelable)
             layout.context.startActivity(intent)
+
         }
     }
 

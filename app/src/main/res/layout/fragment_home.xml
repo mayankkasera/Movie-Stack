@@ -73,7 +73,6 @@
                   app:layout_constraintBottom_toBottomOf="@+id/tv_trending_movie_title"
                   app:layout_constraintEnd_toEndOf="parent" />
 
-
               <androidx.recyclerview.widget.RecyclerView
                   android:id="@+id/trendingMovies"
                   android:layout_width="match_parent"
@@ -86,7 +85,6 @@
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toBottomOf="@+id/tv_trending_movie_title" />
-
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
@@ -129,7 +127,6 @@
                   app:layout_constraintBottom_toBottomOf="@+id/tv_trending_tvShows_title"
                   app:layout_constraintEnd_toEndOf="parent" />
 
-
               <androidx.recyclerview.widget.RecyclerView
                   android:id="@+id/trendingTvShow"
                   android:layout_width="match_parent"
@@ -145,7 +142,6 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-
                   android:layout_marginLeft="16dp"
                   android:layout_marginTop="16dp"
                   android:id="@+id/nowPlaying_title"
@@ -174,9 +170,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-
                   app:setMoreMovieOnclick="@{ListType.Type.NOW_PLAYING}"
-
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_marginEnd="23dp"
@@ -186,7 +180,6 @@
                   android:textStyle="bold"
                   app:layout_constraintBottom_toBottomOf="@+id/nowPlaying_title"
                   app:layout_constraintEnd_toEndOf="parent" />
-
 
               <androidx.recyclerview.widget.RecyclerView
                   android:layout_marginTop="16dp"
@@ -288,9 +281,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-
-                  app:setMoreMovieOnclick="@{ListType.Type.POPULAR}"
-
+                  app:setMoreTvOnclick="@{ListType.Type.POPULAR}"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:layout_marginEnd="23dp"
@@ -300,8 +291,6 @@
                   android:textStyle="bold"
                   app:layout_constraintBottom_toBottomOf="@+id/popular_title"
                   app:layout_constraintEnd_toEndOf="parent" />
-
-
 
               <androidx.recyclerview.widget.RecyclerView
                   android:id="@+id/popular"
@@ -316,9 +305,11 @@
                   app:layout_constraintStart_toStartOf="parent"
                   app:layout_constraintTop_toBottomOf="@+id/popular_title" />
 
+
+
+
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-
                   android:layout_marginLeft="16dp"
                   android:layout_marginTop="16dp"
                   android:id="@+id/topRated_title"
@@ -346,7 +337,7 @@
 
               <androidx.appcompat.widget.AppCompatTextView
                   android:visibility="@{homeState.success?View.VISIBLE:View.GONE}"
-                  app:setMoreMovieOnclick="@{ListType.Type.TOP_RATED}"
+                  app:setMoreTvOnclick="@{ListType.Type.TOP_RATED}"
 
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -357,7 +348,6 @@
                   android:textStyle="bold"
                   app:layout_constraintBottom_toBottomOf="@+id/topRated_title"
                   app:layout_constraintEnd_toEndOf="parent" />
-
 
               <androidx.recyclerview.widget.RecyclerView
                   android:id="@+id/topRated"

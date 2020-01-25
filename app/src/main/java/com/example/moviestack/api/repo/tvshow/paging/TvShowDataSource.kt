@@ -1,21 +1,23 @@
-package com.example.moviestack.api.repo.movie.paging
+package com.example.moviestack.api.repo.tvshow.paging
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
+import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
+import com.example.moviestack.api.repo.trending.TrendingRepositoryI
+import com.example.moviestack.api.repo.tvshow.TvShowRepositoryI
 import com.example.moviestack.pojo.MovieList
 import com.example.moviestack.pojo.Result
 import com.example.moviestack.pojo.SmallItemList
-import com.example.moviestack.api.repo.movie.MovieItemRepositoryI
 import com.example.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class MovieDataSource(
+class TvShowDataSource(
     var compositeDisposable: CompositeDisposable,
-    var movieItemRepositoryI: MovieItemRepositoryI,
+    var tvShowRepositoryI: TvShowRepositoryI,
     var type : SmallItemList.Type
 ) : PageKeyedDataSource<Int, Result>() {
 
@@ -39,7 +41,7 @@ class MovieDataSource(
 
         var observable : Observable<MovieList>
 
-        observable =  movieItemRepositoryI.getMoviesList(
+        observable =  tvShowRepositoryI.getTvShowList(
             "$FIRST_PAGE",
             type
         )
@@ -75,7 +77,7 @@ class MovieDataSource(
 
         var observable : Observable<MovieList>
 
-        observable =  movieItemRepositoryI.getMoviesList(
+        observable =  tvShowRepositoryI.getTvShowList(
             "${params.key}",
             type
         )
@@ -116,7 +118,7 @@ class MovieDataSource(
 
         var observable : Observable<MovieList>
 
-        observable =  movieItemRepositoryI.getMoviesList(
+        observable =  tvShowRepositoryI.getTvShowList(
             "${params.key}",
             type
         )

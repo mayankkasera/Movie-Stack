@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
-import com.example.moviestack.pojo.SmallItemList
 import com.example.moviestack.databinding.MovieDetailActivityBinding
 import com.example.moviestack.utils.createFactory
 import com.example.qrcode.ui.adapter.MainViewPagerAdapter
@@ -39,7 +38,11 @@ class MovieDetailActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
-        movieDetailViewModel.getMedia(id)
+        when(data.type){
+           DetailData.Type.MOVIE -> movieDetailViewModel.getMovieMedia(id,DataHelper().movieItemRepositoryI)
+            DetailData.Type.TV_SHOW -> movieDetailViewModel.getTvShowMedia(id,DataHelper().tvShowRepositoryI)
+        }
+
     }
 
     fun init() {
@@ -49,9 +52,8 @@ class MovieDetailActivity : AppCompatActivity() {
         data = intent.getParcelableExtra<DetailData>("datasdcds")
         title = intent.getStringExtra("title")
         id = intent.getStringExtra("id")
-        val factory = MovieDetailViewModel(DataHelper().movieItemRepositoryI).createFactory()
-        movieDetailViewModel =
-            ViewModelProvider(this, factory).get(MovieDetailViewModel::class.java)
+        val factory = MovieDetailViewModel().createFactory()
+        movieDetailViewModel = ViewModelProvider(this, factory).get(MovieDetailViewModel::class.java)
     }
 
     private fun setObserver() {

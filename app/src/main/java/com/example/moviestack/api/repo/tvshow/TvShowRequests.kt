@@ -31,4 +31,18 @@ interface TvShowRequests{
 
 
 
+    @GET("tv/popular")
+    fun getPopularTvShow() : Call<SmallItemList>
+
+
+    @GET("tv/top_rated")
+    fun getTopRatedTvShow() : Call<SmallItemList>
+
+
+    @GET("tv/popular")
+    fun getPopular(@Query("page") page :String) : Call<MovieList>
+
+    @GET("tv/top_rated")
+    fun getTopRated(@Query("page") page :String) : Call<MovieList>
+
 }

@@ -11,8 +11,7 @@ import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
 import java.util.*
 
-class HomeViewModel(var movieItemRepositoryI: MovieItemRepositoryI,
-                    var trendingRepositoryI: TrendingRepositoryI) : ViewModel() {
+class HomeViewModel(var movieItemRepositoryI: MovieItemRepositoryI, var trendingRepositoryI: TrendingRepositoryI) : ViewModel() {
 
     var mutableLiveData: MutableLiveData<HomeState> = MutableLiveData()
     private var compositeDisposable = CompositeDisposable()
@@ -32,8 +31,8 @@ class HomeViewModel(var movieItemRepositoryI: MovieItemRepositoryI,
                     trendingRepositoryI.getSmallItemsList(SmallItemList.Type.TRENDING_TV_SHOW),
                     movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.NOW_PLAYING),
                     movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.UPCOMING),
-                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.POPULAR),
-                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.TOP_RATED)
+                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.POPULAR_MOVIES),
+                    movieItemRepositoryI.getSmallItemsList(SmallItemList.Type.TOP_RATED_MOVIES)
                 )
             ).subscribe({
 
@@ -47,9 +46,9 @@ class HomeViewModel(var movieItemRepositoryI: MovieItemRepositoryI,
                         state.copy(nowPlayingAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
                     SmallItemList.Type.UPCOMING -> state =
                         state.copy(upComingAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
-                    SmallItemList.Type.POPULAR -> state =
+                    SmallItemList.Type.POPULAR_MOVIES -> state =
                         state.copy(popularAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
-                    SmallItemList.Type.TOP_RATED -> state =
+                    SmallItemList.Type.TOP_RATED_MOVIES -> state =
                         state.copy(topRatedAdapter = SmallItemAdapter(it.results,DetailData.Type.MOVIE))
 
                 }

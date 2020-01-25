@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import com.example.moviestack.R
 import com.example.moviestack.ui.common.ListType
 import com.example.moviestack.ui.common.person.simple.PersonSimpleFragment
+import com.example.moviestack.ui.moviedetail.DetailData
 
 class PersonPagingActivity : AppCompatActivity() {
 
@@ -13,14 +14,20 @@ class PersonPagingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_paging)
 
+        var id = intent.getIntExtra("id",0)
+        val result: ListType.Type = intent.getSerializableExtra("type") as ListType.Type
+        val type: DetailData.Type = intent.getParcelableExtra("detailType") as DetailData.Type
 
-        var listType = ListType(
-            data = "",
-            type = ListType.Type.POPULAR_PERSON
-        );
+        var creditType =
+            ListType(
+                data = "${id}",
+                type = result
+            );
+
         replace(
             PersonPagingFragment.newInstance(
-                listType
+                creditType,
+                type
             )
         )
 
