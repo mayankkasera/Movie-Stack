@@ -35,11 +35,13 @@ object PersionDetailBindingAdapter {
             Log.i("dsgcvh", arrayList.toString())
             Log.i("dsgcvh", result.toString())
 
+
             slider.setAdapter(
                 MainSliderAdapter(
                     arrayList
                 )
             )
+            slider.setInterval(10000)
         } else {
             Log.i("sddhvgch", "sdcvhsd")
         }

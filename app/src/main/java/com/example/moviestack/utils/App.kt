@@ -14,7 +14,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
        // roomComponent = DaggerRoo.factory().create(NetworkConstants.baseUrl)
-        networkComponent = NetworkComponentFactory.create()
+        networkComponent = NetworkComponentFactory.create(this)
         roomComponent = DaggerRoomComponent.factory().create(applicationContext)
         Stetho.initializeWithDefaults(this)
         RxJavaPlugins.setErrorHandler { throwable: Throwable? -> }

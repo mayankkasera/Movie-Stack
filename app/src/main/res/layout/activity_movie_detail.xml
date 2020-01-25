@@ -47,7 +47,6 @@
                     <ss.com.bannerslider.Slider
                         app:slider="@{videos}"
                         app:slider_loopSlides="true"
-                        app:slider_interval="10000"
                         app:slider_indicatorSize="0dp"
                         android:id="@+id/slider"
                         android:layout_width="match_parent"

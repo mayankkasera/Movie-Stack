@@ -12,7 +12,6 @@ class NetworkHelper {
     @Inject
     lateinit var retrofit: Retrofit
 
-
     @Inject
     lateinit var discoverRequests: DiscoverRequests
 

@@ -1,5 +1,6 @@
 package com.example.moviestack.di.modules
 
+import android.content.Context
 import com.example.moviestack.api.repo.discover.DiscoverRequests
 import com.example.moviestack.api.repo.movie.MovieItemRequests
 import com.example.moviestack.api.repo.person.PersonRequests
@@ -32,10 +33,10 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttp() : OkHttpClient{
+    fun provideOkHttp(@Named("appContext") context: Context) : OkHttpClient{
         return OkHttpClient.Builder()
             .addNetworkInterceptor(StethoInterceptor())
-            .addInterceptor(AuthorizationInterceptor())
+            .addInterceptor(AuthorizationInterceptor(context))
             .build()
     }
 

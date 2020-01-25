@@ -23,7 +23,8 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
 
             call?.enqueue(object : Callback<SmallItemList> {
                 override fun onResponse(call: Call<SmallItemList>, response: Response<SmallItemList>) {
-                    Log.i("kdsjcn","shdvcjds  : "+response.toString())
+                    Log.i("dsjcvhdbsjchbs","1 "+response.toString())
+                    Log.i("dsjcvhdbsjchbs","2 "+call.toString())
                     response.body()?.let {
                         it.type = type
                         emitter.onNext(it)
@@ -35,7 +36,8 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
                 }
 
                 override fun onFailure(call: Call<SmallItemList>, t: Throwable) {
-                    Log.i("kdsjcn",""+t.toString())
+                    Log.i("dsjcvhdbsjchbs","3 "+t.toString())
+                    Log.i("dsjcvhdbsjchbs","3 "+call.toString())
                     emitter.onError(t)
                 }
             })
@@ -57,6 +59,9 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
                 call?.enqueue(object : Callback<MovieList>  {
 
                     override fun onResponse(call: Call<MovieList>, response: Response<MovieList>) {
+
+                        Log.i("dsjcvhdbsjchbs","1 "+response.toString())
+                        Log.i("dsjcvhdbsjchbs","2 "+call.toString())
                         response.body()?.let {
                             emitter.onNext(it)
                             emitter.onComplete()
@@ -67,7 +72,7 @@ class TrendingRepository(val trendingRequest: TrendingRequest): TrendingReposito
                     }
 
                     override fun onFailure(call: Call<MovieList>, t: Throwable) {
-                        Log.i("kdsjcn",""+t.toString())
+                        Log.i("dsjcvhdbsjchbs","3 "+t.toString())
                         emitter.onError(t)
                     }
 

@@ -34,6 +34,7 @@ object PicasoAdapter{
     @BindingAdapter("addSlider")
     fun addSlider (slider : Slider , result : List<Result>?){
 
+        Log.i("dsbcjd","sdxzchbzjcs :${result}")
         if (result != null) {
             var list = ArrayList<String>()
             for(r in result!!)
@@ -41,6 +42,7 @@ object PicasoAdapter{
 
             Slider.init(PicassoImageLoadingService());
             slider.setAdapter(MainSliderAdapter(list))
+            slider.setInterval(10000)
             slider.setOnSlideClickListener{
                 val intent = Intent(slider.context, MovieDetailActivity::class.java)
 
@@ -49,7 +51,7 @@ object PicasoAdapter{
                     if(result?.get(it).name.equals("")) result?.get(it).originalTitle!! else  result?.get(it).name!!, DetailData.Type.MOVIE!!
                 )
 
-                Log.i("dsbcjd","sdxzchbzjcs :${result}")
+
                 intent.putExtra("datasdcds", data)
                 intent.putExtra("id", "${result?.get(it)?.id}")
                 intent.putExtra("title", if(result?.get(it).title.equals(""))result?.get(it).originalTitle else  result?.get(it).title)
