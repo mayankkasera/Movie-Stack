@@ -14,7 +14,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.moviestack.R
 import com.example.moviestack.api.DataHelper
 import com.example.moviestack.databinding.DummyDataBinding
+import com.example.moviestack.ui.dashboard.MainActivity
 import com.example.moviestack.utils.createFactory
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -31,7 +33,7 @@ class HomeFragment : Fragment() {
     ): View? {
         (activity as AppCompatActivity).supportActionBar!!.show()
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-
+        (activity as MainActivity).bottomNavigationView.menu.getItem(0).isChecked = true
         init()
         loadData()
         setObserver()

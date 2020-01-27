@@ -45,6 +45,7 @@ class TvShowDataSource(
             "$FIRST_PAGE",
             type
         )
+        state = state.copy(loading = true)
 
         compositeDisposable.add(
 
@@ -122,7 +123,6 @@ class TvShowDataSource(
             "${params.key}",
             type
         )
-
 
         compositeDisposable.add(
             observable

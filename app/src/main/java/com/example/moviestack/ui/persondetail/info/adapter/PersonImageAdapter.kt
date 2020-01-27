@@ -6,15 +6,20 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviestack.R
 import com.example.moviestack.pojo.PersonImages
-import com.example.moviestack.pojo.Videos
 import com.example.moviestack.databinding.ImagesDataBinding
+import com.example.moviestack.pojo.ImagesDeatail
 
-class PersonImageAdapter(private val list: List<PersonImages.Profile>) : RecyclerView.Adapter<PersonImageAdapter.VideosViewHolder>() {
+class PersonImageAdapter(private val list: PersonImages) : RecyclerView.Adapter<PersonImageAdapter.VideosViewHolder>() {
 
     inner class VideosViewHolder(val imagesDataBinding: ImagesDataBinding) : RecyclerView.ViewHolder(imagesDataBinding.root) {
 
-        fun bind(result: PersonImages.Profile) {
+        fun bind(
+            result: PersonImages,
+            position: Int
+        ) {
             this.imagesDataBinding.images = result
+            this.imagesDataBinding.url = result.profiles[position].getImages()
+            this.imagesDataBinding.position = position
             this.imagesDataBinding.executePendingBindings()
         }
 
@@ -27,10 +32,10 @@ class PersonImageAdapter(private val list: List<PersonImages.Profile>) : Recycle
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return list.profiles.size
     }
 
     override fun onBindViewHolder(holder: VideosViewHolder, position: Int) {
-        holder.bind(list[position])
+        holder.bind(list,position)
     }
 }

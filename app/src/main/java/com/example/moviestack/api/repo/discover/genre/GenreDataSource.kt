@@ -29,6 +29,7 @@ class GenreDataSource(var data : String,
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Result>
     ) {
+        state = state.copy(loading = true)
         compositeDisposable.add(discoverRepositoryI?.getGenreMovieList(data,"${FIRST_PAGE}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -52,6 +53,7 @@ class GenreDataSource(var data : String,
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( discoverRepositoryI?.getGenreMovieList(data,"${params.key}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -77,6 +79,7 @@ class GenreDataSource(var data : String,
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( discoverRepositoryI?.getGenreMovieList(data,"${params.key}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

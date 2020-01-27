@@ -1,6 +1,7 @@
 package com.example.moviestack.utils
 
 import android.view.View
+import androidx.constraintlayout.widget.Group
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
@@ -21,5 +22,11 @@ fun <T : ViewModel?> T.createFactory(): ViewModelProvider.Factory {
     return object : ViewModelProvider.Factory {
         @Suppress("UNCHECKED_CAST")
         override fun <T : ViewModel?> create(modelClass: Class<T>): T = viewModel as T
+    }
+}
+
+fun Group.setAllOnClickListener(listener: View.OnClickListener) {
+    referencedIds.forEach { id ->
+        rootView.findViewById<View>(id).setOnClickListener(listener)
     }
 }

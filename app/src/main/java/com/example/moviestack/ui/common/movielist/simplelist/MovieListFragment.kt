@@ -2,6 +2,7 @@ package com.example.moviestack.ui.common.movielist.simplelist
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,8 +62,12 @@ class MovieListFragment : Fragment() {
 
 
     private fun loadData() {
+        Log.i("dsjcbsdjbc","0 $listType.type")
         when (listType.type) {
-            ListType.Type.MOVIE_CREDITS -> movieListViewModel.getMovieCredits(listType.data,DataHelper().personRepositoryI,detailDataType=DetailData.Type.MOVIE)
+            ListType.Type.MOVIE_CREDITS -> {
+                Log.i("dsjcbsdjbc","0 ")
+                movieListViewModel.getMovieCredits(listType.data,DataHelper().personRepositoryI,detailDataType=DetailData.Type.MOVIE)
+            }
             ListType.Type.TV_CREDITS -> movieListViewModel.getTvCredits(listType.data,DataHelper().personRepositoryI,detailDataType=DetailData.Type.TV_SHOW)
             ListType.Type.BOOKMARK_MOVIE->movieListViewModel.getResult( bookmarkHelperI  = BookmarkHelper(RoomDatabaseHelper().localeDataBase),type = DetailData.Type.MOVIE)
             ListType.Type.BOOKMARK_TV_SHOW->movieListViewModel.getResult( bookmarkHelperI = BookmarkHelper(RoomDatabaseHelper().localeDataBase),type = DetailData.Type.TV_SHOW)

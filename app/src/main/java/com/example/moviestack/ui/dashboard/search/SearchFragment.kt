@@ -11,6 +11,8 @@ import androidx.fragment.app.Fragment
 import com.example.moviestack.R
 import com.example.moviestack.databinding.SearchFragmentDataBinding
 import com.example.moviestack.databinding.ShareFregmentBinding
+import com.example.moviestack.ui.dashboard.MainActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 /**
@@ -27,6 +29,8 @@ class SearchFragment : Fragment() {
     ): View? {
         (activity as AppCompatActivity).supportActionBar!!.hide()
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_search, container, false)
+        (activity as MainActivity).bottomNavigationView.menu.getItem(1).isChecked = true
+
         init()
 
 

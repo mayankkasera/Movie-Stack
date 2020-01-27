@@ -15,10 +15,10 @@ interface TrendingRequest {
     @GET("trending/tv/day")
     fun getTrendingTvShow() : Call<SmallItemList>
 
-    @GET("trending/person/week")
+    @GET("trending/person/day")
     fun getTrendingPerson() : Call<SmallItemList>
 
-    @GET("trending/person/week")
+    @GET("trending/person/day")
     fun getTrendingPerson(@Query("page") page :String) : Call<MovieList>
 
     @GET("trending/movie/day")

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".ui.aboutas.AboutAsActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/mayank"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="center"
+        android:id="@+id/about"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:text="Movie Stack\n is created by Mayank Kasera"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:id="@+id/imageView9"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/github"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16sp"
+        android:fontFamily="@font/myfont"
+        android:text="Github"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+         />
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:id="@+id/linkdin_image"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/linkdin"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+
+    <TextView
+        android:id="@+id/linkdin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16sp"
+        android:fontFamily="@font/myfont"
+        android:text="Linkedin"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linkdin_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linkdin_image"
+    />
+
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:id="@+id/instagram_image"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/instagram"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linkdin_image" />
+
+    <TextView
+        android:id="@+id/instagram"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16sp"
+        android:fontFamily="@font/myfont"
+        android:text="Instagram"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/instagram_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/instagram_image"
+        />
+
+
+
+
+    <ImageView
+        android:layout_marginTop="40dp"
+        android:id="@+id/fackbook_image"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:src="@drawable/fb"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instagram_image" />
+
+    <TextView
+        android:id="@+id/fackbook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16sp"
+        android:fontFamily="@font/myfont"
+        android:text="FaceBook"
+        android:textColor="@color/light_gray"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/fackbook_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fackbook_image"
+        />
+
+
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/github"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="imageView9,textView9" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/linke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="linkdin_image,linkdin" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/insta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="instagram_image,instagram" />
+
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/fb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="fackbook_image,fackbook" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

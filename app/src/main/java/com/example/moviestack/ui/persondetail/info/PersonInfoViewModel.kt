@@ -49,10 +49,8 @@ class PersonInfoViewModel(val personRepositoryI: PersonRepositoryI) : ViewModel(
                         }
                         PersonResponce.Type.PERSON_IMAGES -> {
                             var personImages: PersonImages = it.data as PersonImages
-                            var v = PersonImageAdapter(personImages.profiles)
-                            Log.i("bvhvhg","${personImages}")
                             state = state.copy(
-                                personImageAdapter = PersonImageAdapter(personImages.profiles)
+                                personImageAdapter = PersonImageAdapter(personImages)
                             )
                         }
 

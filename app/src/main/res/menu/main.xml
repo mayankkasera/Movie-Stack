@@ -2,25 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:menuCategory="secondary"
         android:id="@+id/home"
         android:icon="@drawable/home"
         android:title="Home" />
 
     <item
+        android:menuCategory="secondary"
         android:id="@+id/search"
         android:icon="@drawable/search"
         android:title="Search" />
 
 
     <item
+        android:menuCategory="secondary"
         android:id="@+id/featured_lists"
         android:icon="@drawable/playlist"
         android:title="My Lists" />
 
     <item
+        android:menuCategory="secondary"
         android:id="@+id/settings"
-        android:icon="@drawable/settings"
-        android:title="Settings" />
+        android:icon="@drawable/menu"
+        android:title="Menu" />
 
 
 

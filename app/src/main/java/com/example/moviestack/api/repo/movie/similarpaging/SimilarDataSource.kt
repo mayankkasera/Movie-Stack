@@ -31,6 +31,7 @@ class SimilarDataSource(
     val mutableLiveData: MutableLiveData<MovieListState> = MutableLiveData()
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Result>) {
+        state = state.copy(loading = true)
        compositeDisposable.add( movieItemRepositoryI.getSimilars(id,"$FIRST_PAGE")
            .subscribeOn(Schedulers.io())
            .observeOn(AndroidSchedulers.mainThread())
@@ -54,6 +55,7 @@ class SimilarDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( movieItemRepositoryI.getSimilars(id,"${params.key}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -79,6 +81,7 @@ class SimilarDataSource(
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( movieItemRepositoryI.getSimilars(id,"${params.key}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

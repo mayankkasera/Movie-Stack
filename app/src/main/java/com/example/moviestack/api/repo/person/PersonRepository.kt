@@ -144,7 +144,7 @@ class PersonRepository(var personRequests: PersonRequests) : PersonRepositoryI {
                 }
 
                 override fun onFailure(call: Call<MovieCredits>, t: Throwable) {
-
+                    emitter.onError(t)
                 }
 
 
@@ -178,7 +178,7 @@ class PersonRepository(var personRequests: PersonRequests) : PersonRepositoryI {
                 }
 
                 override fun onFailure(call: Call<MovieCredits>, t: Throwable) {
-
+                    emitter.onError(t)
                 }
 
 
@@ -202,7 +202,7 @@ class PersonRepository(var personRequests: PersonRequests) : PersonRepositoryI {
                     }
                 }
                 override fun onFailure(call: Call<Person>, t: Throwable) {
-
+                    emitter.onError(t)
                 }
             })
         }

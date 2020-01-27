@@ -43,7 +43,7 @@ class TrendingItemDataSource(
             "$FIRST_PAGE",
             type
         )
-
+        state = state.copy(loading = true)
         compositeDisposable.add(
 
             observable

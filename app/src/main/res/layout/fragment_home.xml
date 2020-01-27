@@ -63,15 +63,6 @@
                             app:slider_selectedSlideIndicator="@drawable/selected_slide_indicator"
                             app:slider_unselectedSlideIndicator="@drawable/unselected_slide_indicator" />
 
-                        <FrameLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/slider_background"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

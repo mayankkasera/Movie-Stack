@@ -13,8 +13,9 @@ import com.example.moviestack.utils.PicassoImageLoadingService
 import com.example.moviestack.utils.adapter.MainSliderAdapter
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.review.view.*
 import ss.com.bannerslider.Slider
-import ss.com.bannerslider.event.OnSlideClickListener
+
 
 object PicasoAdapter{
     @JvmStatic

@@ -1,5 +1,6 @@
 package com.example.moviestack.ui.persondetail.adapter
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -12,10 +13,12 @@ class PersionViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentSta
     override fun getItem(position: Int): Fragment {
         return when(position){
             0 -> {
+                Log.i("sdjcbjsdc","PersionViewPagerAdapter 0 ")
                 PersonInfoFragment.newInstance(id)
             }
 
             1 -> {
+                Log.i("sdjcbjsdc","PersionViewPagerAdapter 1 ")
                 var movieListType =
                     ListType(
                         data = id,
@@ -25,6 +28,7 @@ class PersionViewPagerAdapter(fm : FragmentManager,var id :String) : FragmentSta
             }
 
             2 -> {
+                Log.i("sdjcbjsdc","PersionViewPagerAdapter 2 ")
                 var movieListType =
                     ListType(
                         data = id,

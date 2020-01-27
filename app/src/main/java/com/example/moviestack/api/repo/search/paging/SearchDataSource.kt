@@ -28,6 +28,7 @@ class SearchDataSource(
         params: LoadInitialParams<Int>,
         callback: LoadInitialCallback<Int, Result>
     ) {
+        state = state.copy(loading = true)
         compositeDisposable.add( searchRepositoryI.getMovie("$FIRST_PAGE",query,type)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -50,6 +51,7 @@ class SearchDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( searchRepositoryI.getMovie("${params.key}",query,type)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -74,6 +76,7 @@ class SearchDataSource(
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( searchRepositoryI.getMovie("${params.key}",query,type)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

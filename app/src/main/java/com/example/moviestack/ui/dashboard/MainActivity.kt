@@ -9,7 +9,7 @@ import com.example.moviestack.R
 import com.example.moviestack.ui.dashboard.home.HomeFragment
 import com.example.moviestack.ui.dashboard.search.SearchFragment
 import com.example.moviestack.ui.dashboard.mylists.MyListsFragment
-import com.example.moviestack.ui.dashboard.settings.SettingsFragment
+import com.example.moviestack.ui.dashboard.menu.MenuFragment
 import com.example.moviestack.ui.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -38,19 +38,19 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.home -> {
-                    replace(HomeFragment())
+                    replace(HomeFragment(),"home")
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.search -> {
-                    replace(SearchFragment())
+                    replace(SearchFragment(),"search")
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.featured_lists -> {
-                    replace(MyListsFragment())
+                    replace(MyListsFragment(),"mylist")
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.settings -> {
-                    replace(SettingsFragment())
+                    replace(MenuFragment(),"setting")
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> {
@@ -63,6 +63,13 @@ class MainActivity : AppCompatActivity() {
 
     fun replace(fragment: Fragment?) {
         val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+        ft.replace(R.id.frameLayout, fragment!!)
+        ft.commit()
+    }
+
+    fun replace(fragment: Fragment?,backstack : String) {
+        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+        ft.addToBackStack(backstack)
         ft.replace(R.id.frameLayout, fragment!!)
         ft.commit()
     }

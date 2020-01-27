@@ -25,6 +25,7 @@ class TvShowSimilarDataSource(
         }
 
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Result>) {
+        state = state.copy(loading = true)
         compositeDisposable.add( tvShowRepositoryI.getSimilars(id,"$FIRST_PAGE")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -48,6 +49,7 @@ class TvShowSimilarDataSource(
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+        state = state.copy(loading = true)
         compositeDisposable.add( tvShowRepositoryI.getSimilars(id,"${params.key}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -73,6 +75,7 @@ class TvShowSimilarDataSource(
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Result>) {
+
         compositeDisposable.add( tvShowRepositoryI.getSimilars(id,"${params.key}")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

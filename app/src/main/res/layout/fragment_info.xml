@@ -27,7 +27,7 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:visibility="@{infoState.loading?View.GONE:View.VISIBLE}"
+            android:visibility="@{infoState.failure?View.GONE:View.VISIBLE}"
             android:paddingBottom="16dp"
             android:nestedScrollingEnabled="true"
             android:fillViewport="true"
@@ -231,6 +231,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/trailers_bottom_line" />
 
                 <androidx.cardview.widget.CardView
+                    app:showImage = "@{infoState.images.posters}"
                     android:id="@+id/poster_holder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -283,6 +284,7 @@
 
 
                 <androidx.cardview.widget.CardView
+                    app:showImage = "@{infoState.images.backdrops}"
                     android:id="@+id/backdrops_holder"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

@@ -36,6 +36,8 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
                     android:id="@+id/edit"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -48,7 +50,11 @@
                     android:textColorHint="@color/light_gray"
                     android:textColor="@color/white"
                     android:background="@null"
-                    android:textSize="22sp" />
+                    android:textSize="22sp">
+
+                    <requestFocus />
+
+                </androidx.appcompat.widget.AppCompatEditText>
 
                 <ImageView
                     android:id="@+id/search"

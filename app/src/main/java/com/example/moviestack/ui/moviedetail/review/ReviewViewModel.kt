@@ -23,6 +23,7 @@ class ReviewViewModel() : ViewModel() {
         }
 
     fun getReview(id: String,movieItemRepositoryI: MovieItemRepositoryI) {
+        state = state.copy(loading = true)
         compositeDisposable.add(
             movieItemRepositoryI.getReviews(id)
                 .subscribeOn(Schedulers.io())
@@ -48,6 +49,7 @@ class ReviewViewModel() : ViewModel() {
     }
 
     fun getReview(id: String,tvShowRepositoryI: TvShowRepositoryI) {
+        state = state.copy(loading = true)
         compositeDisposable.add(
             tvShowRepositoryI.getReviews(id)
                 .subscribeOn(Schedulers.io())

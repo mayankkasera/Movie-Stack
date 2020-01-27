@@ -43,7 +43,7 @@ class MovieDataSource(
             "$FIRST_PAGE",
             type
         )
-
+        state = state.copy(loading = true)
         compositeDisposable.add(
 
             observable
@@ -79,7 +79,6 @@ class MovieDataSource(
             "${params.key}",
             type
         )
-
 
         compositeDisposable.add(
             observable

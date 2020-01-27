@@ -34,6 +34,7 @@ class MovieListViewModel
 
 
     fun getMovieCredits(id : String,personRepositoryI: PersonRepositoryI,detailDataType : DetailData.Type){
+        Log.i("dshcgjdsbc","sdhkjcn 1")
         state = state.copy(loading = true)
         compositeDisposable.add(
             personRepositoryI.getMovieCredits(id)
@@ -41,17 +42,19 @@ class MovieListViewModel
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     var joined = it.data as ArrayList<Result>
-                    Log.i("dsjvhc",joined.toString())
+                    Log.i("dshcgjdsbc",joined.toString())
                     state = state.copy(
                         movieListAdapter = MovieListAdapter(joined,detailDataType)
                     )
                 }, {
+                    Log.i("dshcgjdsbc","2 "+it.toString())
                     state = state.copy(
                         loading = false,
                         failure = true,
                         message = it.localizedMessage
                     )
                 }, {
+                    Log.i("dshcgjdsbc","3 ")
                     state = state.copy(
                         loading = false,
                         success = true

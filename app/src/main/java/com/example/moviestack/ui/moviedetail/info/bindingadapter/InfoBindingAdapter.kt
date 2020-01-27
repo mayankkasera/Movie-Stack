@@ -6,7 +6,9 @@ import android.os.Parcelable
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
+import androidx.cardview.widget.CardView
 import androidx.databinding.BindingAdapter
+import com.example.moviestack.pojo.ImagesDeatail
 import com.example.moviestack.pojo.MovieInfo
 import com.example.moviestack.pojo.MyList
 import com.example.moviestack.pojo.MyListDetail
@@ -15,6 +17,7 @@ import com.example.moviestack.roomdb.RoomDatabaseHelper
 import com.example.moviestack.roomdb.bookmark.BookmarkHelper
 import com.example.moviestack.roomdb.mylist.MyListHelper
 import com.example.moviestack.roomdb.mylistdetail.MyListDetailHelper
+import com.example.moviestack.ui.common.fullimage.FullImageActivity
 import com.example.moviestack.ui.common.person.simple.PersonSimpleActivity
 import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.ui.moviedetail.info.dialog.MyListDetailDialog
@@ -23,6 +26,7 @@ import com.example.moviestack.ui.moviedetail.info.dialog.MyListDialog
 import com.example.moviestack.ui.moviedetail.info.dialog.MyListDialogOnclick
 import com.example.moviestack.ui.moviedetail.info.dialog.adapter.MyListAdapter
 import com.example.qrcode.roomdb.utils.MovieInfoHelper
+import java.util.ArrayList
 
 object InfoBindingAdapter {
     @JvmStatic
@@ -32,6 +36,16 @@ object InfoBindingAdapter {
             val intent = Intent(layout.context, PersonSimpleActivity::class.java)
             intent.putExtra("id", id)
             intent.putExtra("type", type as Parcelable)
+            layout.context.startActivity(intent)
+        }
+    }
+
+    @JvmStatic
+    @BindingAdapter("showImage")
+    fun showImage(layout: CardView, list : List<ImagesDeatail>?) {
+        layout.setOnClickListener {
+            val intent = Intent(layout.context, FullImageActivity::class.java)
+            intent.putParcelableArrayListExtra("image", list as ArrayList<ImagesDeatail>)
             layout.context.startActivity(intent)
         }
     }
