@@ -2,17 +2,15 @@ package com.example.moviestack.ui.common.fullimage
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bogdwellers.pinchtozoom.ImageMatrixTouchHandler
 import com.example.moviestack.R
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_full_image.*
 import kotlinx.android.synthetic.main.fragment_full_image.view.*
 import java.lang.Exception
 

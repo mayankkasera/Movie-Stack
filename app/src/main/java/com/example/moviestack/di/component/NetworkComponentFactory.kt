@@ -1,7 +1,7 @@
 package com.example.moviestack.di.component
 
 import android.content.Context
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 
 class NetworkComponentFactory {
      companion object{

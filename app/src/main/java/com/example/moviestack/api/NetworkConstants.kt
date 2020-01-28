@@ -1,4 +1,4 @@
-package com.example.moviestack.utils
+package com.example.moviestack.api
 
 object NetworkConstants{
     const val baseUrl : String = "https://api.themoviedb.org/3/"

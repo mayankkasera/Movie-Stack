@@ -105,5 +105,7 @@ dependencies {
     implementation 'tyrantgit:explosionfield:1.0.1'
     implementation "com.airbnb.android:lottie:3.0.7"
     implementation 'com.bogdwellers:pinchtozoom:0.1'
+    implementation 'com.github.AppIntro:AppIntro:5.1.0'
+    implementation 'com.github.Binary-Finery:JetDB:1.0.5'
 
 }

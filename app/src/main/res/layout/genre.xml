@@ -11,7 +11,7 @@
             name="type"
             type="com.example.moviestack.ui.moviedetail.DetailData.Type"/>
 
-        <import type="com.example.moviestack.utils.NetworkConstants"/>
+        <import type="com.example.moviestack.api.NetworkConstants"/>
     </data>
 
 

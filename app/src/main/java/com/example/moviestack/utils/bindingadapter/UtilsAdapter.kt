@@ -8,16 +8,15 @@ import androidx.databinding.BindingAdapter
 import com.example.moviestack.pojo.Result
 import com.example.moviestack.ui.moviedetail.DetailData
 import com.example.moviestack.ui.moviedetail.MovieDetailActivity
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 import com.example.moviestack.utils.PicassoImageLoadingService
 import com.example.moviestack.utils.adapter.MainSliderAdapter
 import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.review.view.*
 import ss.com.bannerslider.Slider
 
 
-object PicasoAdapter{
+object UtilsAdapter{
     @JvmStatic
     @BindingAdapter("setImageResource")
     fun setImageResource (imageView : AppCompatImageView,url : String?){

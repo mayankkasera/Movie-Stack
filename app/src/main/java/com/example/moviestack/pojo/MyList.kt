@@ -4,11 +4,10 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.android.parcel.Parcelize
-import okhttp3.internal.Util
 
 @Entity
 @Parcelize

@@ -1,10 +1,7 @@
 package com.example.moviestack.pojo
 
 import android.os.Parcelable
-import android.util.Log
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 

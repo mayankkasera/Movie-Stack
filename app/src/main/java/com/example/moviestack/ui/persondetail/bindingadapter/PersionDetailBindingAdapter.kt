@@ -10,7 +10,7 @@ import androidx.databinding.BindingAdapter
 import com.example.moviestack.R
 import com.example.moviestack.pojo.TaggedImages
 import com.example.moviestack.utils.adapter.MainSliderAdapter
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 import com.example.moviestack.utils.PicassoImageLoadingService
 import ss.com.bannerslider.Slider
 

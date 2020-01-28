@@ -1,9 +1,7 @@
 package com.example.moviestack.pojo
 
 
-import android.util.Log
-import com.example.moviestack.api.NetworkHelper
-import com.example.moviestack.utils.NetworkConstants
+import com.example.moviestack.api.NetworkConstants
 import com.google.gson.annotations.SerializedName
 
 data class Images(
