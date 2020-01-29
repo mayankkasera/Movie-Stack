@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="castState"
-            type="com.example.moviestack.ui.common.person.PersonSatate"/>
+            type="com.codeinger.moviestack.ui.common.person.PersonSatate"/>
     </data>
 
 

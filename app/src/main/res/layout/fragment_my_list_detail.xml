@@ -6,7 +6,7 @@
     <data class="MyListDetailFragmentDataBinding">
           <variable
               name="state"
-              type="com.example.moviestack.ui.dashboard.mylists.mylistdetail.MyListDetailState" />
+              type="com.codeinger.moviestack.ui.dashboard.mylists.mylistdetail.MyListDetailState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

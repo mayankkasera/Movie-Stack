@@ -4,14 +4,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data class="CastDataBinding">
-        <import type="com.example.moviestack.ui.common.ListType"/>
+        <import type="com.codeinger.moviestack.ui.common.ListType"/>
         <variable
             name="cast"
-            type="com.example.moviestack.pojo.Credits.Cast"/>
+            type="com.codeinger.moviestack.pojo.Credits.Cast"/>
 
         <variable
             name="crew"
-            type="com.example.moviestack.pojo.Credits.Crew"/>
+            type="com.codeinger.moviestack.pojo.Credits.Crew"/>
 
         <variable
             name="i"
@@ -19,7 +19,7 @@
 
         <variable
             name="type"
-            type="com.example.moviestack.ui.common.ListType.Type"/>
+            type="com.codeinger.moviestack.ui.common.ListType.Type"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

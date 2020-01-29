@@ -7,7 +7,7 @@
         <import type="android.view.View"/>
         <variable
             name="reviewState"
-            type="com.example.moviestack.ui.moviedetail.review.ReviewState"/>
+            type="com.codeinger.moviestack.ui.moviedetail.review.ReviewState"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

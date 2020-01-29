@@ -9,7 +9,7 @@
 
         <variable
             name="personInfoState"
-            type="com.example.moviestack.ui.persondetail.info.PersonInfoState" />
+            type="com.codeinger.moviestack.ui.persondetail.info.PersonInfoState" />
 
 
     </data>

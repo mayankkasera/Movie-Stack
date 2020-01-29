@@ -7,15 +7,15 @@
         <import type="android.view.View"/>
         <variable
             name="infoState"
-            type="com.example.moviestack.ui.moviedetail.info.InfoState"/>
+            type="com.codeinger.moviestack.ui.moviedetail.info.InfoState"/>
 
         <variable
             name="localDatabase"
-            type="com.example.moviestack.roomdb.LocaleDataBase" />
+            type="com.codeinger.moviestack.roomdb.LocaleDataBase" />
 
         <variable
             name="type"
-            type="com.example.moviestack.ui.moviedetail.DetailData.Type" />
+            type="com.codeinger.moviestack.ui.moviedetail.DetailData.Type" />
 
 
 

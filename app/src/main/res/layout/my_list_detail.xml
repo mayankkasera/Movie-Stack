@@ -5,10 +5,10 @@
     <data class="MyListDataBinding">
         <variable
             name="mylist"
-            type="com.example.moviestack.pojo.MyList" />
+            type="com.codeinger.moviestack.pojo.MyList" />
         <variable
             name="type"
-            type="com.example.moviestack.ui.common.ListType.Type" />
+            type="com.codeinger.moviestack.ui.common.ListType.Type" />
     </data>
 
 

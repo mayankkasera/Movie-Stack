@@ -5,13 +5,13 @@
     <data class ="GenresDataBinding">
         <variable
             name="genres"
-            type="com.example.moviestack.pojo.MovieInfo.Genre"/>
+            type="com.codeinger.moviestack.pojo.MovieInfo.Genre"/>
 
         <variable
             name="type"
-            type="com.example.moviestack.ui.moviedetail.DetailData.Type"/>
+            type="com.codeinger.moviestack.ui.moviedetail.DetailData.Type"/>
 
-        <import type="com.example.moviestack.api.NetworkConstants"/>
+        <import type="com.codeinger.moviestack.api.NetworkConstants"/>
     </data>
 
 

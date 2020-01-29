@@ -6,14 +6,14 @@
     <data class ="MovieListDataBinding">
         <variable
             name="similar"
-            type="com.example.moviestack.pojo.Result"/>
+            type="com.codeinger.moviestack.pojo.Result"/>
 
 
         <variable
             name="type"
-            type="com.example.moviestack.ui.moviedetail.DetailData.Type"/>
+            type="com.codeinger.moviestack.ui.moviedetail.DetailData.Type"/>
 
-        <import type="com.example.moviestack.api.NetworkConstants"/>
+        <import type="com.codeinger.moviestack.api.NetworkConstants"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

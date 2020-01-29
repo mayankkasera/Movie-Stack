@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="SearchFragmentDataBinding">
-        <import type="com.example.moviestack.ui.common.ListType"/>
-        <import type="com.example.moviestack.ui.moviedetail.DetailData"/>
+        <import type="com.codeinger.moviestack.ui.common.ListType"/>
+        <import type="com.codeinger.moviestack.ui.moviedetail.DetailData"/>
     </data>
 
    <ScrollView

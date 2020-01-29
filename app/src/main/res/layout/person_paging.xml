@@ -5,7 +5,7 @@
     <data class="PersonPagingDataBinding">
         <variable
             name="person"
-            type="com.example.moviestack.pojo.Result"/>
+            type="com.codeinger.moviestack.pojo.Result"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

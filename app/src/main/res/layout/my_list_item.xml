@@ -6,7 +6,7 @@
     <data class="MyListsDataBinding">
         <variable
             name="myList"
-            type="com.example.moviestack.pojo.MyList" />
+            type="com.codeinger.moviestack.pojo.MyList" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
