@@ -5,8 +5,24 @@ Movie Stack gives you the overview of Movies TV shows & Actors from the largest 
 
 In this project, I will use Android with Kotlin, MVVM, Dagger 2, RxJava/RxAndroid, Databinding, Retrofit, Pagination & Android JetPack.
 
+
 # Demo of Movie Stack App 
-  <img width="200px" src="https://github.com/mayankkasera/Movie-Stack/blob/master/media/moviestack.gif"></br>
+
+ <center>
+  
+ <a href="https://play.google.com/store/apps/details?id=com.codeinger.moviestack">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200px">
+ </a>
+ 
+ <a style="margin:20;padding:0" href="https://play.google.com/store/apps/details?id=com.codeinger.moviestack">
+  <img src="https://raw.githubusercontent.com/mayankkasera/Movie-Stack/master/media/youtube.png" width="200" >
+ </a>
+ 
+</center>
+ 
+
+
+  <img width="200px"   src="https://github.com/mayankkasera/Movie-Stack/blob/master/media/moviestack.gif"></br>
 
 
 App Features: 
