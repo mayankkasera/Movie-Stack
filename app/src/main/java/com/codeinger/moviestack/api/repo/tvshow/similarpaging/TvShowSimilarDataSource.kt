@@ -60,9 +60,9 @@ class TvShowSimilarDataSource(
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(
@@ -87,9 +87,9 @@ class TvShowSimilarDataSource(
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(

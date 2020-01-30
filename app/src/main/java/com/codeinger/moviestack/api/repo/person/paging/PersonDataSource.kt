@@ -2,8 +2,8 @@ package com.codeinger.moviestack.api.repo.person.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
-import com.codeinger.moviestack.pojo.Result
 import com.codeinger.moviestack.api.repo.person.PersonRepositoryI
+import com.codeinger.moviestack.pojo.Result
 import com.codeinger.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -58,9 +58,9 @@ class PersonDataSource(var compositeDisposable: CompositeDisposable,
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(
@@ -83,9 +83,9 @@ class PersonDataSource(var compositeDisposable: CompositeDisposable,
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(

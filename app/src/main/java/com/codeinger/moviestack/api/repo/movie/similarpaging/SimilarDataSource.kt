@@ -65,9 +65,9 @@ class SimilarDataSource(
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(
@@ -92,9 +92,9 @@ class SimilarDataSource(
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(

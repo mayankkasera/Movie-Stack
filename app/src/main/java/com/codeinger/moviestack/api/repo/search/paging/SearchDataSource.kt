@@ -3,11 +3,11 @@ package com.codeinger.moviestack.api.repo.search.paging
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.codeinger.moviestack.api.repo.search.SearchRepositoryI
-import io.reactivex.disposables.CompositeDisposable
 import com.codeinger.moviestack.pojo.Result
 import com.codeinger.moviestack.pojo.SmallItemList
 import com.codeinger.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class SearchDataSource(
@@ -62,9 +62,9 @@ class SearchDataSource(
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(
@@ -88,9 +88,9 @@ class SearchDataSource(
                 }
             }, {
                 state = state.copy(
-                    loading = false,
-                    failure = true,
-                    message = it.localizedMessage
+//                    loading = false,
+//                    failure = true,
+//                    message = it.localizedMessage
                 )
             }, {
                 state = state.copy(

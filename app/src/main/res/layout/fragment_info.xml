@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data class="InfoFragmentBinding">
+
         <import type="android.view.View"/>
+
         <variable
             name="infoState"
             type="com.codeinger.moviestack.ui.moviedetail.info.InfoState"/>
@@ -27,7 +29,7 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:visibility="@{infoState.failure?View.GONE:View.VISIBLE}"
+            android:visibility="@{infoState.loading?View.GONE:(infoState.failure?View.GONE:View.VISIBLE)}"
             android:paddingBottom="16dp"
             android:nestedScrollingEnabled="true"
             android:fillViewport="true"

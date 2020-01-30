@@ -96,9 +96,9 @@ class TvShowDataSource(
 
                 }, {
                     state = state.copy(
-                        loading = false,
-                        failure = true,
-                        message = it.localizedMessage
+//                        loading = false,
+//                        failure = true,
+//                        message = it.localizedMessage
                     )
                 }, {
                     state = state.copy(
@@ -135,9 +135,9 @@ class TvShowDataSource(
                     }
                 }, {
                     state = state.copy(
-                        loading = false,
-                        failure = true,
-                        message = it.localizedMessage
+//                        loading = false,
+//                        failure = true,
+//                        message = it.localizedMessage
                     )
                 }, {
                     state = state.copy(

@@ -19,7 +19,7 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:visibility="@{personInfoState.failure?View.GONE:View.VISIBLE}"
+            android:visibility="@{personInfoState.loading?View.GONE:(personInfoState.failure?View.GONE:View.VISIBLE)}"
             android:nestedScrollingEnabled="true"
             android:fillViewport="true"
             android:layout_width="match_parent"

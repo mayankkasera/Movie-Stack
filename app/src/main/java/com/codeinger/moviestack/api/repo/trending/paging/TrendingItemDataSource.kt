@@ -3,10 +3,10 @@ package com.codeinger.moviestack.api.repo.trending.paging
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
+import com.codeinger.moviestack.api.repo.trending.TrendingRepositoryI
 import com.codeinger.moviestack.pojo.MovieList
 import com.codeinger.moviestack.pojo.Result
 import com.codeinger.moviestack.pojo.SmallItemList
-import com.codeinger.moviestack.api.repo.trending.TrendingRepositoryI
 import com.codeinger.moviestack.ui.common.movielist.MovieListState
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -95,9 +95,9 @@ class TrendingItemDataSource(
 
                 }, {
                     state = state.copy(
-                        loading = false,
-                        failure = true,
-                        message = it.localizedMessage
+//                        loading = false,
+//                        failure = true,
+//                        message = it.localizedMessage
                     )
                 }, {
                     state = state.copy(
@@ -135,9 +135,9 @@ class TrendingItemDataSource(
                     }
                 }, {
                     state = state.copy(
-                        loading = false,
-                        failure = true,
-                        message = it.localizedMessage
+//                        loading = false,
+//                        failure = true,
+//                        message = it.localizedMessage
                     )
                 }, {
                     state = state.copy(
