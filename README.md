@@ -8,17 +8,15 @@ In this project, I will use Android with Kotlin, MVVM, Dagger 2, RxJava/RxAndroi
 
 # Demo of Movie Stack App 
 
- <center>
-  
+ 
+
  <a href="https://play.google.com/store/apps/details?id=com.codeinger.moviestack">
   <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" width="200px">
  </a>
- 
- <a style="margin:20;padding:0" href="https://play.google.com/store/apps/details?id=com.codeinger.moviestack">
+
+ <a style="margin:20;padding:0" href="https://youtu.be/kwd8JxHLKpw">
   <img src="https://raw.githubusercontent.com/mayankkasera/Movie-Stack/master/media/youtube.png" width="200" >
  </a>
- 
-</center>
  
 
 
