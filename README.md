@@ -33,6 +33,14 @@ App Features:
 * Make a bookmark of Movies & TV shows and many more.
 
 
+## How to build on your environment
+Add your API key in local.properties file.
+```xml
+tmdb_api_key = YOUR_API_KEY
+```
+
+  If you don't have tmdb api key you can create new key from [here](https://developers.themoviedb.org/3/getting-started/introduction).
+
 
 ## Contributing
 
